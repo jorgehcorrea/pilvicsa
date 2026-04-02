@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Pilvicsa">
+	<meta name="description" content="Pilvicsa — Flores de Corte. Propagación de plantines para flores de corte de exportación.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/font-icons.css">
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="demos/business/business.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<title>Pilvicsa | Flores de Corte</title>
+	<style>
+		.flores-top-image .header-wrap-clone { display: none !important; }
+		.flores-top-image #header { position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; }
+		.flores-top-image .content-wrap { margin-top: 0 !important; padding-top: 0 !important; }
+		.flores-top-image .portfolio-single-image { margin-top: 0 !important; }
+		.flores-top-image .video-wrap,
+		.flores-top-image .portfolio-single-image picture { height: 90vh; }
+		.flores-top-image .portfolio-single-image picture img { width: 100%; height: 100%; object-fit: cover; display: block; }
+		.pilv-table { width: 100%; border-collapse: collapse; }
+		.pilv-table tbody tr { border-bottom: 1px solid #eef2ee; transition: background 0.15s; cursor: pointer; }
+		.pilv-table tbody tr:last-child { border-bottom: none; }
+		.pilv-table tbody tr:hover { background: #f4f9f5; }
+		.pilv-table tbody tr:hover .td-name { color: #2c6e3f; text-decoration: underline; }
+		.pilv-table td.td-img { width: 110px; padding: 0.5rem 0.75rem 0.5rem 1rem; vertical-align: middle; }
+		.pilv-table td.td-img img { width: 90px; height: 90px; object-fit: cover; object-position: center; border-radius: 6px; border: 1px solid #dde8dd; display: block; }
+		.pilv-table td.td-name { padding: 0.75rem 1rem 0.75rem 0.5rem; vertical-align: middle; font-size: 1rem; font-weight: 600; color: #1a1a1a; }
+		.pilv-table td.td-name .td-latin { display: block; font-size: 0.75rem; font-weight: 400; font-style: italic; color: #888; margin-top: 2px; }
+		@media (max-width: 480px) {
+			.pilv-table tbody tr { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.75rem; }
+			.pilv-table td.td-img { width: auto; padding: 0; flex-shrink: 0; }
+			.pilv-table td.td-img img { width: 60px; height: 60px; }
+			.pilv-table td.td-name { padding: 0; font-size: 0.88rem; }
+		}
+		.pilv-category { margin-bottom: 3rem; }
+		.pilv-category-header { display: flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1rem; background: #2c6e3f; border-radius: 6px 6px 0 0; color: #fff; font-size: 1.05rem; font-weight: 700; }
+		.pilv-category-header span.subtitle { font-weight: 400; font-size: 0.82rem; opacity: 0.75; margin-left: 0.25rem; }
+		.pilv-category-body { border: 1px solid #dde8dd; border-top: none; border-radius: 0 0 6px 6px; overflow: hidden; }
+		.pilv-category-footer { padding: 0.5rem 1rem; font-size: 0.72rem; color: #aaa; background: #fafafa; border-top: 1px solid #eee; }
+		#pilv-lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.72); align-items: center; justify-content: center; padding: 1rem; }
+		#pilv-lightbox.open { display: flex; }
+		#pilv-lightbox-inner { background: #fff; border-radius: 10px; max-width: 480px; width: 100%; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.35); position: relative; }
+		#pilv-lightbox-close { position: absolute; top: 0.6rem; right: 0.75rem; background: none; border: none; font-size: 1.6rem; line-height: 1; color: #fff; cursor: pointer; z-index: 2; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+		#pilv-lightbox-img { width: 100%; aspect-ratio: 16/7; object-fit: cover; object-position: center; display: block; }
+		#pilv-lightbox-body { padding: 1rem 1.25rem 1.25rem; border-top: 3px solid #2c6e3f; }
+		#pilv-lightbox-title { font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin: 0 0 0.2rem; }
+		#pilv-lightbox-latin { font-size: 0.82rem; font-style: italic; color: #888; margin: 0 0 0.75rem; }
+		.pilv-spec-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+		.pilv-spec-table tr { border-bottom: 1px solid #eef2ee; }
+		.pilv-spec-table tr:last-child { border-bottom: none; }
+		.pilv-spec-table td { padding: 0.4rem 0.5rem; vertical-align: top; line-height: 1.4; }
+		.pilv-spec-table td:first-child { font-weight: 700; color: #2c6e3f; width: 38%; white-space: nowrap; }
+		.pilv-spec-table td:last-child { color: #444; }
+		.pilv-lightbox-note { margin-top: 12px; font-size: 0.72rem; color: #bbb; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 10px; }
+	</style>
+</head>
+
+<body class="stretched flores-top-image">
+<div id="wrapper">
+
+	<header id="header" class="full-header transparent-header dark header-size-md" data-sticky-class="not-dark" data-responsive-class="not-dark" data-sticky-offset="full" data-sticky-offset-negative="auto">
+		<div id="header-wrap">
+			<div class="container">
+				<div class="header-row">
+					<div id="logo">
+						<a href="index.html">
+							<img class="logo-default" srcset="demos/business/images/logo.png, demos/business/images/logo@2x.png 2x" src="demos/business/images/logo@2x.png" alt="Pilvicsa">
+							<img class="logo-dark" srcset="demos/business/images/logo-dark.png, demos/business/images/logo-dark@2x.png 2x" src="demos/business/images/logo-dark@2x.png" alt="Pilvicsa">
+						</a>
+					</div>
+					<div class="primary-menu-trigger">
+						<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+							<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+						</button>
+					</div>
+					<nav class="primary-menu">
+						<ul class="menu-container">
+								<li class="menu-item"><a class="menu-link" href="index.html"><div>Inicio</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="index.html#nuestraoferta"><div>Servicios</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<li class="menu-item"><a class="menu-link" href="#"><div>Semillas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Esquejes</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Injertos</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Endurecimiento</div></a></li>
+									</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#"><div>Productos</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<li class="menu-item"><a class="menu-link" href="producto-hortalizas.html"><div>Hortalizas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-florescorte.html"><div>Flores de Corte</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-cultivoscosta.html"><div>Cultivos de Costa</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-frutalesforestales.html"><div>Frutales y Forestales</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-especies.html"><div>Especies y Aromáticas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-otras.html"><div>Cultivos Especiales</div></a></li>
+									</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="buscar.html"><div>Buscar</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="localizaciones.html"><div>Contactos y Preguntas</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+										<li class="menu-item" style="display:none"><a class="menu-link" href="#"><div>¿Preguntas Frecuentes?</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#latacunga"><div>Vivero Latacunga</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#santodomingo"><div>Vivero Santo Domingo</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#quito"><div>Despacho Quito</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#checa"><div>Despacho Checa</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#otavalo"><div>Despacho Otavalo</div></a></li>
+									</ul>
+								</li>
+							</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="header-wrap-clone"></div>
+	</header>
+
+	<section id="content">
+		<div class="content-wrap pb-0" style="z-index:1;">
+
+			<div class="portfolio-single-image portfolio-single-image-full">
+				<div class="video-wrap no-placeholder" style="height:90vh;">
+					<picture>
+						<source srcset="demos/business/images/pages/florescorte.jpg" type="image/jpg">
+						<img src="demos/business/images/pages/florescorte.jpg" alt="Flores de Corte" style="width:100%;height:100%;object-fit:cover;display:block;">
+					</picture>
+					<div class="video-overlay"></div>
+				</div>
+			</div>
+
+			<div class="container mt-5">
+				<div class="heading-block text-center border-0">
+					<h3>Flores de Corte</h3>
+				</div>
+				<div class="row">
+					<div class="text-center col-lg-8 offset-lg-2 mb-5">
+						<h3 class="font-secondary">Producción especializada de plantines para flores de corte de exportación.</h3>
+						<p class="mt-3" style="color:#555;font-size:0.97rem;line-height:1.9;">Cada variedad es propagada bajo estándares de calidad que garantizan vigor, sanidad y uniformidad desde el inicio del cultivo. Trabajamos bajo pedido, respetando la propiedad intelectual de cada material genético.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="container mb-6">
+				<div class="row g-4">
+
+				<!-- FLORES TRADICIONALES -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">🌸 Flores Tradicionales <span class="subtitle">— Variedades de exportación</span></div>
+						<div class="pilv-category-body">
+							<table class="pilv-table"><tbody>
+								<tr data-name="Gerbera" data-latin="Gerbera jamesonii" data-specs="Tiempo de cultivo|90 a 120 dias||Colores y líneas disponibles|Material Cliente||Recomendaciones|14–22°C. Invernadero con buena ventilación. Sensible a humedad excesiva en cuello."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/gerbera.jpg" alt="Gerbera"></td><td class="td-name">Gerbera <span class="td-latin">Gerbera jamesonii</span></td></tr>
+								<tr data-name="Delphinium" data-latin="Delphinium elatum / D. belladonna" data-specs="Tiempo de cultivo|84 a 112 dias||Colores y líneas disponibles|Magic Found. Mid Blue, White, Bee, Pacific GST Astolat, Galahad  & Material Cliente||Recomendaciones|5–15°C. Requiere frío para inducción floral. Camas altas con drenaje."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/delphinium.jpg" alt="Delphinium"></td><td class="td-name">Delphinium <span class="td-latin">Delphinium elatum</span></td></tr>
+								<tr data-name="Lisianthus" data-latin="Eustoma grandiflorum" data-specs="Tiempo de cultivo|90 a 120 dias||Colores y líneas disponibles|Voyage Blue y Material Cliente||Recomendaciones|15–25°C. Invernadero. Semilla lenta — producir en pilón bajo condiciones controladas."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/lisianthus.jpg" alt="Lisianthus"></td><td class="td-name">Lisianthus <span class="td-latin">Eustoma grandiflorum</span></td></tr>
+								<tr data-name="Ranunculo" data-latin="Ranunculus asiaticus" data-specs="Tiempo de cultivo|60 a 90 dias||Colores y líneas disponibles|Material Cliente||Recomendaciones|8–15°C. Ciclo de invierno-primavera. Camas en invernadero frío o campo abierto."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/ranunculo.jpg" alt="Ranunculo"></td><td class="td-name">Ranunculo <span class="td-latin">Ranunculus asiaticus</span></td></tr>
+								<tr data-name="Dianthus" data-latin="Dianthus caryophyllus" data-specs="Tiempo de cultivo|90 a 150 dias||Colores y líneas disponibles|Neon Cherry, Neon Purple, Rose Magic, Black Berry, Magenta Bicolor, Pink, Pink Magic, Purple White bicolor, Red, White & Material Cliente||Recomendaciones|10–20°C. Tolera campo abierto en sierra. Buena aireación para evitar fusarium."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/dianthus.jpg" alt="Dianthus"></td><td class="td-name">Dianthus <span class="td-latin">Dianthus caryophyllus</span></td></tr>
+								<tr data-name="Snapdragon" data-latin="Antirrhinum majus" data-specs="Tiempo de cultivo|110 a 140 dias||Colores y líneas disponibles|Deep Rose, Ivori White, Pink, Pure White, Yellow, Pink III, Red, Summer White, Maryland Lavender, Early White, Fresh White, Lavender, Pink, Red, White, Yellow, Red IV, Rose IV, Potomac Applebloss, P. Dark Orange, P. Dark Pink, P. Early White, P. Early Yellow, P. Orange, P. Pink Classic, P. Red, P.  Royal, P. Yellow, Rocket Orchid, R. White||Recomendaciones|10–18°C. Campo abierto o invernadero frío. Sensible a calor — ciclo de invierno."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/snapdragon.jpg" alt="Snapdragon"></td><td class="td-name">Snapdragon <span class="td-latin">Antirrhinum majus</span></td></tr>
+								<tr data-name="Girasol" data-latin="Helianthus annuus" data-specs="Tiempo de cultivo|90 a 120 dias||Colores y líneas disponibles|Sunflower vicent's choice y Material Cliente||Recomendaciones|18–28°C. Campo abierto. Alta luminosidad. Riegos regulares sin encharcamiento."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/girasol.jpg" alt="Girasol"></td><td class="td-name">Girasol <span class="td-latin">Helianthus annuus</span></td></tr>
+								<tr data-name="Godetia" data-latin="Clarkia amoena" data-specs="Tiempo de cultivo|90 a 150 dias||Colores y líneas disponibles|Grace Lavender, G. Red, G. Rose Pink, G. Salmon Improved, G. White y Material Cliente||Recomendaciones|10–18°C. Campo abierto o invernadero frío. Ciclo de invierno-primavera."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/godetia.jpg" alt="Godetia"></td><td class="td-name">Godetia <span class="td-latin">Clarkia amoena</span></td></tr>
+								<tr data-name="Mathiola" data-latin="Matthiola incana" data-specs="Tiempo de cultivo|90 a 130 dias||Colores y líneas disponibles|Cheerfull Mid White, Iron Apricot, I. Pink, I. Pink Rose, I. White y Material Cliente||Recomendaciones|10–18°C. Invernadero o campo en sierra. Sensible a calor — ciclo de invierno."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/mathiola.jpg" alt="Mathiola"></td><td class="td-name">Mathiola <span class="td-latin">Matthiola incana</span></td></tr>
+								<tr data-name="Larkspur" data-latin="Consolida ajacis" data-specs="Tiempo de cultivo|90 a 110 dias||Colores y líneas disponibles|Blue Spire, Pink Perfection, White King y Material Cliente||Recomendaciones|10–18°C. Campo abierto en sierra. Suelo bien drenado. Ciclo de invierno-primavera."><td class="td-img"><img src="demos/business/images/productos/florescorte/tradicionales/larkspur.jpg" alt="Larkspur"></td><td class="td-name">Larkspur <span class="td-latin">Consolida ajacis</span></td></tr>
+							</tbody></table>
+						</div>
+						<div class="pilv-category-footer">* Clic en cada variedad para ver especificaciones. Producción bajo pedido.</div>
+					</div>
+				</div>
+
+				<!-- FLORES DE TEMPORADA -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">🌼 Flores de Temporada <span class="subtitle">— Arreglos garden-style</span></div>
+						<div class="pilv-category-body">
+							<table class="pilv-table"><tbody>
+								<tr data-name="Campanula" data-latin="Campanula medium" data-specs="Tiempo de cultivo|112 a 126 dias||Colores y líneas disponibles|Champion Deep Blue, C. Pink, C. White y Material Cliente||Recomendaciones|12–18°C. Invernadero o campo abierto en sierra. Buena luz y ventilación."><td class="td-img"><img src="demos/business/images/productos/florescorte/temporada/campanula.jpg" alt="Campanula"></td><td class="td-name">Campanula <span class="td-latin">Campanula medium</span></td></tr>
+								<tr data-name="Nigella" data-latin="Nigella damascena" data-specs="Tiempo de cultivo|60 a 90 dias||Colores y líneas disponibles|Miss Jekyll Blue, M. J. White y Material Cliente||Recomendaciones|10–20°C. Campo abierto. Siembra directa o trasplante en pilón."><td class="td-img"><img src="demos/business/images/productos/florescorte/temporada/nigella.jpg" alt="Nigella"></td><td class="td-name">Nigella <span class="td-latin">Nigella damascena</span></td></tr>
+								<tr data-name="Scabiosa" data-latin="Scabiosa spp." data-specs="Tiempo de cultivo|90 a 120 dias||Colores y líneas disponibles|Material Cliente||Recomendaciones|12–20°C. Invernadero o campo abierto. Suelo ligeramente alcalino."><td class="td-img"><img src="demos/business/images/productos/florescorte/temporada/scabiosa.jpg" alt="Scabiosa"></td><td class="td-name">Scabiosa <span class="td-latin">Scabiosa spp.</span></td></tr>
+								<tr data-name="Molucela" data-latin="Moluccella laevis" data-specs="Tiempo de cultivo|90 a 110 dias||Colores y líneas disponibles|Bells of Ireland y Material Cliente||Recomendaciones|15–22°C. Invernadero o campo. Buena luz. Ciclo de verano."><td class="td-img"><img src="demos/business/images/productos/florescorte/temporada/molucela.jpg" alt="Molucela"></td><td class="td-name">Molucela <span class="td-latin">Moluccella laevis</span></td></tr>
+								<tr data-name="Craspedia" data-latin="Craspedia globosa" data-specs="Tiempo de cultivo|90 a 140 dias||Colores y líneas disponibles|Craspedia||Recomendaciones|15–25°C. Campo abierto. Suelo bien drenado. Tolera sequía moderada."><td class="td-img"><img src="demos/business/images/productos/florescorte/temporada/craspedia.jpg" alt="Craspedia"></td><td class="td-name">Craspedia <span class="td-latin">Craspedia globosa</span></td></tr>
+								<tr data-name="Ammi" data-latin="Ammi majus" data-specs="Tiempo de cultivo|90 a 120 dias||Colores y líneas disponibles|Majus Queen of African, Visnaga Green Mist y Material Cliente||Recomendaciones|12–20°C. Campo abierto. Siembra directa o trasplante. Suelo drenado."><td class="td-img"><img src="demos/business/images/productos/florescorte/temporada/ammi.jpg" alt="Ammi"></td><td class="td-name">Ammi <span class="td-latin">Ammi majus</span></td></tr>
+								<tr data-name="Achilea" data-latin="Achillea millefolium" data-specs="Tiempo de cultivo|140 a 160 dias||Colores y líneas disponibles|Material Cliente||Recomendaciones|15–25°C. Campo abierto. Muy tolerante. Suelo seco-moderado."><td class="td-img"><img src="demos/business/images/productos/florescorte/temporada/achilea.jpg" alt="Achilea"></td><td class="td-name">Achilea <span class="td-latin">Achillea millefolium</span></td></tr>
+							</tbody></table>
+						</div>
+						<div class="pilv-category-footer">* Clic en cada variedad para ver especificaciones. Producción bajo pedido.</div>
+					</div>
+				</div>
+
+				<!-- FOLLAJE Y COMPLEMENTOS -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">🌿 Follaje y Complementos <span class="subtitle">— Bouquets y garlands</span></div>
+						<div class="pilv-category-body">
+							<table class="pilv-table"><tbody>
+								<tr data-name="Eucalyptus" data-latin="Eucalyptus spp." data-specs="Tiempo de cultivo|6 a 8 meses (follaje)||Colores y líneas disponibles|Baby Blue, Polyanthemus, Parvifolia, Websteriana, Sliver Dollar y Material Cliente||Recomendaciones|8–20°C. Campo abierto en sierra o subtrópico. Crecimiento rápido con riego regular."><td class="td-img"><img src="demos/business/images/productos/florescorte/follaje/eucalyptus.jpg" alt="Eucalyptus"></td><td class="td-name">Eucalyptus <span class="td-latin">Eucalyptus spp.</span></td></tr>
+								<tr data-name="Dusty" data-latin="Jacobaea maritima" data-specs="Tiempo de cultivo|45 a 120 dias||Colores y líneas disponibles|Miller y Material Cliente||Recomendaciones|10–20°C. Campo abierto o invernadero. Tolera sequía. Suelo drenado."><td class="td-img"><img src="demos/business/images/productos/florescorte/follaje/dusty.jpg" alt="Dusty"></td><td class="td-name">Dusty <span class="td-latin">Jacobaea maritima</span></td></tr>
+								<tr data-name="Smilac" data-latin="Smilax aspera" data-specs="Tiempo de cultivo|?||Colores y líneas disponibles|Material Cliente||Recomendaciones|12–22°C. Invernadero o campo. Requiere soporte o espaldera para trepar."><td class="td-img"><img src="demos/business/images/productos/florescorte/follaje/smilac.jpg" alt="Smilac"></td><td class="td-name">Smilac <span class="td-latin">Smilax aspera</span></td></tr>
+								<tr data-name="Lepidium" data-latin="Lepidium spp." data-specs="Tiempo de cultivo|70 a 80 dias||Colores y líneas disponibles|Material Cliente||Recomendaciones|10–18°C. Campo abierto. Ciclo corto. Suelo bien drenado."><td class="td-img"><img src="demos/business/images/productos/florescorte/follaje/lepidium.jpg" alt="Lepidium"></td><td class="td-name">Lepidium <span class="td-latin">Lepidium spp.</span></td></tr>
+								<tr data-name="Buplerum" data-latin="Bupleurum rotundifolium" data-specs="Tiempo de cultivo|80 a 90 dias||Colores y líneas disponibles|Material Cliente||Recomendaciones|12–20°C. Campo abierto o invernadero. Suelo fértil con buen drenaje."><td class="td-img"><img src="demos/business/images/productos/florescorte/follaje/buplerum.jpg" alt="Buplerum"></td><td class="td-name">Buplerum <span class="td-latin">Bupleurum rotundifolium</span></td></tr>
+							</tbody></table>
+						</div>
+						<div class="pilv-category-footer">* Clic en cada variedad para ver especificaciones. Producción bajo pedido.</div>
+					</div>
+				</div>
+
+				<!-- ESPECIALES / NO TRADICIONALES -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">✨ Especiales / No Tradicionales <span class="subtitle">— Arreglos contemporáneos</span></div>
+						<div class="pilv-category-body">
+							<table class="pilv-table"><tbody>
+								<tr data-name="Eringium" data-latin="Eryngium planum / E. alpinum" data-specs="Tiempo de cultivo|70 a 112 dias||Colores y líneas disponibles|Material Cliente||Recomendaciones|15–25°C. Campo abierto. Suelo pobre y drenado. Tolera sequía."><td class="td-img"><img src="demos/business/images/productos/florescorte/especiales/eringium.jpg" alt="Eringium"></td><td class="td-name">Eringium <span class="td-latin">Eryngium planum</span></td></tr>
+								<tr data-name="Tracheloium" data-latin="Trachelium caeruleum" data-specs="Tiempo de cultivo|112 a 130 dias||Colores y líneas disponibles|Material Cliente||Recomendaciones|15–25°C. Invernadero. Requiere 16–18 h de luz para desarrollo óptimo."><td class="td-img"><img src="demos/business/images/productos/florescorte/especiales/tracheloium.jpg" alt="Tracheloium"></td><td class="td-name">Tracheloium <span class="td-latin">Trachelium caeruleum</span></td></tr>
+								<tr data-name="Statis" data-latin="Limonium sinuatum" data-specs="Tiempo de cultivo|100 a 130 dias||Colores y líneas disponibles|Qis Apricot, Q. Blue Dark, Q. Pale Blue, Q. Rose, Q. White, Q. Yellow, Seeker Blue Paster||Recomendaciones|15–25°C. Campo abierto. Suelo bien drenado, tolera salinidad. Secado natural excelente."><td class="td-img"><img src="demos/business/images/productos/florescorte/especiales/statis.jpg" alt="Statis"></td><td class="td-name">Statis <span class="td-latin">Limonium sinuatum</span></td></tr>
+							<tr data-name="Helichrysum" data-latin="Helichrysum bracteatum" data-specs="Tiempo de cultivo|90 a 110 dias||Colores y líneas disponibles|Bright Rose, Copper Red, Golden Yellow, Lemon Yellow, Orange, Rose, White||Recomendaciones|18–28°C. Campo abierto. Alta luminosidad. Suelo seco-drenado. Cosechar antes de apertura total."><td class="td-img"><img src="demos/business/images/productos/florescorte/especiales/helichrysum.jpg" alt="Helichrysum"></td><td class="td-name">Helichrysum <span class="td-latin">Helichrysum bracteatum</span></td></tr>
+							</tbody></table>
+						</div>
+						<div class="pilv-category-footer">* Clic en cada variedad para ver especificaciones. Producción bajo pedido.</div>
+					</div>
+				</div>
+
+				</div><!-- .row end -->
+
+				<div class="row mt-2 mb-6">
+					<div class="col-lg-8 offset-lg-2 text-center">
+						<div style="width:36px;height:1px;background:#ccc;margin:0 auto 24px;"></div>
+						<p style="color:#777;font-style:italic;font-size:0.92rem;line-height:1.8;">Si lo que buscas no está en la lista, conversemos para desarrollar un programa de propagación juntos.</p>
+					</div>
+				</div>
+
+			
+				<div class="row mt-4 mb-5">
+					<div class="col-12 text-center">
+						<div style="width:36px;height:1px;background:#ccc;margin:0 auto 20px;"></div>
+						<p style="color:#777;font-style:italic;font-size:0.92rem;">Si lo que buscas no está en la lista, conversemos.</p>
+						<a href="localizaciones.html" class="button button-border" style="border-color:#2c6e3f;color:#2c6e3f;">Contactar a Pilvicsa</a>
+					</div>
+				</div>
+			</div><!-- .container end -->
+
+			<div class="section bg-transparent mt-0">
+				<div class="container">
+					<div class="row mt-6">
+						<div class="col-lg-6" style="padding-left:60px;">
+							<div class="heading-block mt-4 mb-4 border-0">
+								<h3 class="text-transform-none" style="font-size:46px;font-weight:700;letter-spacing:-2px;line-height:58px">Nuestro Video Corporativo.</h3>
+							</div>
+							<p class="fw-normal">Nuestra experiencia, procesos y tecnologia.<br>Estamos constantemente compartiendo nuevas tecnologias, cultivos y aliados.</p>
+							<a href="https://www.youtube.com/@pilvicsa" class="button-link mb-5">Nuestra libreria de videos</a>
+						</div>
+						<div class="col-lg-6 p-0">
+							<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px;box-shadow:0 0 25px rgba(0,0,0,0.15);">
+								<iframe src="https://www.youtube.com/embed/MScYlxfqeac" title="Pilvicsa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+							</div>
+						
+					<div class="row mt-4 mb-2">
+						<div class="col-12 text-center">
+							<p style="font-size:0.95rem;color:#555;margin-bottom:14px;">¡Sigue viendo nuestro contenido y síguenos en redes!</p>
+							<div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+								<a href="https://www.facebook.com/piloneslavictoria/" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
+								<a href="https://www.instagram.com/pilvicsa/" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-instagram"><i class="bi-instagram"></i><i class="bi-instagram"></i></a>
+								<a href="https://www.linkedin.com/company/pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-linkedin"><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-linkedin-in"></i></a>
+								<a href="https://www.tiktok.com/@pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-tiktok"><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-tiktok"></i></a>
+								<a href="https://www.youtube.com/@pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-youtube"><i class="fa-brands fa-youtube"></i><i class="fa-brands fa-youtube"></i></a>
+							</div>
+						</div>
+					</div>
+		</div>
+	</section>
+
+	<footer id="footer" class="border-0" style="padding:30px 0;background-color:#FFF">
+		<div class="container">
+			<div class="footer-widgets-wrap">
+				<div class="row col-mb-50">
+					<div class="col-md-3">
+						<a href="index.html"><img src="demos/business/images/logo@2x.png" alt="Pilvicsa" height="100" style="margin-top:-30px"></a>
+					</div>
+					<div class="col-md-9">
+						<div class="row col-mb-30">
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Servicios</h4>
+									<ul>
+										<li><a href="#">Semillas</a></li>
+										<li><a href="#">Esquejes</a></li>
+										<li><a href="#">Injertos</a></li>
+										<li><a href="#">Endurecimiento Meristematico</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Productos</h4>
+									<ul>
+										<li><a href="producto-hortalizas.html">Hortalizas</a></li>
+										<li><a href="productos-florescorte.html">Flores de Corte</a></li>
+										<li><a href="productos-cultivoscosta.html">Cultivos de Costa</a></li>
+										<li><a href="productos-frutalesforestales.html">Frutales y Forestales</a></li>
+										<li><a href="productos-especies.html">Especies y Aromáticas</a></li>
+										<li><a href="productos-otras.html">Cultivos Especiales</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Contactos y Preguntas</h4>
+									<ul>
+										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+										<li style="display:none"><a href="#">¿Preguntas Frecuentes?</a></li>
+										<li><a href="localizaciones.html#latacunga">Vivero Latacunga</a></li>
+										<li><a href="localizaciones.html#santodomingo">Vivero Santo Domingo</a></li>
+										<li><a href="localizaciones.html#quito">Despacho Quito</a></li>
+										<li><a href="localizaciones.html#checa">Despacho Checa</a></li>
+										<li><a href="localizaciones.html#otavalo">Despacho Otavalo</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="line line-sm"></div>
+						<div class="row justify-content-between col-mb-30">
+							<div class="col-12 col-md-auto text-center text-md-start">
+								<small class="fw-light" style="color:#AAA">&copy; 2025 Todos Los derechos pertenecen a Pilvicsa</small>
+							</div>
+							<div class="col-12 col-md-auto text-center text-md-end">
+								<a href="https://www.facebook.com/piloneslavictoria/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
+								<a href="https://www.instagram.com/pilvicsa/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-instagram"><i class="bi-instagram"></i><i class="bi-instagram"></i></a>
+								<a href="https://www.linkedin.com/company/pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-linkedin"><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-linkedin-in"></i></a>
+								<a href="https://www.tiktok.com/@pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-tiktok"><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-tiktok"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div><!-- #wrapper end -->
+
+<div id="gotoTop" class="uil uil-angle-up"></div>
+<script src="js/plugins.min.js"></script>
+<script src="js/functions.bundle.js"></script>
+
+<div id="pilv-lightbox" role="dialog" aria-modal="true" aria-labelledby="pilv-lightbox-title">
+	<div id="pilv-lightbox-inner">
+		<button id="pilv-lightbox-close" aria-label="Cerrar">&times;</button>
+		<img id="pilv-lightbox-img" src="" alt="">
+		<div id="pilv-lightbox-body">
+			<h4 id="pilv-lightbox-title"></h4>
+			<p id="pilv-lightbox-latin"></p>
+			<div id="pilv-lightbox-desc"></div>
+			<div class="pilv-lightbox-note">Producción bajo pedido · Pilvicsa respeta la propiedad intelectual de cada material genético.</div>
+		</div>
+	</div>
+</div>
+
+<script>
+(function () {
+	var lb      = document.getElementById('pilv-lightbox');
+	var lbImg   = document.getElementById('pilv-lightbox-img');
+	var lbTitle = document.getElementById('pilv-lightbox-title');
+	var lbLatin = document.getElementById('pilv-lightbox-latin');
+	var lbDesc  = document.getElementById('pilv-lightbox-desc');
+	var lbClose = document.getElementById('pilv-lightbox-close');
+
+	function buildSpecTable(specsStr) {
+		if (!specsStr) return '';
+		var rows = specsStr.split('||').map(function(pair) {
+			var p = pair.split('|');
+			return '<tr><td>' + p[0] + '</td><td>' + (p[1] || '') + '</td></tr>';
+		}).join('');
+		return '<table class="pilv-spec-table"><tbody>' + rows + '</tbody></table>';
+	}
+
+	function open(img, name, latin, specs) {
+		lbImg.src = img;
+		lbImg.alt = name;
+		lbTitle.textContent = name;
+		lbLatin.textContent = latin || '';
+		lbDesc.innerHTML = buildSpecTable(specs);
+		lb.classList.add('open');
+		document.body.style.overflow = 'hidden';
+		lbClose.focus();
+	}
+
+	function close() {
+		lb.classList.remove('open');
+		document.body.style.overflow = '';
+	}
+
+	document.querySelectorAll('.pilv-table tbody tr').forEach(function (tr) {
+		tr.addEventListener('click', function () {
+			var img   = tr.querySelector('td.td-img img');
+			var name  = tr.dataset.name  || '';
+			var latin = tr.dataset.latin || '';
+			open(img ? img.src : '', name, latin, tr.dataset.specs || '');
+		});
+	});
+
+	lbClose.addEventListener('click', close);
+	lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+	document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
+
+
+<script>
+/* Pilvicsa search deep-link — opens lightbox when arriving via ?v=ProductName */
+(function() {
+  function decodeParam(s) { try { return decodeURIComponent(s); } catch(e) { return s; } }
+  var params = new URLSearchParams(window.location.search);
+  var target = params.get('v');
+  if (!target) return;
+  target = decodeParam(target).toLowerCase().trim();
+  function tryOpen() {
+    var rows = document.querySelectorAll('.pilv-table tbody tr[data-name]');
+    for (var i = 0; i < rows.length; i++) {
+      var name = (rows[i].dataset.name || '').toLowerCase().trim();
+      if (name === target) {
+        rows[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(function(r){ r.click(); }, 400, rows[i]);
+        return true;
+      }
+    }
+    return false;
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(tryOpen, 300);
+    });
+  } else {
+    setTimeout(tryOpen, 300);
+  }
+})();
+</script>
+
+
+<script>
+/* Pilvicsa deep-link: opens lightbox when arriving via ?v=ProductName */
+(function(){
+  var v = new URLSearchParams(window.location.search).get('v');
+  if (!v) return;
+  var target = decodeURIComponent(v).toLowerCase().trim();
+  function tryOpen() {
+    var rows = document.querySelectorAll('.pilv-table tbody tr[data-name]');
+    for (var i=0; i<rows.length; i++) {
+      if ((rows[i].dataset.name||'').toLowerCase().trim()===target) {
+        rows[i].scrollIntoView({behavior:'smooth',block:'center'});
+        setTimeout(function(r){r.click();},450,rows[i]);
+        return;
+      }
+    }
+  }
+  if (document.readyState==='loading') {
+    document.addEventListener('DOMContentLoaded',function(){ setTimeout(tryOpen,300); });
+  } else {
+    setTimeout(tryOpen,300);
+  }
+})();
+</script>
+</body>
+</html>

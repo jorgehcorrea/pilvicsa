@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Pilvicsa">
+	<meta name="description" content="Pilvicsa — Plantas aromáticas, medicinales y especias para el mercado ecuatoriano.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/font-icons.css">
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="demos/business/business.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<title>Pilvicsa | Especies y Aromáticas</title>
+	<style>
+		.page-top-image .header-wrap-clone { display: none !important; }
+		.page-top-image #header { position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; }
+		.page-top-image .content-wrap { margin-top: 0 !important; padding-top: 0 !important; }
+		.page-top-image .portfolio-single-image { margin-top: 0 !important; }
+		.page-top-image .portfolio-single-image picture { height: 90vh; }
+		.page-top-image .portfolio-single-image picture img { width: 100%; height: 100%; object-fit: cover; display: block; }
+		.pilv-table { width: 100%; border-collapse: collapse; }
+		.pilv-table tbody tr { border-bottom: 1px solid #eef2ee; transition: background 0.15s; cursor: pointer; }
+		.pilv-table tbody tr:last-child { border-bottom: none; }
+		.pilv-table tbody tr:hover { background: #f4f9f5; }
+		.pilv-table tbody tr:hover .td-name { color: #2c6e3f; text-decoration: underline; }
+		.pilv-table td.td-img { width: 110px; padding: 0.5rem 0.75rem 0.5rem 1rem; vertical-align: middle; }
+		.pilv-table td.td-img img { width: 90px; height: 90px; object-fit: cover; object-position: center; border-radius: 6px; border: 1px solid #dde8dd; display: block; }
+		.pilv-table td.td-name { padding: 0.75rem 1rem 0.75rem 0.5rem; vertical-align: middle; font-size: 1rem; font-weight: 600; color: #1a1a1a; }
+		.pilv-table td.td-name .td-latin { display: block; font-size: 0.75rem; font-weight: 400; font-style: italic; color: #888; margin-top: 2px; }
+		@media (max-width: 480px) {
+			.pilv-table tbody tr { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.75rem; }
+			.pilv-table td.td-img { width: auto; padding: 0; flex-shrink: 0; }
+			.pilv-table td.td-img img { width: 60px; height: 60px; }
+			.pilv-table td.td-name { padding: 0; font-size: 0.88rem; }
+		}
+		.pilv-category { margin-bottom: 3rem; }
+		.pilv-category-header { display: flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1rem; background: #2c6e3f; border-radius: 6px 6px 0 0; color: #fff; font-size: 1.05rem; font-weight: 700; }
+		.pilv-category-header span.subtitle { font-weight: 400; font-size: 0.82rem; opacity: 0.75; margin-left: 0.25rem; }
+		.pilv-category-body { border: 1px solid #dde8dd; border-top: none; border-radius: 0 0 6px 6px; overflow: hidden; }
+		.pilv-category-footer { padding: 0.5rem 1rem; font-size: 0.72rem; color: #aaa; background: #fafafa; border-top: 1px solid #eee; }
+		#pilv-lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.72); align-items: center; justify-content: center; padding: 1rem; }
+		#pilv-lightbox.open { display: flex; }
+		#pilv-lightbox-inner { background: #fff; border-radius: 10px; max-width: 480px; width: 100%; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.35); position: relative; }
+		#pilv-lightbox-close { position: absolute; top: 0.6rem; right: 0.75rem; background: none; border: none; font-size: 1.6rem; line-height: 1; color: #fff; cursor: pointer; z-index: 2; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+		#pilv-lightbox-img { width: 100%; aspect-ratio: 16/7; object-fit: cover; object-position: center; display: block; }
+		#pilv-lightbox-body { padding: 1rem 1.25rem 1.25rem; border-top: 3px solid #2c6e3f; }
+		#pilv-lightbox-title { font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin: 0 0 0.2rem; }
+		#pilv-lightbox-latin { font-size: 0.82rem; font-style: italic; color: #888; margin: 0 0 0.75rem; }
+		#pilv-lightbox-desc { font-size: 0.88rem; color: #666; margin: 0; line-height: 1.55; min-height: 2.5rem; }
+		.pilv-spec-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+		.pilv-spec-table tr { border-bottom: 1px solid #eef2ee; }
+		.pilv-spec-table tr:last-child { border-bottom: none; }
+		.pilv-spec-table td { padding: 0.4rem 0.5rem; vertical-align: top; line-height: 1.4; }
+		.pilv-spec-table td:first-child { font-weight: 700; color: #2c6e3f; width: 38%; white-space: nowrap; }
+		.pilv-spec-table td:last-child { color: #444; }
+		.pilv-lightbox-note { margin-top: 12px; font-size: 0.72rem; color: #bbb; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 10px; }
+	</style>
+</head>
+
+<body class="stretched page-top-image">
+<div id="wrapper">
+
+	<header id="header" class="full-header transparent-header dark header-size-md"
+		data-sticky-class="not-dark" data-responsive-class="not-dark"
+		data-sticky-offset="full" data-sticky-offset-negative="auto">
+		<div id="header-wrap"><div class="container"><div class="header-row">
+			<div id="logo">
+				<a href="index.html">
+					<img class="logo-default" srcset="demos/business/images/logo.png, demos/business/images/logo@2x.png 2x" src="demos/business/images/logo@2x.png" alt="Pilvicsa">
+					<img class="logo-dark" srcset="demos/business/images/logo-dark.png, demos/business/images/logo-dark@2x.png 2x" src="demos/business/images/logo-dark@2x.png" alt="Pilvicsa">
+				</a>
+			</div>
+			<div class="primary-menu-trigger">
+				<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+					<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+				</button>
+			</div>
+			<nav class="primary-menu">
+						<ul class="menu-container">
+								<li class="menu-item"><a class="menu-link" href="index.html"><div>Inicio</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="index.html#nuestraoferta"><div>Servicios</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<li class="menu-item"><a class="menu-link" href="#"><div>Semillas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Esquejes</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Injertos</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Endurecimiento</div></a></li>
+									</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#"><div>Productos</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<li class="menu-item"><a class="menu-link" href="producto-hortalizas.html"><div>Hortalizas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-florescorte.html"><div>Flores de Corte</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-cultivoscosta.html"><div>Cultivos de Costa</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-frutalesforestales.html"><div>Frutales y Forestales</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-especies.html"><div>Especies y Aromáticas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-otras.html"><div>Cultivos Especiales</div></a></li>
+									</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="buscar.html"><div>Buscar</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="localizaciones.html"><div>Contactos y Preguntas</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+										<li class="menu-item" style="display:none"><a class="menu-link" href="#"><div>¿Preguntas Frecuentes?</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#latacunga"><div>Vivero Latacunga</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#santodomingo"><div>Vivero Santo Domingo</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#quito"><div>Despacho Quito</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#checa"><div>Despacho Checa</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#otavalo"><div>Despacho Otavalo</div></a></li>
+									</ul>
+								</li>
+							</ul>
+					</nav>
+		</div></div></div>
+		<div class="header-wrap-clone"></div>
+	</header>
+
+	<section id="content">
+		<div class="content-wrap pb-0" style="z-index:1;">
+
+			<div class="portfolio-single-image portfolio-single-image-full">
+				<div class="video-wrap no-placeholder" style="height:90vh;">
+					<picture>
+						<img src="demos/business/images/pages/especies.jpg" alt="Especies y Aromáticas" style="width:100%;height:100%;object-fit:cover;display:block;">
+					</picture>
+					<div class="video-overlay"></div>
+				</div>
+			</div>
+
+			<div class="container mt-5">
+				<div class="heading-block text-center border-0">
+					<h3>Especies y Aromáticas</h3>
+				</div>
+				<div class="row">
+					<div class="text-center col-lg-8 offset-lg-2 mb-5">
+						<h3 class="font-secondary">Producimos una amplia selección de plantas aromáticas, medicinales y especias con alta demanda en mercados locales, restaurantes, industria cosmética y exportación.</h3>
+					</div>
+				</div>
+			</div>
+
+			<div class="container mb-6">
+				<div class="row g-4">
+				<!-- Hierbas Culinarias -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">
+							🌿 Hierbas Culinarias <span class="subtitle">— Para gastronomía y restaurantes</span>
+						</div>
+						<div class="pilv-category-body">
+							<table class="pilv-table">
+								<tbody>
+						<tr data-name="Albahaca Genovesa" data-latin="Ocimum basilicum" data-specs="Familia|Lamiaceae||Uso|Gastronomía italiana, salsas, pestos||Descripción|La más usada en cocina italiana, sabor intenso.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/culinarias/albahaca-genovesa.jpg" alt="Albahaca Genovesa"></td>
+						<td class="td-name">Albahaca Genovesa <span class="td-latin">Ocimum basilicum</span></td>
+					</tr>
+					<tr data-name="Cilantro Sietem" data-latin="Coriandrum sativum" data-specs="Familia|Apiaceae||Uso|Cocina ecuatoriana y latina||Descripción|Variedad de hoja ancha, ciclo corto y rendidora.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/culinarias/cilantro-sietem.jpg" alt="Cilantro Sietem"></td>
+						<td class="td-name">Cilantro Sietem <span class="td-latin">Coriandrum sativum</span></td>
+					</tr>
+					<tr data-name="Perejil Liso" data-latin="Petroselinum crispum" data-specs="Familia|Apiaceae||Uso|Decoración culinaria y cocina||Descripción|Sabor suave, ideal para decoración y cocina.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/culinarias/perejil-liso.jpg" alt="Perejil Liso"></td>
+						<td class="td-name">Perejil Liso <span class="td-latin">Petroselinum crispum</span></td>
+					</tr>
+					<tr data-name="Orégano Griego" data-latin="Origanum vulgare subsp. hirtum" data-specs="Familia|Lamiaceae||Uso|Condimento seco, infusiones||Descripción|Hoja pequeña aromática, excelente para deshidratado.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/culinarias/oregano-griego.jpg" alt="Orégano Griego"></td>
+						<td class="td-name">Orégano Griego <span class="td-latin">Origanum vulgare</span></td>
+					</tr>
+							</tbody>
+							</table>
+						</div>
+						<div class="pilv-category-footer">* Imágenes de referencia. Consulte disponibilidad con su asesor Pilvicsa.</div>
+					</div>
+				</div>
+
+				<!-- Menta &amp; Afines -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">
+							🍃 Menta &amp; Afines <span class="subtitle">— Mentas y hierbabuena</span>
+						</div>
+						<div class="pilv-category-body">
+							<table class="pilv-table">
+								<tbody>
+					<tr data-name="Hierbabuena" data-latin="Mentha spicata" data-specs="Familia|Lamiaceae||Uso|Infusiones, coctelería, gastronomía||Descripción|La más demandada en mercados ecuatorianos, muy aromática.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/menta/hierbabuena.jpg" alt="Hierbabuena"></td>
+						<td class="td-name">Hierbabuena <span class="td-latin">Mentha spicata</span></td>
+					</tr>
+					<tr data-name="Menta Piperita" data-latin="Mentha × piperita" data-specs="Familia|Lamiaceae||Uso|Infusiones, industria farmacéutica, cosméticos||Descripción|Alto contenido en mentol, para infusiones e industria.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/menta/menta-piperita.jpg" alt="Menta Piperita"></td>
+						<td class="td-name">Menta Piperita <span class="td-latin">Mentha × piperita</span></td>
+					</tr>
+							</tbody>
+							</table>
+						</div>
+						<div class="pilv-category-footer">* Imágenes de referencia. Consulte disponibilidad con su asesor Pilvicsa.</div>
+					</div>
+				</div>
+
+				<!-- Medicinales -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">
+							🌱 Medicinales <span class="subtitle">— Plantas con propiedades terapéuticas</span>
+						</div>
+						<div class="pilv-category-body">
+							<table class="pilv-table">
+								<tbody>
+					<tr data-name="Manzanilla" data-latin="Matricaria chamomilla" data-specs="Familia|Asteraceae||Uso|Digestivo, calmante, infusiones||Descripción|Flor medicinal de uso digestivo y calmante.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/medicinales/manzanilla.jpg" alt="Manzanilla"></td>
+						<td class="td-name">Manzanilla <span class="td-latin">Matricaria chamomilla</span></td>
+					</tr>
+					<tr data-name="Toronjil" data-latin="Melissa officinalis" data-specs="Familia|Lamiaceae||Uso|Calmante, infusiones, mercado local||Descripción|Planta andina calmante, muy demandada en mercado local.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/medicinales/toronjil.jpg" alt="Toronjil"></td>
+						<td class="td-name">Toronjil <span class="td-latin">Melissa officinalis</span></td>
+					</tr>
+					<tr data-name="Cedrón" data-latin="Aloysia citrodora (Cedrón)" data-specs="Familia|Verbenaceae||Uso|Infusiones, cosméticos, aromaterapia||Descripción|Aromática limón, base de infusiones y cosméticos.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/medicinales/hierba-luisa.jpg" alt="Cedrón"></td>
+						<td class="td-name">Cedrón <span class="td-latin">Aloysia citrodora</span></td>
+					</tr>
+					<tr data-name="Romero Officinalis" data-latin="Salvia rosmarinus" data-specs="Familia|Lamiaceae||Uso|Culinario, medicinal, cosmético||Descripción|Antioxidante y aromático, uso culinario y medicinal.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/medicinales/romero-officinalis.jpg" alt="Romero Officinalis"></td>
+						<td class="td-name">Romero Officinalis <span class="td-latin">Salvia rosmarinus</span></td>
+					</tr>
+										<tr data-name="Hierba Magui" data-latin="Minthostachys mollis" data-specs="Familia|Lamiaceae||Uso|Digestivo, aromático, condimento andino||Descripción|Hierba andina muy aromática, usada en infusiones y cocina tradicional.||Disponibilidad|Consulte con su asesor Pilvicsa"><td class="td-img"><img src="demos/business/images/productos/especies/medicinales/hierba-magui.jpg" alt="Hierba Magui"></td><td class="td-name">Hierba Magui <span class="td-latin">Minthostachys mollis</span></td></tr>
+							</tbody>
+							</table>
+						</div>
+						<div class="pilv-category-footer">* Imágenes de referencia. Consulte disponibilidad con su asesor Pilvicsa.</div>
+					</div>
+				</div>
+
+				<!-- Especias -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">
+							🫚 Especias <span class="subtitle">— Saborizantes de alto valor</span>
+						</div>
+						<div class="pilv-category-body">
+							<table class="pilv-table">
+								<tbody>
+										<tr data-name="Ají Mix" data-latin="Capsicum spp." data-specs="Familia|Solanaceae||Uso|Gastronomía, salsas, condimento||Descripción|Mezcla de variedades de ají para uso culinario diverso.||Disponibilidad|Consulte con su asesor Pilvicsa"><td class="td-img"><img src="demos/business/images/productos/especies/especias/aji-mix.jpg" alt="Ají Mix"></td><td class="td-name">Ají Mix <span class="td-latin">Capsicum spp.</span></td></tr>
+										<tr data-name="Ají Rocoto" data-latin="Capsicum pubescens" data-specs="Familia|Solanaceae||Uso|Gastronomía andina, salsas picantes||Descripción|Ají andino de sabor intenso y piel gruesa, muy valorado en cocina peruana y ecuatoriana.||Disponibilidad|Consulte con su asesor Pilvicsa"><td class="td-img"><img src="demos/business/images/productos/especies/especias/aji-rocoto.jpg" alt="Ají Rocoto"></td><td class="td-name">Ají Rocoto <span class="td-latin">Capsicum pubescens</span></td></tr>
+							</tbody>
+							</table>
+						</div>
+						<div class="pilv-category-footer">* Imágenes de referencia. Consulte disponibilidad con su asesor Pilvicsa.</div>
+					</div>
+				</div>
+
+				<!-- Aromáticas Ornamentales -->
+				<div class="col-12 col-md-6 col-xl-4">
+					<div class="pilv-category">
+						<div class="pilv-category-header">
+							🌾 Aromáticas Ornamentales <span class="subtitle">— Belleza y fragancia</span>
+						</div>
+						<div class="pilv-category-body">
+							<table class="pilv-table">
+								<tbody>
+					<tr data-name="Lavanda Vera" data-latin="Lavandula angustifolia" data-specs="Familia|Lamiaceae||Uso|Cosméticos, aceites esenciales, jardines||Descripción|Flor lila aromática, para cosméticos y jardines.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/ornamentales/lavanda-vera.jpg" alt="Lavanda Vera"></td>
+						<td class="td-name">Lavanda Vera <span class="td-latin">Lavandula angustifolia</span></td>
+					</tr>
+					<tr data-name="Salvia Oficinal" data-latin="Salvia officinalis" data-specs="Familia|Lamiaceae||Uso|Culinario, medicinal, ornamental||Descripción|Hoja gris aromática, uso culinario y medicinal.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/ornamentales/salvia-oficinal.jpg" alt="Salvia Oficinal"></td>
+						<td class="td-name">Salvia Oficinal <span class="td-latin">Salvia officinalis</span></td>
+					</tr>
+					<tr data-name="Tomillo Común" data-latin="Thymus vulgaris" data-specs="Familia|Lamiaceae||Uso|Culinario, cobertura de jardín, medicinal||Descripción|Cobertura rastrera aromática, resistente y duradera.||Disponibilidad|Consulte con su asesor Pilvicsa">
+						<td class="td-img"><img src="demos/business/images/productos/especies/ornamentales/tomillo-comun.jpg" alt="Tomillo Común"></td>
+						<td class="td-name">Tomillo Común <span class="td-latin">Thymus vulgaris</span></td>
+					</tr>
+							</tbody>
+							</table>
+						</div>
+						<div class="pilv-category-footer">* Imágenes de referencia. Consulte disponibilidad con su asesor Pilvicsa.</div>
+					</div>
+				</div>
+
+				</div>
+			</div>
+
+			<div class="container mb-4">
+				<div class="row">
+					<div class="col-lg-8 offset-lg-2 text-center">
+						<div style="width:36px;height:1px;background:#ccc;margin:0 auto 24px;"></div>
+						<p style="color:#777;font-style:italic;font-size:0.92rem;line-height:1.8;">Si lo que buscas no está en la lista, conversemos para desarrollar un programa de propagación juntos.</p>
+					</div>
+				</div>
+			</div>
+
+			
+				<div class="row mt-4 mb-5">
+					<div class="col-12 text-center">
+						<div style="width:36px;height:1px;background:#ccc;margin:0 auto 20px;"></div>
+						<p style="color:#777;font-style:italic;font-size:0.92rem;">Si lo que buscas no está en la lista, conversemos.</p>
+						<a href="localizaciones.html" class="button button-border" style="border-color:#2c6e3f;color:#2c6e3f;">Contactar a Pilvicsa</a>
+					</div>
+				</div>
+			<div class="section bg-transparent mt-0">
+				<div class="container">
+					<div class="row mt-6">
+						<div class="col-lg-6" style="padding-left:60px;">
+							<div class="heading-block mt-4 mb-4 border-0">
+								<h3 class="text-transform-none" style="font-size:46px;font-weight:700;letter-spacing:-2px;line-height:58px">Nuestro Video Corporativo.</h3>
+							</div>
+							<p class="fw-normal">Nuestra experiencia, procesos y tecnologia.<br>Estamos constantemente compartiendo nuevas tecnologias, cultivos y aliados.</p>
+							<a href="https://www.youtube.com/@pilvicsa" class="button-link mb-5">Nuestra libreria de videos</a>
+						</div>
+						<div class="col-lg-6 p-0">
+							<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px;box-shadow:0 0 25px rgba(0,0,0,0.15);">
+								<iframe src="https://www.youtube.com/embed/MScYlxfqeac" title="Pilvicsa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+							</div>
+						
+					<div class="row mt-4 mb-2">
+						<div class="col-12 text-center">
+							<p style="font-size:0.95rem;color:#555;margin-bottom:14px;">¡Sigue viendo nuestro contenido y síguenos en redes!</p>
+							<div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+								<a href="https://www.facebook.com/piloneslavictoria/" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
+								<a href="https://www.instagram.com/pilvicsa/" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-instagram"><i class="bi-instagram"></i><i class="bi-instagram"></i></a>
+								<a href="https://www.linkedin.com/company/pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-linkedin"><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-linkedin-in"></i></a>
+								<a href="https://www.tiktok.com/@pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-tiktok"><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-tiktok"></i></a>
+								<a href="https://www.youtube.com/@pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-youtube"><i class="fa-brands fa-youtube"></i><i class="fa-brands fa-youtube"></i></a>
+							</div>
+						</div>
+					</div>
+		</div>
+	</section>
+
+	<!-- ── Footer ── -->
+	<footer id="footer" class="border-0" style="padding:30px 0;background-color:#FFF">
+		<div class="container">
+			<div class="footer-widgets-wrap">
+				<div class="row col-mb-50">
+					<div class="col-md-3">
+						<a href="index.html"><img src="demos/business/images/logo@2x.png" alt="Pilvicsa" height="100" style="margin-top:-30px"></a>
+					</div>
+					<div class="col-md-9">
+						<div class="row col-mb-30">
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Servicios</h4>
+									<ul>
+										<li><a href="#">Semillas</a></li>
+										<li><a href="#">Esquejes</a></li>
+										<li><a href="#">Injertos</a></li>
+										<li><a href="#">Endurecimiento Meristematico</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Productos</h4>
+									<ul>
+										<li><a href="producto-hortalizas.html">Hortalizas</a></li>
+										<li><a href="productos-florescorte.html">Flores de Corte</a></li>
+										<li><a href="productos-cultivoscosta.html">Cultivos de Costa</a></li>
+										<li><a href="productos-frutalesforestales.html">Frutales y Forestales</a></li>
+										<li><a href="productos-especies.html">Especies y Aromáticas</a></li>
+										<li><a href="productos-otras.html">Cultivos Especiales</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Contactos y Preguntas</h4>
+									<ul>
+										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+										<li style="display:none"><a href="#">¿Preguntas Frecuentes?</a></li>
+										<li><a href="localizaciones.html#latacunga">Vivero Latacunga</a></li>
+										<li><a href="localizaciones.html#santodomingo">Vivero Santo Domingo</a></li>
+										<li><a href="localizaciones.html#quito">Despacho Quito</a></li>
+										<li><a href="localizaciones.html#checa">Despacho Checa</a></li>
+										<li><a href="localizaciones.html#otavalo">Despacho Otavalo</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="line line-sm"></div>
+						<div class="row justify-content-between col-mb-30">
+							<div class="col-12 col-md-auto text-center text-md-start">
+								<small class="fw-light" style="color:#AAA">&copy; 2025 Todos Los derechos pertenecen a Pilvicsa</small>
+							</div>
+							<div class="col-12 col-md-auto text-center text-md-end">
+								<a href="https://www.facebook.com/piloneslavictoria/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
+								<a href="https://www.instagram.com/pilvicsa/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-instagram"><i class="bi-instagram"></i><i class="bi-instagram"></i></a>
+								<a href="https://www.linkedin.com/company/pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-linkedin"><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-linkedin-in"></i></a>
+								<a href="https://www.tiktok.com/@pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-tiktok"><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-tiktok"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div>
+
+<div id="gotoTop" class="uil uil-angle-up"></div>
+<script src="js/plugins.min.js"></script>
+<script src="js/functions.bundle.js"></script>
+
+	<!-- Variety lightbox -->
+	<div id="pilv-lightbox" role="dialog" aria-modal="true" aria-labelledby="pilv-lightbox-title">
+		<div id="pilv-lightbox-inner">
+			<button id="pilv-lightbox-close" aria-label="Cerrar">&times;</button>
+			<img id="pilv-lightbox-img" src="" alt="">
+			<div id="pilv-lightbox-body">
+				<h4 id="pilv-lightbox-title"></h4>
+				<p id="pilv-lightbox-latin"></p>
+				<div id="pilv-lightbox-desc"></div>
+				<div class="pilv-lightbox-note">Consulte disponibilidad con su asesor Pilvicsa.</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	(function(){
+		var lb=document.getElementById('pilv-lightbox'),
+		    lbImg=document.getElementById('pilv-lightbox-img'),
+		    lbTitle=document.getElementById('pilv-lightbox-title'),
+		    lbLatin=document.getElementById('pilv-lightbox-latin'),
+		    lbDesc=document.getElementById('pilv-lightbox-desc'),
+		    lbClose=document.getElementById('pilv-lightbox-close');
+
+		function buildSpecTable(specsStr) {
+			if (!specsStr) return '';
+			var rows = specsStr.split('||').map(function(pair) {
+				var p = pair.split('|');
+				return '<tr><td>' + p[0] + '</td><td>' + (p[1] || '') + '</td></tr>';
+			}).join('');
+			return '<table class="pilv-spec-table"><tbody>' + rows + '</tbody></table>';
+		}
+
+		function open(img,name,latin,specs){
+			lbImg.src=img; lbImg.alt=name;
+			lbTitle.textContent=name;
+			lbLatin.textContent=latin||'';
+			lbDesc.innerHTML=buildSpecTable(specs);
+			lb.classList.add('open');
+			document.body.style.overflow='hidden';
+			lbClose.focus();
+		}
+		function close(){lb.classList.remove('open');document.body.style.overflow='';}
+
+		document.querySelectorAll('.pilv-table tbody tr').forEach(function(tr){
+			tr.addEventListener('click',function(){
+				var img=tr.querySelector('td.td-img img');
+				var name=tr.dataset.name||'';
+				var latin=tr.dataset.latin||'';
+				open(img?img.src:'',name,latin,tr.dataset.specs||'');
+			});
+		});
+		lbClose.addEventListener('click',close);
+		lb.addEventListener('click',function(e){if(e.target===lb)close();});
+		document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+	})();
+	</script>
+
+
+<script>
+/* Pilvicsa search deep-link — opens lightbox when arriving via ?v=ProductName */
+(function() {
+  function decodeParam(s) { try { return decodeURIComponent(s); } catch(e) { return s; } }
+  var params = new URLSearchParams(window.location.search);
+  var target = params.get('v');
+  if (!target) return;
+  target = decodeParam(target).toLowerCase().trim();
+  function tryOpen() {
+    var rows = document.querySelectorAll('.pilv-table tbody tr[data-name]');
+    for (var i = 0; i < rows.length; i++) {
+      var name = (rows[i].dataset.name || '').toLowerCase().trim();
+      if (name === target) {
+        rows[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(function(r){ r.click(); }, 400, rows[i]);
+        return true;
+      }
+    }
+    return false;
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(tryOpen, 300);
+    });
+  } else {
+    setTimeout(tryOpen, 300);
+  }
+})();
+</script>
+
+
+<script>
+/* Pilvicsa deep-link: opens lightbox when arriving via ?v=ProductName */
+(function(){
+  var v = new URLSearchParams(window.location.search).get('v');
+  if (!v) return;
+  var target = decodeURIComponent(v).toLowerCase().trim();
+  function tryOpen() {
+    var rows = document.querySelectorAll('.pilv-table tbody tr[data-name]');
+    for (var i=0; i<rows.length; i++) {
+      if ((rows[i].dataset.name||'').toLowerCase().trim()===target) {
+        rows[i].scrollIntoView({behavior:'smooth',block:'center'});
+        setTimeout(function(r){r.click();},450,rows[i]);
+        return;
+      }
+    }
+  }
+  if (document.readyState==='loading') {
+    document.addEventListener('DOMContentLoaded',function(){ setTimeout(tryOpen,300); });
+  } else {
+    setTimeout(tryOpen,300);
+  }
+})();
+</script>
+</body>
+</html>

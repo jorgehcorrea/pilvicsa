@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Pilvicsa">
+	<meta name="description" content="Pilvicsa — Contactos y ubicaciones de nuestras oficinas y viveros.">
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+	<!-- Core styles -->
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/font-icons.css">
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="demos/business/business.css">
+	<link rel="stylesheet" href="css/custom.css">
+
+	<title>Pilvicsa | Localizaciones</title>
+
+	<style>
+		/* ── Location card ── */
+		.pilv-location {
+			margin-bottom: 2.5rem;
+		}
+		.pilv-location-header {
+			display: flex;
+			align-items: center;
+			gap: 0.6rem;
+			padding: 0.75rem 1.1rem;
+			background: #2c6e3f;
+			border-radius: 6px 6px 0 0;
+			color: #fff;
+			font-size: 1.05rem;
+			font-weight: 700;
+		}
+		.pilv-location-header span.subtitle {
+			font-weight: 400;
+			font-size: 0.82rem;
+			opacity: 0.75;
+			margin-left: 0.25rem;
+		}
+		.pilv-location-body {
+			border: 1px solid #dde8dd;
+			border-top: none;
+			border-radius: 0 0 6px 6px;
+			overflow: hidden;
+			background: #fff;
+		}
+		.pilv-location-map {
+			width: 100%;
+			height: 320px;
+			border: none;
+			display: block;
+		}
+		/* Placeholder for locations without an embed yet */
+		.pilv-location-map-placeholder {
+			width: 100%;
+			height: 320px;
+			background: #f0f4f0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #aaa;
+			font-size: 0.9rem;
+			font-style: italic;
+			border-bottom: 1px solid #e8ede8;
+		}
+		.pilv-location-contact {
+			padding: 1rem 1.25rem 1.1rem;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem 2rem;
+			border-top: 1px solid #eef2ee;
+		}
+		.pilv-contact-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.92rem;
+			color: #333;
+		}
+		.pilv-contact-item i {
+			color: #2c6e3f;
+			font-size: 1rem;
+			flex-shrink: 0;
+		}
+		.pilv-contact-item a {
+			color: #333;
+			text-decoration: none;
+		}
+		.pilv-contact-item a:hover {
+			color: #2c6e3f;
+			text-decoration: underline;
+		}
+		.pilv-location-footer {
+			padding: 0.45rem 1.25rem;
+			font-size: 0.72rem;
+			color: #aaa;
+			background: #fafafa;
+			border-top: 1px solid #eee;
+		}
+
+		/* ── Page intro section ── */
+		.pilv-page-intro {
+			padding: 4rem 0 2rem;
+		}
+	</style>
+</head>
+
+<body class="stretched">
+<div id="wrapper">
+
+	<!-- ── Header ── -->
+	<header id="header" class="full-header not-dark header-size-md" data-sticky-class="not-dark" data-responsive-class="not-dark" data-sticky-offset="full" data-sticky-offset-negative="auto">
+		<div id="header-wrap">
+			<div class="container">
+				<div class="header-row">
+
+					<div id="logo">
+						<a href="index.html">
+							<img srcset="demos/business/images/logo-dark.png, demos/business/images/logo-dark@2x.png 2x" src="demos/business/images/logo-dark@2x.png" alt="Pilvicsa" style="display:block !important;opacity:1 !important;visibility:visible !important;">
+						</a>
+					</div>
+
+					<div class="primary-menu-trigger">
+						<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+							<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+						</button>
+					</div>
+
+					<nav class="primary-menu">
+						<ul class="menu-container">
+								<li class="menu-item"><a class="menu-link" href="index.html"><div>Inicio</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="index.html#nuestraoferta"><div>Servicios</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<li class="menu-item"><a class="menu-link" href="#"><div>Semillas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Esquejes</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Injertos</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="#"><div>Endurecimiento</div></a></li>
+									</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="#"><div>Productos</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<li class="menu-item"><a class="menu-link" href="producto-hortalizas.html"><div>Hortalizas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-florescorte.html"><div>Flores de Corte</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-cultivoscosta.html"><div>Cultivos de Costa</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-frutalesforestales.html"><div>Frutales y Forestales</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-especies.html"><div>Especies y Aromáticas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="productos-otras.html"><div>Cultivos Especiales</div></a></li>
+									</ul>
+								</li>
+								<li class="menu-item"><a class="menu-link" href="buscar.html"><div>Buscar</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="localizaciones.html"><div>Contactos y Preguntas</div></a>
+									<ul class="sub-menu-container" data-class="up-lg:not-dark">
+										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+										<li class="menu-item" style="display:none"><a class="menu-link" href="#"><div>¿Preguntas Frecuentes?</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#latacunga"><div>Vivero Latacunga</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#santodomingo"><div>Vivero Santo Domingo</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#quito"><div>Despacho Quito</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#checa"><div>Despacho Checa</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="localizaciones.html#otavalo"><div>Despacho Otavalo</div></a></li>
+									</ul>
+								</li>
+							</ul>
+					</nav>
+
+				</div>
+			</div>
+		</div>
+		<div class="header-wrap-clone"></div>
+	</header>
+
+	<!-- ── Content ── -->
+	<section id="content">
+		<div class="content-wrap">
+
+			<!-- Page intro -->
+			<div class="pilv-page-intro">
+				<div class="container">
+					<div class="heading-block text-center border-0">
+						<h3>Contactos y Ubicaciones</h3>
+					</div>
+					<div class="row">
+						<div class="text-center col-lg-8 offset-lg-2 mb-5">
+							<h3 class="font-secondary" style="font-size:1.15rem;font-weight:400;">Encuéntrenos en nuestros viveros y puntos de despacho a lo largo del Ecuador.</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Información de contacto y horarios -->
+			<div class="container mb-5">
+				<div class="row justify-content-center">
+					<div class="col-lg-8 text-center">
+						<div style="background:#f7faf8;border-radius:10px;padding:32px 40px;border:1px solid #dde8dd;">
+
+							<!-- Teléfono -->
+							<div style="margin-bottom:28px;">
+								<p style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2c6e3f;margin-bottom:6px;">Teléfono Principal</p>
+								<a href="tel:032235011" style="font-size:1.5rem;font-weight:700;color:#1a1a1a;text-decoration:none;letter-spacing:0.02em;">
+									<i class="uil uil-phone" style="color:#2c6e3f;margin-right:6px;"></i>032 235 011
+								</a>
+							</div>
+
+							<div style="width:40px;height:1px;background:#ccc;margin:0 auto 28px;"></div>
+
+							<!-- Horarios -->
+							<p style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2c6e3f;margin-bottom:18px;">Horarios de Atención</p>
+							<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;text-align:left;max-width:600px;margin:0 auto;">
+
+								<div style="background:#f2f2f2;border-radius:6px;padding:12px 16px;border:0.5px solid #dde8dd;">
+									<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#aaa;margin-bottom:4px;">Lunes</div>
+									<div style="font-size:0.82rem;color:#aaa;font-style:italic;">Despacho de pedidos</div>
+								</div>
+
+								<div style="background:#fff;border-radius:6px;padding:12px 16px;border:0.5px solid #dde8dd;">
+									<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#2c6e3f;margin-bottom:4px;">Martes</div>
+									<div style="font-size:0.88rem;color:#444;">8:30 – 12:00</div>
+									<div style="font-size:0.88rem;color:#444;">13:00 – 16:30</div>
+								</div>
+
+								<div style="background:#fff;border-radius:6px;padding:12px 16px;border:0.5px solid #dde8dd;">
+									<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#2c6e3f;margin-bottom:4px;">Miércoles</div>
+									<div style="font-size:0.88rem;color:#444;">8:30 – 12:00</div>
+									<div style="font-size:0.88rem;color:#444;">13:00 – 16:30</div>
+								</div>
+
+								<div style="background:#fff;border-radius:6px;padding:12px 16px;border:0.5px solid #dde8dd;">
+									<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#2c6e3f;margin-bottom:4px;">Jueves</div>
+									<div style="font-size:0.88rem;color:#444;">8:30 – 12:00</div>
+									<div style="font-size:0.88rem;color:#444;">13:00 – 16:30</div>
+								</div>
+
+								<div style="background:#fff;border-radius:6px;padding:12px 16px;border:0.5px solid #dde8dd;">
+									<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#2c6e3f;margin-bottom:4px;">Viernes</div>
+									<div style="font-size:0.88rem;color:#444;">8:30 – 12:00</div>
+									<div style="font-size:0.88rem;color:#444;">13:00 – 16:30</div>
+								</div>
+
+								<div style="background:#f2f2f2;border-radius:6px;padding:12px 16px;border:0.5px solid #dde8dd;">
+									<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#aaa;margin-bottom:4px;">Sábado</div>
+									<div style="font-size:0.88rem;color:#aaa;font-style:italic;">Cerrado</div>
+								</div>
+
+								<div style="background:#f2f2f2;border-radius:6px;padding:12px 16px;border:0.5px solid #dde8dd;">
+									<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#aaa;margin-bottom:4px;">Domingo</div>
+									<div style="font-size:0.88rem;color:#aaa;font-style:italic;">Cerrado</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- fin información de contacto -->
+
+			<!-- Location cards -->
+			<div class="container mb-6">
+				<div class="row g-4">
+
+					<!-- ── Vivero Latacunga ── -->
+					<div class="col-12 col-lg-6" id="latacunga">
+						<div class="pilv-location">
+							<div class="pilv-location-header">
+								📍 Vivero Latacunga <span class="subtitle">— Planta Principal</span>
+							</div>
+							<div class="pilv-location-body">
+								<iframe
+								class="pilv-location-map"
+								src="https://maps.google.com/maps?q=Pilvicsa,Latacunga,Ecuador&output=embed"
+								allowfullscreen=""
+								loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"
+								title="Vivero Latacunga">
+							</iframe>
+								<div class="pilv-location-contact">
+									<div class="pilv-contact-item">
+										<i class="uil uil-phone"></i>
+										<a href="tel:+593997609747">0997609747</a>
+									</div>
+									<div class="pilv-contact-item">
+										<i class="uil uil-phone"></i>
+										<a href="tel:+59332235011">032235011</a>
+									</div>
+									<div class="pilv-contact-item">
+										<i class="uil uil-envelope"></i>
+										<a href="mailto:pilvicsa1@pilvicsa.com">pilvicsa1@pilvicsa.com</a>
+									</div>
+								</div>
+							</div>
+							<div class="pilv-location-footer">L–V 8:30–16:30 (almuerzo 12:30–13:30) · Coordinar despacho previamente</div>
+						</div>
+					</div>
+
+					<!-- ── Vivero Santo Domingo ── -->
+					<div class="col-12 col-lg-6" id="santodomingo">
+						<div class="pilv-location">
+							<div class="pilv-location-header">
+								📍 Vivero Santo Domingo <span class="subtitle">— Costa</span>
+							</div>
+							<div class="pilv-location-body">
+								<iframe
+								class="pilv-location-map"
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1417712.9841412602!2d-80.30748749999998!3d-0.10671470000000009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d551fbf9e80609%3A0xac858047a638bdc5!2sSustratos%20Poal%C3%B3%20s.a%2C%20filial%20de%20Pilvicsa!5e1!3m2!1sen!2sec!4v1773179057123!5m2!1sen!2sec"
+								allowfullscreen=""
+								loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"
+								title="Vivero Santo Domingo">
+							</iframe>
+								<div class="pilv-location-contact">
+									<div class="pilv-contact-item">
+										<i class="fa-brands fa-whatsapp" style="color:#25D366"></i>
+											<a href="https://wa.me/593994907234">0994907234</a>
+									</div>
+									<div class="pilv-contact-item">
+										<i class="uil uil-envelope"></i>
+										<a href="mailto:pilvicsa1@pilvicsa.com">pilvicsa1@pilvicsa.com</a>
+									</div>
+								</div>
+							</div>
+							<div class="pilv-location-footer">L–V 8:30–16:30 (almuerzo 12:30–13:30) · Coordinar despacho previamente</div>
+						</div>
+					</div>
+
+					<!-- ── Despacho Quito ── -->
+					<div class="col-12 col-lg-6" id="quito">
+						<div class="pilv-location">
+							<div class="pilv-location-header">
+								📍 Despacho Quito <span class="subtitle">— Punto de entrega</span>
+							</div>
+							<div class="pilv-location-body">
+								<iframe
+								class="pilv-location-map"
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d354426.7962170639!2d-78.77244837500001!3d-0.1955637999999831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59baaef9d9e47%3A0xd9ccf426dd72ee9e!2sPilvicsa%20Quito!5e1!3m2!1sen!2sec!4v1773179148707!5m2!1sen!2sec"
+								allowfullscreen=""
+								loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"
+								title="Despacho Quito">
+							</iframe>
+								<div class="pilv-location-contact">
+									<div class="pilv-contact-item">
+										<i class="fa-brands fa-whatsapp" style="color:#25D366"></i>
+											<a href="https://wa.me/593997829193">0997829193</a>
+									</div>
+									<div class="pilv-contact-item">
+										<i class="uil uil-envelope"></i>
+										<a href="mailto:pilvicsa1@pilvicsa.com">pilvicsa1@pilvicsa.com</a>
+									</div>
+								</div>
+							</div>
+							<div class="pilv-location-footer">L–V 8:30–16:30 (almuerzo 12:30–13:30) · Coordinar despacho previamente</div>
+						</div>
+					</div>
+
+					<!-- ── Despacho Checa ── -->
+					<div class="col-12 col-lg-6" id="checa">
+						<div class="pilv-location">
+							<div class="pilv-location-header">
+								📍 Despacho Checa <span class="subtitle">— Punto de entrega</span>
+							</div>
+							<div class="pilv-location-body">
+								<iframe
+								class="pilv-location-map"
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5537.936498300275!2d-78.31343602376323!3d-0.13089419986780187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d58d3f61b890ab%3A0x95e81911de5aaea3!2sPilvicsa%20Checa!5e1!3m2!1sen!2sec!4v1773179163945!5m2!1sen!2sec"
+								allowfullscreen=""
+								loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"
+								title="Despacho Checa">
+							</iframe>
+								<div class="pilv-location-contact">
+									<div class="pilv-contact-item">
+										<i class="fa-brands fa-whatsapp" style="color:#25D366"></i>
+											<a href="https://wa.me/593997612631">0997612631</a>
+									</div>
+									<div class="pilv-contact-item">
+										<i class="uil uil-envelope"></i>
+										<a href="mailto:pilvicsa1@pilvicsa.com">pilvicsa1@pilvicsa.com</a>
+									</div>
+								</div>
+							</div>
+							<div class="pilv-location-footer">L–V 8:30–16:30 (almuerzo 12:30–13:30) · Coordinar despacho previamente</div>
+						</div>
+					</div>
+
+					<!-- ── Despacho Otavalo ── -->
+					<div class="col-12 col-lg-6" id="otavalo">
+						<div class="pilv-location">
+							<div class="pilv-location-header">
+								📍 Despacho Otavalo <span class="subtitle">— Punto de entrega</span>
+							</div>
+							<div class="pilv-location-body">
+								<iframe
+								class="pilv-location-map"
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5537.85541996404!2d-78.19420612376312!3d0.3365373996601631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2a3dfc5c919617%3A0x7d1c91b354fbd928!2sPilvicsa%20Natabuela%20(Antes%20Pilvicsa%20Otavalo)!5e1!3m2!1sen!2sec!4v1773179184885!5m2!1sen!2sec"
+								allowfullscreen=""
+								loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"
+								title="Despacho Otavalo">
+							</iframe>
+								<div class="pilv-location-contact">
+									<div class="pilv-contact-item">
+										<i class="fa-brands fa-whatsapp" style="color:#25D366"></i>
+											<a href="https://wa.me/593997340362">0997340362</a>
+									</div>
+									<div class="pilv-contact-item">
+										<i class="uil uil-envelope"></i>
+										<a href="mailto:pilvicsa1@pilvicsa.com">pilvicsa1@pilvicsa.com</a>
+									</div>
+								</div>
+							</div>
+							<div class="pilv-location-footer">L–V 8:30–16:30 (almuerzo 12:30–13:30) · Coordinar despacho previamente</div>
+						</div>
+					</div>
+
+				</div><!-- .row end -->
+			</div><!-- .container end -->
+
+		</div>
+	</section>
+
+	<!-- ── Footer ── -->
+	<footer id="footer" class="border-0" style="padding:30px 0;background-color:#FFF">
+		<div class="container">
+			<div class="footer-widgets-wrap">
+				<div class="row col-mb-50">
+					<div class="col-md-3">
+						<a href="index.html"><img src="demos/business/images/logo@2x.png" alt="Pilvicsa" height="100" style="margin-top:-30px"></a>
+					</div>
+					<div class="col-md-9">
+						<div class="row col-mb-30">
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Servicios</h4>
+									<ul>
+										<li><a href="#">Semillas</a></li>
+										<li><a href="#">Esquejes</a></li>
+										<li><a href="#">Injertos</a></li>
+										<li><a href="#">Endurecimiento Meristematico</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Productos</h4>
+									<ul>
+										<li><a href="producto-hortalizas.html">Hortalizas</a></li>
+										<li><a href="productos-florescorte.html">Flores de Corte</a></li>
+										<li><a href="productos-cultivoscosta.html">Cultivos de Costa</a></li>
+										<li><a href="productos-frutalesforestales.html">Frutales y Forestales</a></li>
+										<li><a href="productos-especies.html">Especies y Aromáticas</a></li>
+										<li><a href="productos-otras.html">Cultivos Especiales</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Contactos y Preguntas</h4>
+									<ul>
+										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+										<li style="display:none"><a href="#">¿Preguntas Frecuentes?</a></li>
+										<li><a href="localizaciones.html#latacunga">Vivero Latacunga</a></li>
+										<li><a href="localizaciones.html#santodomingo">Vivero Santo Domingo</a></li>
+										<li><a href="localizaciones.html#quito">Despacho Quito</a></li>
+										<li><a href="localizaciones.html#checa">Despacho Checa</a></li>
+										<li><a href="localizaciones.html#otavalo">Despacho Otavalo</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="line line-sm"></div>
+
+						<div class="row justify-content-between col-mb-30">
+							<div class="col-12 col-md-auto text-center text-md-start">
+								<small class="fw-light" style="color:#AAA">&copy; 2025 Todos Los derechos pertenecen a Pilvicsa</small>
+							</div>
+							<div class="col-12 col-md-auto text-center text-md-end">
+								<a href="https://www.facebook.com/piloneslavictoria/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
+								<a href="https://www.instagram.com/pilvicsa/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-instagram"><i class="bi-instagram"></i><i class="bi-instagram"></i></a>
+								<a href="https://www.linkedin.com/company/pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-linkedin"><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-linkedin-in"></i></a>
+								<a href="https://www.tiktok.com/@pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-tiktok"><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-tiktok"></i></a>
+										<a href="https://www.youtube.com/@pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-youtube"><i class="fa-brands fa-youtube"></i><i class="fa-brands fa-youtube"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div><!-- #wrapper end -->
+
+<div id="gotoTop" class="uil uil-angle-up"></div>
+
+<script src="js/plugins.min.js"></script>
+<script src="js/functions.bundle.js"></script>
+
+</body>
+</html>
