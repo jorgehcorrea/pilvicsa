@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block access to server files
+Disallow: /css/
+Disallow: /js/
+Disallow: /sass/
+
+# Sitemap location
+Sitemap: https://pilvicsa.com.ec/sitemap.xml
