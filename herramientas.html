@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Pilvicsa">
+	<meta name="description" content="Calculadoras agrícolas Pilvicsa: planificación de siembra, cuidado del cultivo y conversión de unidades. Herramientas para el agricultor ecuatoriano.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/font-icons.css">
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="css/business.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<title>Herramientas Agrícolas | Pilvicsa</title>
+	<link rel="canonical" href="https://pilvicsa.com.ec/herramientas.html">
+
+	<!-- Open Graph / Social sharing -->
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Pilvicsa">
+	<meta property="og:title" content="Herramientas Agrícolas | Pilvicsa">
+	<meta property="og:description" content="Herramientas de planificación agrícola Pilvicsa: calendario de trasplante, rotación de cultivos y densidad de siembra por hectárea.">
+	<meta property="og:image" content="https://pilvicsa.com.ec/images/logo@2x.png">
+	<meta property="og:url" content="https://pilvicsa.com.ec/herramientas.html">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Planificación de Siembra | Pilvicsa">
+	<meta name="twitter:description" content="Herramientas de planificación agrícola Pilvicsa: calendario de trasplante, rotación de cultivos y densidad de siembra por hectárea.">
+	<meta name="twitter:image" content="https://pilvicsa.com.ec/images/logo@2x.png">
+
+	<style>
+		/* ── Page chrome ── */
+		.pilv-tools-hero {
+			background: linear-gradient(135deg, #1a4a28 0%, #2c6e3f 60%, #3d8f55 100%);
+			padding: 100px 0 60px;
+			color: #fff;
+			text-align: center;
+		}
+		.pilv-tools-hero h1 {
+			font-size: 2.6rem;
+			font-weight: 700;
+			letter-spacing: -1px;
+			margin-bottom: 0.5rem;
+			color: #fff;
+		}
+		.pilv-tools-hero p {
+			font-size: 1.05rem;
+			opacity: 0.85;
+			max-width: 560px;
+			margin: 0 auto;
+			line-height: 1.7;
+		}
+		.pilv-tools-hero .tool-nav {
+			display: flex;
+			justify-content: center;
+			gap: 12px;
+			flex-wrap: wrap;
+			margin-top: 32px;
+		}
+		.pilv-tools-hero .tool-nav a {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			padding: 9px 20px;
+			border-radius: 99px;
+			background: rgba(255,255,255,0.15);
+			border: 1.5px solid rgba(255,255,255,0.3);
+			color: #fff;
+			font-size: 0.82rem;
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			text-decoration: none;
+			transition: all 0.2s;
+			backdrop-filter: blur(4px);
+		}
+		.pilv-tools-hero .tool-nav a:hover {
+			background: rgba(255,255,255,0.28);
+			border-color: rgba(255,255,255,0.6);
+		}
+
+		/* ── Calculator card ── */
+		.pilv-calc {
+			background: #fff;
+			border-radius: 12px;
+			border: 1px solid #dde8dd;
+			overflow: hidden;
+			margin-bottom: 40px;
+			box-shadow: 0 2px 20px rgba(44,110,63,0.07);
+		}
+		.pilv-calc-header {
+			background: #2c6e3f;
+			padding: 20px 28px;
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			color: #fff;
+		}
+		.pilv-calc-header .icon {
+			width: 44px;
+			height: 44px;
+			background: rgba(255,255,255,0.18);
+			border-radius: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.3rem;
+			flex-shrink: 0;
+		}
+		.pilv-calc-header h2 {
+			font-size: 1.15rem;
+			font-weight: 700;
+			margin: 0;
+			color: #fff;
+		}
+		.pilv-calc-header p {
+			font-size: 0.8rem;
+			opacity: 0.8;
+			margin: 2px 0 0;
+		}
+		.pilv-calc-body {
+			padding: 28px;
+		}
+
+		/* ── Form elements ── */
+		.pilv-field {
+			margin-bottom: 18px;
+		}
+		.pilv-field label {
+			display: block;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin-bottom: 6px;
+		}
+		.pilv-field input,
+		.pilv-field select {
+			width: 100%;
+			padding: 10px 14px;
+			border: 1.5px solid #dde8dd;
+			border-radius: 7px;
+			font-size: 0.95rem;
+			font-family: inherit;
+			color: #1a1a1a;
+			background: #fafdfa;
+			transition: border-color 0.15s;
+			outline: none;
+		}
+		.pilv-field input:focus,
+		.pilv-field select:focus {
+			border-color: #2c6e3f;
+			background: #fff;
+		}
+		.pilv-field .hint {
+			font-size: 0.72rem;
+			color: #999;
+			margin-top: 4px;
+		}
+
+		/* ── Tabs for calculator modes ── */
+		.pilv-tabs {
+			display: flex;
+			gap: 0;
+			margin-bottom: 24px;
+			border: 1.5px solid #dde8dd;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+		.pilv-tab {
+			flex: 1;
+			padding: 10px 14px;
+			background: #fafdfa;
+			border: none;
+			cursor: pointer;
+			font-size: 0.82rem;
+			font-weight: 600;
+			color: #666;
+			text-align: center;
+			transition: all 0.15s;
+			font-family: inherit;
+		}
+		.pilv-tab:not(:last-child) {
+			border-right: 1.5px solid #dde8dd;
+		}
+		.pilv-tab.active {
+			background: #2c6e3f;
+			color: #fff;
+		}
+		.pilv-tab-content { display: none; }
+		.pilv-tab-content.active { display: block; }
+
+		/* ── Calculate button ── */
+		.pilv-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 11px 26px;
+			background: #2c6e3f;
+			color: #fff;
+			border: none;
+			border-radius: 8px;
+			font-size: 0.88rem;
+			font-weight: 700;
+			cursor: pointer;
+			font-family: inherit;
+			transition: background 0.15s, transform 0.1s;
+			letter-spacing: 0.03em;
+		}
+		.pilv-btn:hover { background: #1a4a28; }
+		.pilv-btn:active { transform: scale(0.98); }
+		.pilv-btn-secondary {
+			background: transparent;
+			color: #2c6e3f;
+			border: 1.5px solid #2c6e3f;
+		}
+		.pilv-btn-secondary:hover { background: #f4f9f5; }
+
+		/* ── Result box ── */
+		.pilv-result {
+			display: none;
+			margin-top: 24px;
+			background: #f4f9f5;
+			border-left: 4px solid #2c6e3f;
+			border-radius: 0 8px 8px 0;
+			padding: 20px 24px;
+		}
+		.pilv-result.show { display: block; }
+		.pilv-result .result-title {
+			font-size: 0.72rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin-bottom: 12px;
+		}
+		.pilv-result-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 12px;
+		}
+		.pilv-result-item {
+			background: #fff;
+			border-radius: 8px;
+			padding: 14px 16px;
+			border: 1px solid #dde8dd;
+		}
+		.pilv-result-item .val {
+			font-size: 1.6rem;
+			font-weight: 800;
+			color: #1a4a28;
+			line-height: 1;
+			letter-spacing: -1px;
+		}
+		.pilv-result-item .unit {
+			font-size: 0.75rem;
+			color: #888;
+			margin-top: 3px;
+		}
+		.pilv-result-note {
+			font-size: 0.78rem;
+			color: #666;
+			margin-top: 12px;
+			line-height: 1.6;
+		}
+
+		/* ── Calendar result ── */
+		.pilv-calendar-result {
+			margin-top: 24px;
+			display: none;
+		}
+		.pilv-calendar-result.show { display: block; }
+		.pilv-timeline {
+			position: relative;
+			padding-left: 28px;
+		}
+		.pilv-timeline::before {
+			content: '';
+			position: absolute;
+			left: 9px;
+			top: 8px;
+			bottom: 8px;
+			width: 2px;
+			background: #dde8dd;
+		}
+		.pilv-timeline-item {
+			position: relative;
+			margin-bottom: 16px;
+			background: #fff;
+			border: 1px solid #dde8dd;
+			border-radius: 8px;
+			padding: 14px 16px;
+		}
+		.pilv-timeline-item::before {
+			content: '';
+			position: absolute;
+			left: -24px;
+			top: 18px;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background: #2c6e3f;
+			border: 2px solid #fff;
+			box-shadow: 0 0 0 2px #2c6e3f;
+		}
+		.pilv-timeline-item.highlight {
+			border-color: #2c6e3f;
+			background: #f4f9f5;
+		}
+		.pilv-timeline-item.highlight::before {
+			background: #1a4a28;
+			width: 16px;
+			height: 16px;
+			left: -26px;
+			top: 16px;
+		}
+		.pilv-timeline-item .tl-label {
+			font-size: 0.7rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin-bottom: 3px;
+		}
+		.pilv-timeline-item .tl-date {
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: #1a1a1a;
+		}
+		.pilv-timeline-item .tl-desc {
+			font-size: 0.78rem;
+			color: #777;
+			margin-top: 2px;
+		}
+
+		/* ── Dilution result table ── */
+		.pilv-dil-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 16px;
+			font-size: 0.88rem;
+		}
+		.pilv-dil-table th {
+			background: #2c6e3f;
+			color: #fff;
+			padding: 9px 14px;
+			text-align: left;
+			font-weight: 600;
+			font-size: 0.78rem;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+		.pilv-dil-table td {
+			padding: 10px 14px;
+			border-bottom: 1px solid #eef2ee;
+			color: #333;
+		}
+		.pilv-dil-table tr:last-child td { border-bottom: none; }
+		.pilv-dil-table tr:nth-child(even) td { background: #fafdfa; }
+		.pilv-dil-table td strong { color: #1a4a28; font-size: 1rem; }
+
+		/* ── Divider ── */
+		.pilv-section-label {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 48px 0 28px;
+		}
+		.pilv-section-label span {
+			font-size: 0.68rem;
+			font-weight: 800;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			white-space: nowrap;
+		}
+		.pilv-section-label::before,
+		.pilv-section-label::after {
+			content: '';
+			flex: 1;
+			height: 1px;
+			background: #dde8dd;
+		}
+
+		/* ── Row utility ── */
+		.pilv-row-2 {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 16px;
+		}
+		.pilv-row-3 {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 16px;
+		}
+		@media (max-width: 640px) {
+			.pilv-row-2, .pilv-row-3 { grid-template-columns: 1fr; }
+			.pilv-tools-hero h1 { font-size: 1.8rem; }
+			.pilv-calc-body { padding: 18px; }
+			.pilv-result-item .val { font-size: 1.3rem; }
+		}
+	
+		/* ── Field visualization ── */
+		.pilv-field-viz {
+			margin-top: 20px;
+			background: #f4f9f5;
+			border: 1.5px solid #dde8dd;
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+		}
+		.pilv-field-viz .viz-label {
+			font-size: 0.7rem;
+			font-weight: 800;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin-bottom: 12px;
+		}
+		#pilv-field-canvas {
+			max-width: 100%;
+			border-radius: 6px;
+			display: block;
+			margin: 0 auto;
+		}
+		.pilv-unit-toggle {
+			display: inline-flex;
+			border: 1.5px solid #dde8dd;
+			border-radius: 7px;
+			overflow: hidden;
+			margin-bottom: 16px;
+		}
+		.pilv-unit-btn {
+			padding: 7px 16px;
+			border: none;
+			background: #fafdfa;
+			cursor: pointer;
+			font-size: 0.8rem;
+			font-weight: 600;
+			color: #666;
+			font-family: inherit;
+			transition: all 0.15s;
+		}
+		.pilv-unit-btn:not(:last-child) { border-right: 1.5px solid #dde8dd; }
+		.pilv-unit-btn.active { background: #2c6e3f; color: #fff; }
+
+		/* ── ICS download button ── */
+		.pilv-btn-ics {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 11px 22px;
+			background: #fff;
+			color: #1a73e8;
+			border: 1.5px solid #1a73e8;
+			border-radius: 8px;
+			font-size: 0.85rem;
+			font-weight: 700;
+			cursor: pointer;
+			font-family: inherit;
+			transition: all 0.15s;
+			text-decoration: none;
+			margin-top: 14px;
+		}
+		.pilv-btn-ics:hover { background: #e8f0fe; }
+		.pilv-cal-export {
+			margin-top: 20px;
+			padding: 18px 20px;
+			background: #f0f6ff;
+			border-left: 4px solid #1a73e8;
+			border-radius: 0 8px 8px 0;
+		}
+		.pilv-cal-export .export-title {
+			font-size: 0.72rem;
+			font-weight: 800;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: #1a73e8;
+			margin-bottom: 8px;
+		}
+		.pilv-cal-export p {
+			font-size: 0.82rem;
+			color: #555;
+			margin: 0 0 12px;
+			line-height: 1.5;
+		}
+		.pilv-export-btns {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			align-items: center;
+		}
+	
+		
+
+		
+
+		/* ── Pastel calc card override ── */
+		.pilv-calc {
+			background: rgba(255,255,255,0.92);
+		}
+		.pilv-result {
+			background: #d4e9d8;
+			border-left-color: #2c6e3f;
+		}
+		.pilv-result .result-title {
+			color: #2c6e3f;
+		}
+		.pilv-section-label span {
+			color: #2c6e3f;
+		}
+		.pilv-section-label::before,
+		.pilv-section-label::after {
+			background: #d4e9d8;
+		}
+	
+		/* ── Hub page ── */
+		.pilv-hub-hero {
+			background: linear-gradient(135deg, #1a4a28 0%, #2c6e3f 60%, #3d8f55 100%);
+			padding: 80px 0 60px;
+			color: #fff;
+			text-align: center;
+		}
+		.pilv-hub-hero h1 {
+			font-size: 2.4rem;
+			font-weight: 800;
+			letter-spacing: -1px;
+			margin-bottom: 0.5rem;
+			color: #fff;
+		}
+		.pilv-hub-hero p {
+			font-size: 1rem;
+			opacity: 0.82;
+			max-width: 520px;
+			margin: 0 auto;
+			line-height: 1.7;
+		}
+		.pilv-cat-section {
+			margin-bottom: 48px;
+		}
+		.pilv-cat-title {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin-bottom: 20px;
+			padding-bottom: 12px;
+			border-bottom: 2px solid #eef2ee;
+		}
+		.pilv-cat-title .cat-emoji {
+			font-size: 1.4rem;
+		}
+		.pilv-cat-title h2 {
+			font-size: 1rem;
+			font-weight: 800;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin: 0;
+		}
+		.pilv-tool-card {
+			background: #fff;
+			border: 1px solid #dde8dd;
+			border-radius: 10px;
+			padding: 20px 22px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			margin-bottom: 10px;
+			transition: box-shadow 0.15s, border-color 0.15s;
+		}
+		.pilv-tool-card:hover {
+			border-color: #2c6e3f;
+			box-shadow: 0 4px 16px rgba(44,110,63,0.1);
+		}
+		.pilv-tool-card .tool-left {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			flex: 1;
+			min-width: 0;
+		}
+		.pilv-tool-card .tool-icon {
+			width: 42px;
+			height: 42px;
+			background: #f4f9f5;
+			border-radius: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.2rem;
+			flex-shrink: 0;
+		}
+		.pilv-tool-card .tool-info h3 {
+			font-size: 0.95rem;
+			font-weight: 700;
+			color: #1a1a1a;
+			margin: 0 0 3px;
+		}
+		.pilv-tool-card .tool-info p {
+			font-size: 0.8rem;
+			color: #777;
+			margin: 0;
+			line-height: 1.4;
+		}
+		.pilv-tool-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 8px 18px;
+			background: #2c6e3f;
+			color: #fff;
+			border-radius: 7px;
+			font-size: 0.78rem;
+			font-weight: 700;
+			text-decoration: none;
+			white-space: nowrap;
+			transition: background 0.15s;
+			flex-shrink: 0;
+		}
+		.pilv-tool-link:hover { background: #1a4a28; color: #fff; }
+		.pilv-tool-link.amber { background: #a05c1a; }
+		.pilv-tool-link.amber:hover { background: #7a4412; }
+		.pilv-tool-link.blue { background: #2e5fa3; }
+		.pilv-tool-link.blue:hover { background: #1e4070; }
+		@media (max-width: 600px) {
+			.pilv-tool-card { flex-direction: column; align-items: flex-start; }
+			.pilv-tool-link { width: 100%; justify-content: center; }
+		}
+	</style>
+</head>
+<body class="stretched">
+
+<div id="wrapper">
+
+	<!-- ── Header ── -->
+	<header id="header" class="full-header transparent-header header-size-md" data-sticky-class="not-dark" data-responsive-class="not-dark" data-sticky-offset="full" data-sticky-offset-negative="auto">
+		<div id="header-wrap">
+			<div class="container">
+				<div class="header-row">
+					<div id="logo">
+						<a href="index.html">
+							<img class="logo-default" srcset="images/logo.png, images/logo@2x.png 2x" src="images/logo@2x.png" alt="Pilvicsa">
+							<img class="logo-dark" srcset="images/logo-dark.png, images/logo-dark@2x.png 2x" src="images/logo-dark@2x.png" alt="Pilvicsa">
+						</a>
+					</div>
+					<div class="primary-menu-trigger">
+						<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+							<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+						</button>
+					</div>
+					<nav class="primary-menu">
+						<ul class="menu-container">
+							<li class="menu-item"><a class="menu-link" href="index.html"><div>Inicio</div></a></li>
+							<li class="menu-item"><a class="menu-link" href="index.html#nuestraoferta"><div>Servicios</div></a>
+								<ul class="sub-menu-container" data-class="up-lg:not-dark">
+									<li class="menu-item"><a class="menu-link" href="#"><div>Semillas</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="#"><div>Esquejes</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="#"><div>Injertos</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="#"><div>Endurecimiento</div></a></li>
+								</ul>
+							</li>
+							<li class="menu-item"><a class="menu-link" href="#"><div>Productos</div></a>
+								<ul class="sub-menu-container" data-class="up-lg:not-dark">
+									<li class="menu-item"><a class="menu-link" href="producto-hortalizas.html"><div>Hortalizas</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-florescorte.html"><div>Flores de Corte</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-cultivoscosta.html"><div>Cultivos de Costa</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-frutalesforestales.html"><div>Frutales y Forestales</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-especies.html"><div>Especies y Aromáticas</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-otras.html"><div>Cultivos Especiales</div></a></li>
+								</ul>
+							</li>
+							<li class="menu-item"><a class="menu-link" href="buscar.html"><div>Buscar</div></a></li>
+							<li class="menu-item"><a class="menu-link" href="herramientas-planificacion.html"><div>Herramientas</div></a>
+								<ul class="sub-menu-container" data-class="up-lg:not-dark">
+									<li class="menu-item"><a class="menu-link" href="herramientas-planificacion.html"><div>📋 Planificación</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="herramientas-cuidado.html"><div>🌿 Cuidado del Cultivo</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="herramientas-conversion.html"><div>📐 Conversión de Unidades</div></a></li>
+								</ul>
+							</li>
+							<li class="menu-item"><a class="menu-link" href="localizaciones.html"><div>Contactos y Preguntas</div></a>
+								<ul class="sub-menu-container" data-class="up-lg:not-dark">
+									<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+									<li class="menu-item" style="display:none"><a class="menu-link" href="#"><div>¿Preguntas Frecuentes?</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#latacunga"><div>Vivero Latacunga</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#santodomingo"><div>Vivero Santo Domingo</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#quito"><div>Despacho Quito</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#checa"><div>Despacho Checa</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#otavalo"><div>Despacho Otavalo</div></a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="header-wrap-clone"></div>
+	</header>
+
+	<!-- ── Hub hero ── -->
+	<div class="pilv-hub-hero">
+		<div class="container">
+			<div style="font-size:0.68rem;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;opacity:0.6;margin-bottom:10px;">Pilvicsa</div>
+			<h1>🛠 Herramientas para el Agricultor</h1>
+			<p>Calculadoras diseñadas para apoyar cada etapa de tu producción — desde la planificación hasta el cuidado del cultivo.</p>
+		</div>
+	</div>
+
+	<section id="content">
+		<div class="content-wrap">
+			<div class="container" style="padding-top:48px; padding-bottom:60px;">
+
+				<!-- ── PLANIFICACIÓN ── -->
+				<div class="pilv-cat-section">
+					<div class="pilv-cat-title">
+						<span class="cat-emoji">📋</span>
+						<h2>Planificación de Siembra</h2>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div><!-- #wrapper end -->
+
+<div id="gotoTop" class="uil uil-angle-up"></div>
+<script src="js/plugins.min.js"></script>
+<script src="js/functions.bundle.js"></script>
+
+
+
+<div id="gotoTop" class="uil uil-angle-up"></div>
+<script src="js/plugins.min.js"></script>
+<script src="js/functions.bundle.js"></script>
+
+</body>
+</html>

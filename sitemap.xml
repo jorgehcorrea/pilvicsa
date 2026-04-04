@@ -1,64 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- Homepage -->
   <url>
     <loc>https://pilvicsa.com.ec/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <changefreq>monthly</changefreq>
   </url>
 
-  <url>
-    <loc>https://pilvicsa.com.ec/servicios-semillas.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
+  <!-- Product pages -->
   <url>
     <loc>https://pilvicsa.com.ec/producto-hortalizas.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://pilvicsa.com.ec/productos-florescorte.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://pilvicsa.com.ec/productos-cultivoscosta.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://pilvicsa.com.ec/productos-frutalesforestales.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://pilvicsa.com.ec/productos-especies.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://pilvicsa.com.ec/productos-otras.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://pilvicsa.com.ec/buscar.html</loc>
     <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
   </url>
 
+  <!-- Locations — highest local SEO value -->
   <url>
     <loc>https://pilvicsa.com.ec/localizaciones.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Search -->
+  <url>
+    <loc>https://pilvicsa.com.ec/buscar.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Tools -->
+  <url>
+    <loc>https://pilvicsa.com.ec/herramientas.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pilvicsa.com.ec/herramientas-planificacion.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://pilvicsa.com.ec/herramientas-cuidado.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://pilvicsa.com.ec/herramientas-conversion.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>
