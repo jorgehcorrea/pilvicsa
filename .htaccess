@@ -44,9 +44,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{HTTP_ACCEPT} image/webp
-    RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$
-    RewriteCond %{REQUEST_FILENAME}.webp -f
-    RewriteRule ^ %{REQUEST_URI}.webp [T=image/webp,L]
+    RewriteCond %{REQUEST_FILENAME} ^(.+)\.(jpe?g|png)$
+    RewriteCond %1.webp -f
+    RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
 </IfModule>
 <IfModule mod_headers.c>
     <FilesMatch "\.(jpe?g|png)$">
