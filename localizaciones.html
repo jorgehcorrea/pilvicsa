@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html dir="ltr" lang="es-EC">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta http-equiv="x-ua-compatible" content="IE=edge">
@@ -10,16 +10,43 @@
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"></noscript>
 
 	<!-- Core styles -->
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/canvas.css">
 	<link rel="stylesheet" href="css/font-icons.css">
+<<<<<<< HEAD
 	<link rel="stylesheet" href="css/swiper.css">
 	<link rel="stylesheet" href="css/business.css">
 	<link rel="stylesheet" href="css/custom.css">
 
 	<title>Contactos y Ubicaciones | Pilvicsa</title>
+=======
+
+	<title>Contactos y Ubicaciones | Pilvicsa</title>
+
+	<!-- Schema: LocalBusiness locations -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "LocalBusiness",
+		"name": "Pilvicsa",
+		"url": "https://pilvicsa.com.ec",
+		"telephone": "+593-2-235-011",
+		"location": [
+			{"@type": "Place", "name": "Vivero Latacunga", "address": {"@type": "PostalAddress", "streetAddress": "Vía a Pastocalle", "addressLocality": "Latacunga", "addressRegion": "Cotopaxi", "addressCountry": "EC"}},
+			{"@type": "Place", "name": "Vivero Santo Domingo", "address": {"@type": "PostalAddress", "addressLocality": "Santo Domingo de los Colorados", "addressRegion": "Santo Domingo de los Tsáchilas", "addressCountry": "EC"}},
+			{"@type": "Place", "name": "Despacho Otavalo", "address": {"@type": "PostalAddress", "addressLocality": "Otavalo", "addressRegion": "Imbabura", "addressCountry": "EC"}},
+			{"@type": "Place", "name": "Despacho Checa", "address": {"@type": "PostalAddress", "addressLocality": "Checa", "addressRegion": "Pichincha", "addressCountry": "EC"}},
+			{"@type": "Place", "name": "Despacho Quito", "address": {"@type": "PostalAddress", "addressLocality": "Quito", "addressRegion": "Pichincha", "addressCountry": "EC"}}
+		]
+	}
+	</script>
+	<link rel="icon" href="images/pilvicsa.ico" type="image/x-icon">
+	<link rel="canonical" href="https://pilvicsa.com.ec/localizaciones.html">
+>>>>>>> f2165eff98a4c0eed05ab145db774f1f4309233a
 
 	<style>
 		/* ── Location card ── */
@@ -108,6 +135,7 @@
 		.pilv-page-intro {
 			padding: 4rem 0 2rem;
 		}
+
 	</style>
 
 	<!-- Open Graph / Social sharing -->
@@ -149,10 +177,10 @@
 								<li class="menu-item"><a class="menu-link" href="index.html"><div>Inicio</div></a></li>
 								<li class="menu-item"><a class="menu-link" href="index.html#nuestraoferta"><div>Servicios</div></a>
 									<ul class="sub-menu-container" data-class="up-lg:not-dark">
-										<li class="menu-item"><a class="menu-link" href="#"><div>Semillas</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="#"><div>Esquejes</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="#"><div>Injertos</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="#"><div>Endurecimiento</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="index.html#servicio-semillas"><div>Semillas</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="index.html#servicio-esquejes"><div>Esquejes</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="index.html#servicio-injertos"><div>Injertos</div></a></li>
+										<li class="menu-item"><a class="menu-link" href="index.html#servicio-endurecimiento"><div>Endurecimiento</div></a></li>
 									</ul>
 								</li>
 								<li class="menu-item"><a class="menu-link" href="#"><div>Productos</div></a>
@@ -204,8 +232,17 @@
 						<h3>Contactos y Ubicaciones</h3>
 					</div>
 					<div class="row">
-						<div class="text-center col-lg-8 offset-lg-2 mb-5">
+						<div class="text-center col-lg-8 offset-lg-2 mb-4">
 							<h3 class="font-secondary" style="font-size:1.15rem;font-weight:400;">Encuéntrenos en nuestros viveros y puntos de despacho a lo largo del Ecuador.</h3>
+						</div>
+						<div class="text-center col-lg-10 offset-lg-1 mb-5">
+							<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+								<a href="#latacunga" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border:1px solid #a8d5b5;border-radius:20px;background:#f7faf8;color:#1f5c2e;font-size:0.82rem;font-weight:600;text-decoration:none;" onmouseover="this.style.background='#2c6e3f';this.style.color='#fff';" onmouseout="this.style.background='#f7faf8';this.style.color='#1f5c2e';"><i class="uil uil-map-marker"></i>Vivero Latacunga</a>
+								<a href="#santodomingo" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border:1px solid #a8d5b5;border-radius:20px;background:#f7faf8;color:#1f5c2e;font-size:0.82rem;font-weight:600;text-decoration:none;" onmouseover="this.style.background='#2c6e3f';this.style.color='#fff';" onmouseout="this.style.background='#f7faf8';this.style.color='#1f5c2e';"><i class="uil uil-map-marker"></i>Vivero Santo Domingo</a>
+								<a href="#quito" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border:1px solid #a8d5b5;border-radius:20px;background:#f7faf8;color:#1f5c2e;font-size:0.82rem;font-weight:600;text-decoration:none;" onmouseover="this.style.background='#2c6e3f';this.style.color='#fff';" onmouseout="this.style.background='#f7faf8';this.style.color='#1f5c2e';"><i class="uil uil-map-marker"></i>Despacho Quito</a>
+								<a href="#checa" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border:1px solid #a8d5b5;border-radius:20px;background:#f7faf8;color:#1f5c2e;font-size:0.82rem;font-weight:600;text-decoration:none;" onmouseover="this.style.background='#2c6e3f';this.style.color='#fff';" onmouseout="this.style.background='#f7faf8';this.style.color='#1f5c2e';"><i class="uil uil-map-marker"></i>Despacho Checa</a>
+								<a href="#otavalo" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border:1px solid #a8d5b5;border-radius:20px;background:#f7faf8;color:#1f5c2e;font-size:0.82rem;font-weight:600;text-decoration:none;" onmouseover="this.style.background='#2c6e3f';this.style.color='#fff';" onmouseout="this.style.background='#f7faf8';this.style.color='#1f5c2e';"><i class="uil uil-map-marker"></i>Despacho Otavalo</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -218,15 +255,95 @@
 					<div class="col-lg-8 text-center">
 						<div style="background:#f7faf8;border-radius:10px;padding:32px 40px;border:1px solid #dde8dd;">
 
-							<!-- Teléfono -->
-							<div style="margin-bottom:28px;">
-								<p style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2c6e3f;margin-bottom:6px;">Teléfono Principal</p>
-								<a href="tel:032235011" style="font-size:1.5rem;font-weight:700;color:#1a1a1a;text-decoration:none;letter-spacing:0.02em;">
-									<i class="uil uil-phone" style="color:#2c6e3f;margin-right:6px;"></i>032 235 011
-								</a>
+							<!-- Teléfonos -->
+							<div style="margin-bottom:20px;">
+								<p style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2c6e3f;margin-bottom:14px;">Teléfonos Matriz Latacunga</p>
+
+								<!-- Phone lines list -->
+								<div style="margin:0 auto;max-width:360px;text-align:left;">
+									<table style="width:100%;border-collapse:collapse;font-size:0.78rem;line-height:1.4;">
+										<tbody>
+											<tr>
+												<td style="padding:3px 12px 3px 0;font-weight:600;color:#333;white-space:nowrap;border-bottom:1px solid #eee;">032 235 011</td>
+												<td style="padding:3px 0;font-weight:700;color:#333;border-bottom:1px solid #eee;">Línea principal</td>
+											</tr>
+											<tr>
+												<td style="padding:3px 12px 3px 0;font-weight:600;color:#333;white-space:nowrap;border-bottom:1px solid #eee;">098 681 8675</td>
+												<td style="padding:3px 0;font-weight:700;color:#333;border-bottom:1px solid #eee;">Celular Facturación</td>
+											</tr>
+											<tr>
+												<td style="padding:3px 12px 3px 0;font-weight:600;color:#333;white-space:nowrap;border-bottom:1px solid #eee;">032 235 049</td>
+												<td style="padding:3px 0;color:#777;border-bottom:1px solid #eee;">Línea secundaria</td>
+											</tr>
+											<tr>
+												<td style="padding:3px 12px 3px 0;font-weight:600;color:#333;white-space:nowrap;border-bottom:1px solid #eee;">032 235 050</td>
+												<td style="padding:3px 0;color:#777;border-bottom:1px solid #eee;">Llamada directa s.m. de voz</td>
+											</tr>
+											<tr>
+												<td style="padding:3px 12px 3px 0;font-weight:600;color:#333;white-space:nowrap;border-bottom:1px solid #eee;">032 235 051</td>
+												<td style="padding:3px 0;color:#777;border-bottom:1px solid #eee;">Línea adicional</td>
+											</tr>
+											<tr>
+												<td style="padding:3px 12px 3px 0;font-weight:600;color:#333;white-space:nowrap;">032 235 052</td>
+												<td style="padding:3px 0;color:#777;">Línea adicional</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 
-							<div style="width:40px;height:1px;background:#ccc;margin:0 auto 28px;"></div>
+							<div style="width:40px;height:1px;background:#ccc;margin:0 auto 20px;"></div>
+
+							<!-- Extensiones internas -->
+							<div style="margin:0 auto 20px;max-width:380px;text-align:left;">
+								<p style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:8px;">Extensiones Internas · 032 235 011</p>
+								<table style="width:100%;border-collapse:collapse;font-size:0.8rem;line-height:1.3;">
+									<tbody>
+										<tr style="background:#eaf4ee;">
+											<td style="padding:4px 10px 4px 8px;font-weight:700;color:#1f5c2e;font-variant-numeric:tabular-nums;width:36px;border-bottom:1px solid #c8dcc8;">101</td>
+											<td style="padding:4px 8px;color:#555;border-bottom:1px solid #c8dcc8;">Facturación / Atención al Cliente</td>
+										</tr>
+										<tr style="background:#eaf4ee;">
+											<td style="padding:4px 10px 4px 8px;font-weight:700;color:#1f5c2e;border-bottom:1px solid #c8dcc8;">102</td>
+											<td style="padding:4px 8px;color:#555;border-bottom:1px solid #c8dcc8;">Administración</td>
+										</tr>
+										<tr style="background:#eaf4ee;">
+											<td style="padding:4px 10px 4px 8px;font-weight:700;color:#1f5c2e;border-bottom:1px solid #c8dcc8;">103</td>
+											<td style="padding:4px 8px;color:#555;border-bottom:1px solid #c8dcc8;">Asistente Contabilidad</td>
+										</tr>
+										<tr style="background:#eaf4ee;">
+											<td style="padding:4px 10px 4px 8px;font-weight:700;color:#1f5c2e;border-bottom:1px solid #c8dcc8;">104</td>
+											<td style="padding:4px 8px;color:#555;border-bottom:1px solid #c8dcc8;">Contabilidad</td>
+										</tr>
+										<tr style="background:#eaf4ee;">
+											<td style="padding:4px 10px 4px 8px;font-weight:700;color:#1f5c2e;border-bottom:1px solid #c8dcc8;">105</td>
+											<td style="padding:4px 8px;color:#555;border-bottom:1px solid #c8dcc8;">Asistente Contabilidad 2</td>
+										</tr>
+										<tr>
+											<td style="padding:4px 10px 4px 8px;font-weight:600;color:#666;border-bottom:1px solid #eee;">106</td>
+											<td style="padding:4px 8px;color:#666;border-bottom:1px solid #eee;">Producción</td>
+										</tr>
+										<tr style="background:#eaf4ee;">
+											<td style="padding:4px 10px 4px 8px;font-weight:700;color:#1f5c2e;border-bottom:1px solid #c8dcc8;">107</td>
+											<td style="padding:4px 8px;color:#555;border-bottom:1px solid #c8dcc8;">Bodega Agroquímicos</td>
+										</tr>
+										<tr>
+											<td style="padding:4px 10px 4px 8px;font-weight:600;color:#666;border-bottom:1px solid #eee;">108</td>
+											<td style="padding:4px 8px;color:#666;border-bottom:1px solid #eee;">Gerencia General</td>
+										</tr>
+										<tr>
+											<td style="padding:4px 10px 4px 8px;font-weight:600;color:#666;border-bottom:1px solid #eee;">109</td>
+											<td style="padding:4px 8px;color:#666;border-bottom:1px solid #eee;">Presidencia</td>
+										</tr>
+										<tr style="background:#eaf4ee;">
+											<td style="padding:4px 10px 4px 8px;font-weight:700;color:#1f5c2e;">110</td>
+											<td style="padding:4px 8px;color:#555;">Garita</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div style="width:40px;height:1px;background:#ccc;margin:0 auto 20px;"></div>
 
 							<!-- Horarios -->
 							<p style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2c6e3f;margin-bottom:18px;">Horarios de Atención</p>
@@ -439,8 +556,11 @@
 				</div><!-- .row end -->
 			</div><!-- .container end -->
 
+
+
 		</div>
 	</section>
+
 
 	<!-- ── Footer ── -->
 	<footer id="footer" class="border-0" style="padding:30px 0;background-color:#FFF">

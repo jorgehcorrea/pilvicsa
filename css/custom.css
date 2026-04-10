@@ -5,3 +5,11 @@
 	Overwriting Default Theme Styles for Better Handling Updates
 -----------------------------------------------------------------*/
 
+
+/* ---------------------------------------------------------------
+   Transparent header — prevent black flash before JS initializes
+--------------------------------------------------------------- */
+#header.transparent-header:not(.sticky-header) #header-wrap {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rn \"hortalizas.html\" c:/xampp/htdocs/pilvicsa/*.html)"
+    ]
+  }
+}
