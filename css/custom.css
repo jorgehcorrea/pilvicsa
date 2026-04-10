@@ -1,15 +1,7 @@
-/* ----------------------------------------------------------------
-	Custom CSS
-
-	Add all your Custom Styled CSS here for New Styles or
-	Overwriting Default Theme Styles for Better Handling Updates
------------------------------------------------------------------*/
-
+/* ----------------------------------------------------------------
+	Custom CSS
 
-/* ---------------------------------------------------------------
-   Transparent header — prevent black flash before JS initializes
---------------------------------------------------------------- */
-#header.transparent-header:not(.sticky-header) #header-wrap {
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
