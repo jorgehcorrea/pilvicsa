@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Pilvicsa">
+	<meta name="description" content="Conversión de unidades agrícolas: área, peso, volumen y longitud. Referencia rápida descargable para el celular. Pilvicsa.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/font-icons.css">
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="css/business.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<title>Conversión de Unidades | Herramientas Pilvicsa</title>
+
+	<!-- Open Graph / Social sharing -->
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Pilvicsa">
+	<meta property="og:title" content="Conversión de Unidades | Pilvicsa">
+	<meta property="og:description" content="Conversión de unidades agrícolas: área, peso, volumen y longitud. Referencia rápida descargable para el celular. Pilvicsa.">
+	<meta property="og:image" content="https://pilvicsa.com.ec/images/logo@2x.png">
+	<meta property="og:url" content="https://pilvicsa.com.ec/herramientas-conversion.html">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Conversión de Unidades | Pilvicsa">
+	<meta name="twitter:description" content="Conversión de unidades agrícolas: área, peso, volumen y longitud. Referencia rápida descargable para el celular. Pilvicsa.">
+	<meta name="twitter:image" content="https://pilvicsa.com.ec/images/logo@2x.png">
+
+	<style>
+		/* ── Page chrome ── */
+		.pilv-tools-hero {
+			background: linear-gradient(135deg, #1a4a28 0%, #2c6e3f 60%, #3d8f55 100%);
+			padding: 100px 0 60px;
+			color: #fff;
+			text-align: center;
+		}
+		.pilv-tools-hero h1 {
+			font-size: 2.6rem;
+			font-weight: 700;
+			letter-spacing: -1px;
+			margin-bottom: 0.5rem;
+			color: #fff;
+		}
+		.pilv-tools-hero p {
+			font-size: 1.05rem;
+			opacity: 0.85;
+			max-width: 560px;
+			margin: 0 auto;
+			line-height: 1.7;
+		}
+		.pilv-tools-hero .tool-nav {
+			display: flex;
+			justify-content: center;
+			gap: 12px;
+			flex-wrap: wrap;
+			margin-top: 32px;
+		}
+		.pilv-tools-hero .tool-nav a {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			padding: 9px 20px;
+			border-radius: 99px;
+			background: rgba(255,255,255,0.15);
+			border: 1.5px solid rgba(255,255,255,0.3);
+			color: #fff;
+			font-size: 0.82rem;
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			text-decoration: none;
+			transition: all 0.2s;
+			backdrop-filter: blur(4px);
+		}
+		.pilv-tools-hero .tool-nav a:hover {
+			background: rgba(255,255,255,0.28);
+			border-color: rgba(255,255,255,0.6);
+		}
+
+		/* ── Calculator card ── */
+		.pilv-calc {
+			background: #fff;
+			border-radius: 12px;
+			border: 1px solid #dde8dd;
+			overflow: hidden;
+			margin-bottom: 40px;
+			box-shadow: 0 2px 20px rgba(44,110,63,0.07);
+		}
+		.pilv-calc-header {
+			background: #2c6e3f;
+			padding: 20px 28px;
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			color: #fff;
+		}
+		.pilv-calc-header .icon {
+			width: 44px;
+			height: 44px;
+			background: rgba(255,255,255,0.18);
+			border-radius: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.3rem;
+			flex-shrink: 0;
+		}
+		.pilv-calc-header h2 {
+			font-size: 1.15rem;
+			font-weight: 700;
+			margin: 0;
+			color: #fff;
+		}
+		.pilv-calc-header p {
+			font-size: 0.8rem;
+			opacity: 0.8;
+			margin: 2px 0 0;
+		}
+		.pilv-calc-body {
+			padding: 28px;
+		}
+
+		/* ── Form elements ── */
+		.pilv-field {
+			margin-bottom: 18px;
+		}
+		.pilv-field label {
+			display: block;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin-bottom: 6px;
+		}
+		.pilv-field input,
+		.pilv-field select {
+			width: 100%;
+			padding: 10px 14px;
+			border: 1.5px solid #dde8dd;
+			border-radius: 7px;
+			font-size: 0.95rem;
+			font-family: inherit;
+			color: #1a1a1a;
+			background: #fafdfa;
+			transition: border-color 0.15s;
+			outline: none;
+		}
+		.pilv-field input:focus,
+		.pilv-field select:focus {
+			border-color: #2c6e3f;
+			background: #fff;
+		}
+		.pilv-field .hint {
+			font-size: 0.72rem;
+			color: #999;
+			margin-top: 4px;
+		}
+
+		/* ── Tabs for calculator modes ── */
+		.pilv-tabs {
+			display: flex;
+			gap: 0;
+			margin-bottom: 24px;
+			border: 1.5px solid #dde8dd;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+		.pilv-tab {
+			flex: 1;
+			padding: 10px 14px;
+			background: #fafdfa;
+			border: none;
+			cursor: pointer;
+			font-size: 0.82rem;
+			font-weight: 600;
+			color: #666;
+			text-align: center;
+			transition: all 0.15s;
+			font-family: inherit;
+		}
+		.pilv-tab:not(:last-child) {
+			border-right: 1.5px solid #dde8dd;
+		}
+		.pilv-tab.active {
+			background: #2c6e3f;
+			color: #fff;
+		}
+		.pilv-tab-content { display: none; }
+		.pilv-tab-content.active { display: block; }
+
+		/* ── Calculate button ── */
+		.pilv-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 11px 26px;
+			background: #2c6e3f;
+			color: #fff;
+			border: none;
+			border-radius: 8px;
+			font-size: 0.88rem;
+			font-weight: 700;
+			cursor: pointer;
+			font-family: inherit;
+			transition: background 0.15s, transform 0.1s;
+			letter-spacing: 0.03em;
+		}
+		.pilv-btn:hover { background: #1a4a28; }
+		.pilv-btn:active { transform: scale(0.98); }
+		.pilv-btn-secondary {
+			background: transparent;
+			color: #2c6e3f;
+			border: 1.5px solid #2c6e3f;
+		}
+		.pilv-btn-secondary:hover { background: #f4f9f5; }
+
+		/* ── Result box ── */
+		.pilv-result {
+			display: none;
+			margin-top: 24px;
+			background: #f4f9f5;
+			border-left: 4px solid #2c6e3f;
+			border-radius: 0 8px 8px 0;
+			padding: 20px 24px;
+		}
+		.pilv-result.show { display: block; }
+		.pilv-result .result-title {
+			font-size: 0.72rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin-bottom: 12px;
+		}
+		.pilv-result-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 12px;
+		}
+		.pilv-result-item {
+			background: #fff;
+			border-radius: 8px;
+			padding: 14px 16px;
+			border: 1px solid #dde8dd;
+		}
+		.pilv-result-item .val {
+			font-size: 1.6rem;
+			font-weight: 800;
+			color: #1a4a28;
+			line-height: 1;
+			letter-spacing: -1px;
+		}
+		.pilv-result-item .unit {
+			font-size: 0.75rem;
+			color: #888;
+			margin-top: 3px;
+		}
+		.pilv-result-note {
+			font-size: 0.78rem;
+			color: #666;
+			margin-top: 12px;
+			line-height: 1.6;
+		}
+
+		/* ── Calendar result ── */
+		.pilv-calendar-result {
+			margin-top: 24px;
+			display: none;
+		}
+		.pilv-calendar-result.show { display: block; }
+		.pilv-timeline {
+			position: relative;
+			padding-left: 28px;
+		}
+		.pilv-timeline::before {
+			content: '';
+			position: absolute;
+			left: 9px;
+			top: 8px;
+			bottom: 8px;
+			width: 2px;
+			background: #dde8dd;
+		}
+		.pilv-timeline-item {
+			position: relative;
+			margin-bottom: 16px;
+			background: #fff;
+			border: 1px solid #dde8dd;
+			border-radius: 8px;
+			padding: 14px 16px;
+		}
+		.pilv-timeline-item::before {
+			content: '';
+			position: absolute;
+			left: -24px;
+			top: 18px;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background: #2c6e3f;
+			border: 2px solid #fff;
+			box-shadow: 0 0 0 2px #2c6e3f;
+		}
+		.pilv-timeline-item.highlight {
+			border-color: #2c6e3f;
+			background: #f4f9f5;
+		}
+		.pilv-timeline-item.highlight::before {
+			background: #1a4a28;
+			width: 16px;
+			height: 16px;
+			left: -26px;
+			top: 16px;
+		}
+		.pilv-timeline-item .tl-label {
+			font-size: 0.7rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin-bottom: 3px;
+		}
+		.pilv-timeline-item .tl-date {
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: #1a1a1a;
+		}
+		.pilv-timeline-item .tl-desc {
+			font-size: 0.78rem;
+			color: #777;
+			margin-top: 2px;
+		}
+
+		/* ── Dilution result table ── */
+		.pilv-dil-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 16px;
+			font-size: 0.88rem;
+		}
+		.pilv-dil-table th {
+			background: #2c6e3f;
+			color: #fff;
+			padding: 9px 14px;
+			text-align: left;
+			font-weight: 600;
+			font-size: 0.78rem;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+		.pilv-dil-table td {
+			padding: 10px 14px;
+			border-bottom: 1px solid #eef2ee;
+			color: #333;
+		}
+		.pilv-dil-table tr:last-child td { border-bottom: none; }
+		.pilv-dil-table tr:nth-child(even) td { background: #fafdfa; }
+		.pilv-dil-table td strong { color: #1a4a28; font-size: 1rem; }
+
+		/* ── Divider ── */
+		.pilv-section-label {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 48px 0 28px;
+		}
+		.pilv-section-label span {
+			font-size: 0.68rem;
+			font-weight: 800;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			white-space: nowrap;
+		}
+		.pilv-section-label::before,
+		.pilv-section-label::after {
+			content: '';
+			flex: 1;
+			height: 1px;
+			background: #dde8dd;
+		}
+
+		/* ── Row utility ── */
+		.pilv-row-2 {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 16px;
+		}
+		.pilv-row-3 {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 16px;
+		}
+		@media (max-width: 640px) {
+			.pilv-row-2, .pilv-row-3 { grid-template-columns: 1fr; }
+			.pilv-tools-hero h1 { font-size: 1.8rem; }
+			.pilv-calc-body { padding: 18px; }
+			.pilv-result-item .val { font-size: 1.3rem; }
+		}
+	
+		/* ── Field visualization ── */
+		.pilv-field-viz {
+			margin-top: 20px;
+			background: #f4f9f5;
+			border: 1.5px solid #dde8dd;
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+		}
+		.pilv-field-viz .viz-label {
+			font-size: 0.7rem;
+			font-weight: 800;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: #2c6e3f;
+			margin-bottom: 12px;
+		}
+		#pilv-field-canvas {
+			max-width: 100%;
+			border-radius: 6px;
+			display: block;
+			margin: 0 auto;
+		}
+		.pilv-unit-toggle {
+			display: inline-flex;
+			border: 1.5px solid #dde8dd;
+			border-radius: 7px;
+			overflow: hidden;
+			margin-bottom: 16px;
+		}
+		.pilv-unit-btn {
+			padding: 7px 16px;
+			border: none;
+			background: #fafdfa;
+			cursor: pointer;
+			font-size: 0.8rem;
+			font-weight: 600;
+			color: #666;
+			font-family: inherit;
+			transition: all 0.15s;
+		}
+		.pilv-unit-btn:not(:last-child) { border-right: 1.5px solid #dde8dd; }
+		.pilv-unit-btn.active { background: #2c6e3f; color: #fff; }
+
+		/* ── ICS download button ── */
+		.pilv-btn-ics {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 11px 22px;
+			background: #fff;
+			color: #1a73e8;
+			border: 1.5px solid #1a73e8;
+			border-radius: 8px;
+			font-size: 0.85rem;
+			font-weight: 700;
+			cursor: pointer;
+			font-family: inherit;
+			transition: all 0.15s;
+			text-decoration: none;
+			margin-top: 14px;
+		}
+		.pilv-btn-ics:hover { background: #e8f0fe; }
+		.pilv-cal-export {
+			margin-top: 20px;
+			padding: 18px 20px;
+			background: #f0f6ff;
+			border-left: 4px solid #1a73e8;
+			border-radius: 0 8px 8px 0;
+		}
+		.pilv-cal-export .export-title {
+			font-size: 0.72rem;
+			font-weight: 800;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: #1a73e8;
+			margin-bottom: 8px;
+		}
+		.pilv-cal-export p {
+			font-size: 0.82rem;
+			color: #555;
+			margin: 0 0 12px;
+			line-height: 1.5;
+		}
+		.pilv-export-btns {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			align-items: center;
+		}
+	
+		/* ── Spacing tweaks ── */
+		.pilv-section-label:first-of-type { margin-top: 8px; }
+		.pilv-section-label { margin-top: 32px; margin-bottom: 20px; }
+		/* ── Page tint ── */
+		body.stretched { background-color: #eef2f7 !important; }
+		#content, .content-wrap { background-color: #eef2f7 !important; }
+		#footer { background-color: #fff !important; }
+
+		/* ── Sticky category bar ── */
+		#pilv-sticky-bar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9000;
+			background: #2e5fa3;
+			color: #fff;
+			padding: 0 24px;
+			height: 36px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 0.72rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			transform: translateY(-100%);
+			transition: transform 0.25s ease;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+		}
+		#pilv-sticky-bar.visible {
+			transform: translateY(0);
+		}
+		#pilv-sticky-bar .sticky-links {
+			display: flex;
+			gap: 16px;
+		}
+		#pilv-sticky-bar .sticky-links a {
+			color: rgba(255,255,255,0.7);
+			text-decoration: none;
+			font-size: 0.68rem;
+			letters-spacing: 0.08em;
+			transition: color 0.15s;
+		}
+		#pilv-sticky-bar .sticky-links a:hover,
+		#pilv-sticky-bar .sticky-links a.current {
+			color: #fff;
+		}
+
+		/* ── Pastel calc card override ── */
+		.pilv-calc {
+			background: rgba(255,255,255,0.92);
+		}
+		.pilv-result {
+			background: #d0ddf5;
+			border-left-color: #2e5fa3;
+		}
+		.pilv-result .result-title {
+			color: #2e5fa3;
+		}
+		.pilv-section-label span {
+			color: #2e5fa3;
+		}
+		.pilv-section-label::before,
+		.pilv-section-label::after {
+			background: #d0ddf5;
+		}
+	</style>
+</head>
+<body class="stretched">
+
+<div id="wrapper">
+
+	<!-- ── Header ── -->
+	<header id="header" class="full-header transparent-header header-size-md" data-sticky-class="not-dark" data-responsive-class="not-dark" data-sticky-offset="full" data-sticky-offset-negative="auto">
+		<div id="header-wrap">
+			<div class="container">
+				<div class="header-row">
+					<div id="logo">
+						<a href="index.html">
+							<img class="logo-default" srcset="images/logo.png, images/logo@2x.png 2x" src="images/logo@2x.png" alt="Pilvicsa">
+							<img class="logo-dark" srcset="images/logo-dark.png, images/logo-dark@2x.png 2x" src="images/logo-dark@2x.png" alt="Pilvicsa">
+						</a>
+					</div>
+					<div class="primary-menu-trigger">
+						<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+							<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+						</button>
+					</div>
+					<nav class="primary-menu">
+						<ul class="menu-container">
+							<li class="menu-item"><a class="menu-link" href="index.html"><div>Inicio</div></a></li>
+							<li class="menu-item"><a class="menu-link" href="index.html#nuestraoferta"><div>Servicios</div></a>
+								<ul class="sub-menu-container" data-class="up-lg:not-dark">
+									<li class="menu-item"><a class="menu-link" href="#"><div>Semillas</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="#"><div>Esquejes</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="#"><div>Injertos</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="#"><div>Endurecimiento</div></a></li>
+								</ul>
+							</li>
+							<li class="menu-item"><a class="menu-link" href="#"><div>Productos</div></a>
+								<ul class="sub-menu-container" data-class="up-lg:not-dark">
+									<li class="menu-item"><a class="menu-link" href="producto-hortalizas.html"><div>Hortalizas</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-florescorte.html"><div>Flores de Corte</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-cultivoscosta.html"><div>Cultivos de Costa</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-frutalesforestales.html"><div>Frutales y Forestales</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-especies.html"><div>Especies y Aromáticas</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="productos-otras.html"><div>Cultivos Especiales</div></a></li>
+								</ul>
+							</li>
+							<li class="menu-item"><a class="menu-link" href="buscar.html"><div>Buscar</div></a></li>
+							<li class="menu-item"><a class="menu-link" href="herramientas-planificacion.html"><div>Herramientas</div></a>
+								<ul class="sub-menu-container" data-class="up-lg:not-dark">
+									<li class="menu-item"><a class="menu-link" href="herramientas-planificacion.html"><div>📋 Planificación</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="herramientas-cuidado.html"><div>🌿 Cuidado del Cultivo</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="herramientas-conversion.html"><div>📐 Conversión de Unidades</div></a></li>
+								</ul>
+							</li>
+							<li class="menu-item"><a class="menu-link" href="localizaciones.html"><div>Contactos y Preguntas</div></a>
+								<ul class="sub-menu-container" data-class="up-lg:not-dark">
+									<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+									<li class="menu-item" style="display:none"><a class="menu-link" href="#"><div>¿Preguntas Frecuentes?</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#latacunga"><div>Vivero Latacunga</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#santodomingo"><div>Vivero Santo Domingo</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#quito"><div>Despacho Quito</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#checa"><div>Despacho Checa</div></a></li>
+									<li class="menu-item"><a class="menu-link" href="localizaciones.html#otavalo"><div>Despacho Otavalo</div></a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="header-wrap-clone"></div>
+	</header>
+
+	
+	<!-- Sticky category bar -->
+	<div id="pilv-sticky-bar">
+		<span>📐 Herramientas — Conversión de Unidades</span>
+		<div class="sticky-links">
+			<a href="herramientas-planificacion.html" >Planificación</a>
+			<a href="herramientas-cuidado.html" >Cuidado</a>
+			<a href="herramientas-conversion.html" class='current'>Conversión</a>
+		</div>
+	</div>
+
+	<!-- page accent strip -->
+	<div style="height:6px;background:#2e5fa3;"></div>
+
+	<section id="content">
+		<div class="content-wrap">
+			<div class="container" style="padding-top:16px; padding-bottom:60px;">
+
+<!-- ══════════════════════════════════════════
+				     CALCULATOR 4 — UNIT CONVERSION
+				     ══════════════════════════════════════════ -->
+				<div id="conversion" style="scroll-margin-top:60px;">
+					<div class="pilv-section-label"><span>Referencia — Conversión de Unidades</span></div>
+
+					<div class="row justify-content-center">
+					<div class="col-lg-10">
+					<div class="pilv-calc">
+						<div class="pilv-calc-header">
+							<div class="icon">📐</div>
+							<div>
+								<h2>Conversión de Unidades Agrícolas</h2>
+								<p>Área, peso, volumen y longitud — unidades del campo al laboratorio. Descarga como imagen para el celular.</p>
+							</div>
+						</div>
+						<div class="pilv-calc-body">
+
+							<div class="pilv-row-2">
+								<div class="pilv-field">
+									<label>Categoría</label>
+									<select id="conv-cat" onchange="updateConvUnits()">
+										<option value="area">Área</option>
+										<option value="peso">Peso / Masa</option>
+										<option value="volumen">Volumen</option>
+										<option value="longitud">Longitud</option>
+									</select>
+								</div>
+								<div class="pilv-field">
+									<label>Unidad de origen</label>
+									<select id="conv-from" onchange="calcConversion()"></select>
+								</div>
+							</div>
+							<div class="pilv-row-2">
+								<div class="pilv-field">
+									<label>Cantidad a convertir</label>
+									<input type="number" id="conv-value" placeholder="ej. 1" min="0" step="any" oninput="calcConversion()">
+								</div>
+								<div class="pilv-field">
+									<label>Unidad de destino <span style="font-weight:400;color:#999;">(opcional — muestra todas si vacío)</span></label>
+									<select id="conv-to" onchange="calcConversion()">
+										<option value="">— Mostrar todas —</option>
+									</select>
+								</div>
+							</div>
+
+							<div id="conv-result" class="pilv-result" style="display:block;margin-top:0;">
+								<div class="result-title">Equivalencias</div>
+								<div id="conv-result-grid"></div>
+							</div>
+
+							<div style="margin-top:16px;">
+								<button class="pilv-btn" onclick="downloadConvImage()">📱 Descargar como imagen</button>
+								<canvas id="conv-card-canvas" style="display:none;"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				</div>
+				</div>
+				<!-- Disclaimer -->
+				<div style="text-align:center;padding:20px 0 40px;font-size:0.78rem;color:#888;line-height:1.7;">
+					Las calculadoras son herramientas de referencia. Consulte siempre con un agrónomo certificado<br>
+					antes de aplicar productos o realizar cambios en su planificación de cultivo.<br>
+					<a href="localizaciones.html" style="color:#2e5fa3;font-weight:600;">Contactar a un asesor Pilvicsa →</a>
+				</div>
+
+			</div>
+		</div>
+	</section>
+<!-- ── Footer ── -->
+	<footer id="footer" class="border-0" style="padding:30px 0;background-color:#FFF">
+		<div class="container">
+			<div class="footer-widgets-wrap">
+				<div class="row col-mb-50">
+					<div class="col-md-3">
+						<a href="index.html"><img src="images/logo@2x.png" alt="Pilvicsa" height="100" loading="lazy" style="margin-top:-30px"></a>
+					</div>
+					<div class="col-md-9">
+						<div class="row col-mb-30">
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Servicios</h4>
+									<ul>
+										<li><a href="#">Semillas</a></li>
+										<li><a href="#">Esquejes</a></li>
+										<li><a href="#">Injertos</a></li>
+										<li><a href="#">Endurecimiento Meristematico</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Productos</h4>
+									<ul>
+										<li><a href="producto-hortalizas.html">Hortalizas</a></li>
+										<li><a href="productos-florescorte.html">Flores de Corte</a></li>
+										<li><a href="productos-cultivoscosta.html">Cultivos de Costa</a></li>
+										<li><a href="productos-frutalesforestales.html">Frutales y Forestales</a></li>
+										<li><a href="productos-especies.html">Especies y Aromáticas</a></li>
+										<li><a href="productos-otras.html">Cultivos Especiales</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="widget widget_links widget-li-noicon">
+									<h4>Contactos y Preguntas</h4>
+									<ul>
+										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
+										<li style="display:none"><a href="#">¿Preguntas Frecuentes?</a></li>
+										<li><a href="localizaciones.html#latacunga">Vivero Latacunga</a></li>
+										<li><a href="localizaciones.html#santodomingo">Vivero Santo Domingo</a></li>
+										<li><a href="localizaciones.html#quito">Despacho Quito</a></li>
+										<li><a href="localizaciones.html#checa">Despacho Checa</a></li>
+										<li><a href="localizaciones.html#otavalo">Despacho Otavalo</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="line line-sm"></div>
+						<div class="row justify-content-between col-mb-30">
+							<div class="col-12 col-md-auto text-center text-md-start">
+								<small class="fw-light" style="color:#AAA">&copy; 2025 Todos Los derechos pertenecen a Pilvicsa</small>
+							</div>
+							<div class="col-12 col-md-auto text-center text-md-end">
+								<a href="https://www.facebook.com/piloneslavictoria/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
+								<a href="https://www.instagram.com/pilvicsa/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-instagram"><i class="bi-instagram"></i><i class="bi-instagram"></i></a>
+								<a href="https://www.linkedin.com/company/pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-linkedin"><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-linkedin-in"></i></a>
+								<a href="https://www.tiktok.com/@pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-tiktok"><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-tiktok"></i></a>
+								<a href="https://www.youtube.com/@pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-youtube"><i class="fa-brands fa-youtube"></i><i class="fa-brands fa-youtube"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div><!-- #wrapper end -->
+
+<div id="gotoTop" class="uil uil-angle-up"></div>
+<script src="js/plugins.min.js"></script>
+<script src="js/functions.bundle.js"></script>
+
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   HERRAMIENTAS PILVICSA — Calculator Logic
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Utility ── */
+function fmt(n, dec) {
+	return Number(n).toLocaleString('es-EC', {
+		minimumFractionDigits: dec || 0,
+		maximumFractionDigits: dec || 0
+	});
+}
+
+function addDays(date, days) {
+	var d = new Date(date);
+	d.setDate(d.getDate() + days);
+	return d;
+}
+
+function subDays(date, days) {
+	var d = new Date(date);
+	d.setDate(d.getDate() - days);
+	return d;
+}
+
+function fmtDate(d) {
+	var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+	var months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+	return days[d.getDay()] + ', ' + d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear();
+}
+
+function resultItem(val, unit) {
+	return '<div class="pilv-result-item"><div class="val">' + val + '</div><div class="unit">' + unit + '</div></div>';
+}
+
+/* ── Tab switcher ── */
+function switchTab(prefix, activeId) {
+	var allPanels = document.querySelectorAll('[id^="' + prefix + '-modo-"]');
+	allPanels.forEach(function(el) {
+		el.classList.toggle('active', el.id === activeId);
+	});
+	var allBtns = document.querySelectorAll('[data-prefix="' + prefix + '"] .pilv-tab');
+	allBtns.forEach(function(btn) {
+		btn.classList.toggle('active', btn.dataset.target === activeId);
+	});
+}
+
+
+/* ══════════════════════════════
+   UNIT SELECTOR
+   ══════════════════════════════ */
+var currentUnit = 'ha'; // ha | m2 | cuadra
+
+// 1 cuadra ecuatoriana = 0.698628 ha (approx 70m × 100m traditional measure)
+var CUADRA_TO_HA = 0.7;
+
+function setUnit(unit) {
+	currentUnit = unit;
+	var labels = { ha: 'Área de siembra (hectáreas)', m2: 'Área de siembra (metros cuadrados)', cuadra: 'Área de siembra (cuadras)' };
+	var hints  = { ha: '1 ha = 10,000 m²  ·  1 cuadra (Ec) ≈ 0.7 ha', m2: '1 m² = 0.0001 ha  ·  10,000 m² = 1 ha', cuadra: '1 cuadra ≈ 0.7 ha ≈ 7,000 m²' };
+	var ph     = { ha: 'ej. 2.5', m2: 'ej. 25000', cuadra: 'ej. 3.5' };
+	document.getElementById('dens-area-label').textContent = labels[unit];
+	document.getElementById('dens-area-hint').textContent  = hints[unit];
+	document.getElementById('dens-area').placeholder       = ph[unit];
+	document.getElementById('dens-area').value             = '';
+	['ha','m2','cuadra'].forEach(function(u) {
+		var btn = document.getElementById('unit-btn-' + u);
+		if (btn) btn.classList.toggle('active', u === unit);
+	});
+	// Hide results when unit changes
+	document.getElementById('dens-result-area').classList.remove('show');
+	var viz = document.getElementById('pilv-viz-wrap');
+	if (viz) viz.style.display = 'none';
+}
+
+function toHectares(val) {
+	if (currentUnit === 'ha')     return val;
+	if (currentUnit === 'm2')     return val / 10000;
+	if (currentUnit === 'cuadra') return val * CUADRA_TO_HA;
+	return val;
+}
+
+/* ══════════════════════════════
+   FIELD VISUALIZATION
+   ══════════════════════════════ */
+function drawField(hileras, plantas, densPerHa) {
+	var wrap = document.getElementById('pilv-viz-wrap');
+	var canvas = document.getElementById('pilv-field-canvas');
+	if (!wrap || !canvas) return;
+
+	wrap.style.display = 'block';
+	var ctx = canvas.getContext('2d');
+	var W = canvas.width;
+	var H = canvas.height;
+
+	// Determine how many rows/cols fit visually (cap for performance)
+	// We show a representative 10×10 patch maximum
+	var maxCols = Math.min(Math.ceil(10 / hileras), 30);
+	var maxRows = Math.min(Math.ceil(10 / plantas), 20);
+	// Scale so the patch fills the canvas nicely
+	var padX = 40, padY = 40;
+	var cellW = (W - padX * 2) / maxCols;
+	var cellH = (H - padY * 2) / maxRows;
+
+	// Background — soil color
+	ctx.fillStyle = '#c9a87c';
+	ctx.fillRect(0, 0, W, H);
+
+	// Green field rows
+	for (var row = 0; row < maxRows; row++) {
+		var y = padY + row * cellH + cellH / 2;
+		// Draw row line (hilera)
+		ctx.strokeStyle = 'rgba(44,110,63,0.15)';
+		ctx.lineWidth = 1;
+		ctx.beginPath();
+		ctx.moveTo(padX, y);
+		ctx.lineTo(W - padX, y);
+		ctx.stroke();
+
+		for (var col = 0; col < maxCols; col++) {
+			var x = padX + col * cellW + cellW / 2;
+			// Plant dot
+			var r = Math.min(cellW, cellH) * 0.28;
+			r = Math.max(3, Math.min(r, 12));
+			ctx.beginPath();
+			ctx.arc(x, y, r, 0, Math.PI * 2);
+			ctx.fillStyle = '#2c6e3f';
+			ctx.fill();
+			// Leaf highlight
+			ctx.beginPath();
+			ctx.arc(x - r*0.25, y - r*0.25, r * 0.4, 0, Math.PI * 2);
+			ctx.fillStyle = 'rgba(255,255,255,0.25)';
+			ctx.fill();
+		}
+	}
+
+	// Dimension arrows
+	ctx.fillStyle = '#1a1a1a';
+	ctx.font = 'bold 11px sans-serif';
+	ctx.textAlign = 'center';
+
+	// Horizontal arrow (hilera spacing)
+	if (maxCols >= 2) {
+		var ay = padY / 2;
+		var x1 = padX + cellW / 2;
+		var x2 = padX + cellW * 1.5;
+		ctx.strokeStyle = '#1a4a28';
+		ctx.lineWidth = 1.5;
+		ctx.beginPath(); ctx.moveTo(x1, ay); ctx.lineTo(x2, ay); ctx.stroke();
+		ctx.fillStyle = '#1a4a28';
+		ctx.fillText(hileras + ' m', (x1+x2)/2, ay - 4);
+	}
+	// Vertical arrow (plant spacing)
+	if (maxRows >= 2) {
+		var ax = padX / 2;
+		var y1 = padY + cellH / 2;
+		var y2 = padY + cellH * 1.5;
+		ctx.strokeStyle = '#1a4a28';
+		ctx.lineWidth = 1.5;
+		ctx.beginPath(); ctx.moveTo(ax, y1); ctx.lineTo(ax, y2); ctx.stroke();
+		ctx.textAlign = 'center';
+		ctx.save();
+		ctx.translate(ax - 4, (y1+y2)/2);
+		ctx.rotate(-Math.PI/2);
+		ctx.fillText(plantas + ' m', 0, 0);
+		ctx.restore();
+	}
+
+	// Legend top-right
+	ctx.fillStyle = 'rgba(0,0,0,0.55)';
+	ctx.font = '10px sans-serif';
+	ctx.textAlign = 'right';
+	ctx.fillText('Vista representativa — no a escala', W - 8, H - 8);
+
+	// Caption
+	var cap = document.getElementById('pilv-viz-caption');
+	if (cap) {
+		cap.textContent = 'Espaciamiento: ' + hileras + ' m entre hileras × ' + plantas + ' m entre plantas = ' + fmt(densPerHa) + ' plantas/ha';
+	}
+}
+
+/* ══════════════════════════════
+   CALCULATOR 1 — DENSITY
+   ══════════════════════════════ */
+
+function fillSpacingA() {
+	var val = document.getElementById('dens-crop-a').value;
+	if (!val || val === 'custom') return;
+	var parts = val.split(',');
+	document.getElementById('dens-hileras-a').value = parts[0];
+	document.getElementById('dens-plantas-a').value = parts[1];
+}
+
+function fillSpacingB() {
+	var val = document.getElementById('dens-crop-b').value;
+	if (!val || val === 'custom') return;
+	var parts = val.split(',');
+	document.getElementById('dens-hileras-b').value = parts[0];
+	document.getElementById('dens-plantas-b').value = parts[1];
+}
+
+function calcDensArea() {
+	var rawArea  = parseFloat(document.getElementById('dens-area').value);
+	var hileras  = parseFloat(document.getElementById('dens-hileras-a').value);
+	var plantas  = parseFloat(document.getElementById('dens-plantas-a').value);
+	var loss     = parseInt(document.getElementById('dens-loss-a').value) / 100;
+
+	if (!rawArea || !hileras || !plantas) { alert('Por favor completa todos los campos.'); return; }
+
+	// Convert input area to hectares
+	var area      = toHectares(rawArea);
+	var unitLabel = currentUnit === 'ha' ? rawArea + ' ha' : currentUnit === 'm2' ? fmt(rawArea) + ' m²' : rawArea + ' cuadras (' + area.toFixed(2) + ' ha)';
+
+	var areaM2       = area * 10000;
+	var densPerHa    = Math.round(10000 / (hileras * plantas));
+	var totalBase    = Math.round(areaM2 / (hileras * plantas));
+	var totalConLoss = Math.round(totalBase * (1 + loss));
+	var extraPlants  = totalConLoss - totalBase;
+
+	var grid = document.getElementById('dens-result-area-grid');
+	grid.innerHTML =
+		resultItem(fmt(densPerHa), 'plantas / hectárea') +
+		resultItem(fmt(totalBase), 'plantas necesarias') +
+		(loss > 0 ? resultItem(fmt(extraPlants), 'plantas de margen (+' + Math.round(loss*100) + '%)') : '') +
+		resultItem(fmt(totalConLoss), 'TOTAL a solicitar');
+
+	var note = document.getElementById('dens-result-area-note');
+	note.innerHTML = 'Para <strong>' + unitLabel + '</strong> con espaciamiento <strong>' + hileras + ' × ' + plantas + ' m</strong>: '
+		+ 'densidad de <strong>' + fmt(densPerHa) + ' plantas/ha</strong>. '
+		+ (loss > 0 ? 'Incluye <strong>' + Math.round(loss*100) + '% de margen</strong> por reposición. ' : '')
+		+ 'Solicite a Pilvicsa con al menos 14 días de anticipación.';
+
+	document.getElementById('dens-result-area').classList.add('show');
+
+	// Draw field visualization
+	drawField(hileras, plantas, densPerHa);
+}
+
+function calcDensPlants() {
+	var nPlants = parseInt(document.getElementById('dens-nplants').value);
+	var hileras = parseFloat(document.getElementById('dens-hileras-b').value);
+	var plantas = parseFloat(document.getElementById('dens-plantas-b').value);
+
+	if (!nPlants || !hileras || !plantas) { alert('Por favor completa todos los campos.'); return; }
+
+	var areaM2   = nPlants * hileras * plantas;
+	var areaHa   = areaM2 / 10000;
+	var densPerHa = Math.round(10000 / (hileras * plantas));
+
+	var grid = document.getElementById('dens-result-plants-grid');
+	grid.innerHTML =
+		resultItem(fmt(areaM2), 'm² requeridos') +
+		resultItem(fmt(areaHa, 2), 'hectáreas') +
+		resultItem(fmt(densPerHa), 'plantas / hectárea');
+
+	var note = document.getElementById('dens-result-plants-note');
+	note.innerHTML = '<strong>' + fmt(nPlants) + ' plantas</strong> con espaciamiento <strong>' + hileras + ' × ' + plantas + ' m</strong> requieren <strong>' + fmt(areaHa, 2) + ' ha</strong> (' + fmt(areaM2) + ' m²).';
+
+	document.getElementById('dens-result-plants').classList.add('show');
+}
+
+function resetDens() {
+	['dens-area','dens-hileras-a','dens-plantas-a','dens-nplants','dens-hileras-b','dens-plantas-b'].forEach(function(id) {
+		var el = document.getElementById(id);
+		if (el) el.value = '';
+	});
+	['dens-crop-a','dens-crop-b'].forEach(function(id) {
+		var el = document.getElementById(id);
+		if (el) el.selectedIndex = 0;
+	});
+	document.getElementById('dens-result-area').classList.remove('show');
+	document.getElementById('dens-result-plants').classList.remove('show');
+}
+
+/* ══════════════════════════════
+   CALCULATOR 2 — CALENDAR
+   ══════════════════════════════ */
+
+function fillCalDays() {
+	var val = document.getElementById('cal-crop').value;
+	var custom = document.getElementById('cal-custom-fields');
+	if (val === 'custom') {
+		custom.style.display = 'block';
+	} else {
+		custom.style.display = 'none';
+	}
+}
+
+function calcCalendar() {
+	var harvestStr  = document.getElementById('cal-harvest').value;
+	var cropVal     = document.getElementById('cal-crop').value;
+	var orderDays   = parseInt(document.getElementById('cal-order-days').value);
+
+	if (!harvestStr) { alert('Por favor selecciona la fecha de cosecha.'); return; }
+	if (!cropVal)    { alert('Por favor selecciona un cultivo.'); return; }
+
+	var fieldDays, nurseryDays, hardenDays;
+
+	if (cropVal === 'custom') {
+		fieldDays   = parseInt(document.getElementById('cal-field-days').value) || 0;
+		nurseryDays = parseInt(document.getElementById('cal-nursery-days').value) || 0;
+		hardenDays  = parseInt(document.getElementById('cal-harden-days').value) || 0;
+		if (!fieldDays || !nurseryDays) { alert('Por favor completa los días de campo y vivero.'); return; }
+	} else {
+		var parts   = cropVal.split(',');
+		fieldDays   = parseInt(parts[0]);
+		nurseryDays = parseInt(parts[1]);
+		hardenDays  = parseInt(parts[2]);
+		orderDays   = Math.max(orderDays, parseInt(parts[3]));
+	}
+
+	// Parse harvest date — add time to avoid timezone issues
+	var harvestDate    = new Date(harvestStr + 'T12:00:00');
+	var transplantDate = subDays(harvestDate, fieldDays);
+	var exitNursery    = subDays(transplantDate, hardenDays);
+	var seedDate       = subDays(exitNursery, nurseryDays);
+	var orderDate      = subDays(transplantDate, orderDays);
+
+	var timeline = document.getElementById('cal-timeline');
+	timeline.innerHTML = [
+		'<div class="pilv-timeline-item highlight">' +
+			'<div class="tl-label">📋 Fecha para solicitar a Pilvicsa</div>' +
+			'<div class="tl-date">' + fmtDate(orderDate) + '</div>' +
+			'<div class="tl-desc">Solicite sus plántulas con al menos ' + orderDays + ' días de anticipación al trasplante</div>' +
+		'</div>',
+		'<div class="pilv-timeline-item">' +
+			'<div class="tl-label">🌱 Siembra en vivero Pilvicsa</div>' +
+			'<div class="tl-date">' + fmtDate(seedDate) + '</div>' +
+			'<div class="tl-desc">Inicio de germinación — ' + nurseryDays + ' días en vivero</div>' +
+		'</div>',
+		hardenDays > 0 ? '<div class="pilv-timeline-item">' +
+			'<div class="tl-label">🏠 Endurecimiento / Salida del vivero</div>' +
+			'<div class="tl-date">' + fmtDate(exitNursery) + '</div>' +
+			'<div class="tl-desc">Período de endurecimiento — ' + hardenDays + ' días antes del trasplante</div>' +
+		'</div>' : '',
+		'<div class="pilv-timeline-item">' +
+			'<div class="tl-label">🚜 Trasplante al campo</div>' +
+			'<div class="tl-date">' + fmtDate(transplantDate) + '</div>' +
+			'<div class="tl-desc">Plántula va al campo — ' + fieldDays + ' días hasta cosecha</div>' +
+		'</div>',
+		'<div class="pilv-timeline-item highlight">' +
+			'<div class="tl-label">🌽 Cosecha objetivo</div>' +
+			'<div class="tl-date">' + fmtDate(harvestDate) + '</div>' +
+			'<div class="tl-desc">Fecha objetivo de cosecha ingresada</div>' +
+		'</div>'
+	].join('');
+
+	document.getElementById('cal-result').classList.add('show');
+
+	// Generate ICS and Google Calendar link
+	generateCalendarExport(harvestDate, transplantDate, seedDate, exitNursery, orderDate, hardenDays);
+}
+
+/* ── ICS Generation ── */
+function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+function toICSDate(d) {
+	return d.getFullYear() + '' + pad(d.getMonth()+1) + '' + pad(d.getDate());
+}
+
+function makeICSEvent(uid, summary, date, description) {
+	var ds = toICSDate(date);
+	var de = toICSDate(new Date(date.getTime() + 86400000)); // next day for all-day event end
+	return [
+		'BEGIN:VEVENT',
+		'UID:' + uid + '@pilvicsa.com.ec',
+		'DTSTART;VALUE=DATE:' + ds,
+		'DTEND;VALUE=DATE:' + de,
+		'SUMMARY:🌱 ' + summary,
+		'DESCRIPTION:' + description,
+		'CATEGORIES:Pilvicsa,Agricultura',
+		'BEGIN:VALARM',
+		'TRIGGER:-P1D',
+		'ACTION:DISPLAY',
+		'DESCRIPTION:Recordatorio: ' + summary,
+		'END:VALARM',
+		'END:VEVENT'
+	].join('\r\n');
+}
+
+function generateCalendarExport(harvestDate, transplantDate, seedDate, exitNursery, orderDate, hardenDays) {
+	var ts = Date.now();
+	var cropLabel = document.getElementById('cal-crop');
+	var cropName  = cropLabel.options[cropLabel.selectedIndex].text.split('(')[0].trim();
+	if (cropLabel.value === 'custom') cropName = 'Cultivo personalizado';
+
+	var events = [
+		makeICSEvent('order-'+ts, 'Solicitar plántulas a Pilvicsa — ' + cropName, orderDate,
+			'Fecha límite para pedir las plántulas de ' + cropName + ' a Pilvicsa. Tel: 032 235 011'),
+		makeICSEvent('seed-'+ts, 'Siembra en vivero Pilvicsa — ' + cropName, seedDate,
+			'Fecha estimada de siembra en el vivero para ' + cropName),
+	];
+	if (hardenDays > 0) {
+		events.push(makeICSEvent('harden-'+ts, 'Endurecimiento — ' + cropName, exitNursery,
+			'Inicio de endurecimiento de plántulas de ' + cropName));
+	}
+	events.push(makeICSEvent('transplant-'+ts, 'Trasplante al campo — ' + cropName, transplantDate,
+		'Fecha de trasplante al campo de ' + cropName));
+	events.push(makeICSEvent('harvest-'+ts, 'Cosecha objetivo — ' + cropName, harvestDate,
+		'Fecha objetivo de cosecha de ' + cropName));
+
+	var ics = [
+		'BEGIN:VCALENDAR',
+		'VERSION:2.0',
+		'PRODID:-//Pilvicsa//Calendario de Produccion//ES',
+		'CALSCALE:GREGORIAN',
+		'METHOD:PUBLISH',
+		'X-WR-CALNAME:Pilvicsa — ' + cropName,
+		'X-WR-TIMEZONE:America/Guayaquil'
+	].join('\r\n') + '\r\n' + events.join('\r\n') + '\r\nEND:VCALENDAR';
+
+	// Create downloadable blob
+	var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+	var url  = URL.createObjectURL(blob);
+	var link = document.getElementById('cal-ics-link');
+	link.href = url;
+	link.download = 'pilvicsa-' + cropName.toLowerCase().replace(/\s+/g,'-') + '.ics';
+
+	// Google Calendar link (uses the order date as the main event)
+	function gcalDate(d) { return d.getFullYear() + '' + pad(d.getMonth()+1) + '' + pad(d.getDate()); }
+	var gcalTitle = encodeURIComponent('Solicitar plántulas Pilvicsa — ' + cropName);
+	var gcalDates = gcalDate(orderDate) + '/' + gcalDate(new Date(orderDate.getTime() + 86400000));
+	var gcalDesc  = encodeURIComponent('Solicitar plántulas de ' + cropName + ' a Pilvicsa.\nTel: 032 235 011\nwww.pilvicsa.com.ec');
+	var gcalUrl   = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + gcalTitle + '&dates=' + gcalDates + '&details=' + gcalDesc;
+	document.getElementById('cal-google-link').href = gcalUrl;
+
+	// Show export block
+	document.getElementById('cal-export-block').style.display = 'block';
+}
+
+function resetCal() {
+	document.getElementById('cal-harvest').value = '';
+	document.getElementById('cal-crop').selectedIndex = 0;
+	document.getElementById('cal-custom-fields').style.display = 'none';
+	document.getElementById('cal-result').classList.remove('show');
+	document.getElementById('cal-export-block').style.display = 'none';
+	// Revoke any object URL
+	var link = document.getElementById('cal-ics-link');
+	if (link && link.href.startsWith('blob:')) URL.revokeObjectURL(link.href);
+}
+
+/* ══════════════════════════════
+   CALCULATOR 3 — DILUTION
+   ══════════════════════════════ */
+
+function fillDilProduct() {
+	var val = document.getElementById('dil-type').value;
+	var custom = document.getElementById('dil-custom-fields');
+	custom.style.display = (val === 'custom') ? 'block' : 'none';
+}
+
+function calcDilution() {
+	var typeVal  = document.getElementById('dil-type').value;
+	var volume   = parseFloat(document.getElementById('dil-volume').value);
+	var areaVal  = parseFloat(document.getElementById('dil-area').value) || 0;
+	var areaUnit = document.getElementById('dil-area-unit').value;
+
+	if (!typeVal) { alert('Por favor selecciona un tipo de producto.'); return; }
+	if (!volume)  { alert('Por favor ingresa el volumen de agua.'); return; }
+
+	var dose, unit, formulation;
+
+	if (typeVal === 'custom') {
+		dose        = parseFloat(document.getElementById('dil-custom-dose').value);
+		unit        = document.getElementById('dil-custom-unit').value;
+		formulation = document.getElementById('dil-custom-type').value;
+		if (!dose) { alert('Por favor ingresa la dosis del producto.'); return; }
+	} else {
+		var parts   = typeVal.split(',');
+		dose        = parseFloat(parts[0]);
+		unit        = parts[1];
+		formulation = parts[2];
+	}
+
+	// Normalize to dose per liter
+	var dosePerLiter = dose;
+	if (unit === 'cc/100L' || unit === 'g/100L') dosePerLiter = dose / 100;
+
+	var totalProduct = dosePerLiter * volume;
+	var unitLabel    = (formulation === 'liquid') ? 'cc (ml)' : 'gramos';
+	var unitShort    = (formulation === 'liquid') ? 'cc' : 'g';
+
+	// Coverage (rough: 200L/ha field, 100L/ha greenhouse)
+	var coverageHa   = volume / 200;
+	var coverageM2   = coverageHa * 10000;
+
+	// How many mixes needed for the area
+	var mixesNeeded = '';
+	if (areaVal > 0) {
+		var areaHa   = areaUnit === 'ha' ? areaVal : areaVal / 10000;
+		var totalVol = areaHa * 200; // 200L/ha standard
+		var mixes    = Math.ceil(totalVol / volume);
+		var totalProd = dosePerLiter * totalVol;
+		mixesNeeded  = '<tr><td>Área a tratar</td><td><strong>' + fmt(areaVal) + ' ' + areaUnit + '</strong></td></tr>'
+			+ '<tr><td>Volumen total necesario</td><td><strong>' + fmt(totalVol) + ' litros</strong></td></tr>'
+			+ '<tr><td>Mezclas necesarias</td><td><strong>' + mixes + ' mezcla' + (mixes > 1 ? 's' : '') + '</strong> de ' + fmt(volume) + ' L</td></tr>'
+			+ '<tr><td>Producto total requerido</td><td><strong>' + fmt(totalProd, 1) + ' ' + unitShort + '</strong></td></tr>';
+	}
+
+	var table = document.getElementById('dil-table');
+	table.innerHTML =
+		'<thead><tr><th>Parámetro</th><th>Resultado</th></tr></thead>' +
+		'<tbody>' +
+		'<tr><td>Volumen de mezcla</td><td><strong>' + fmt(volume) + ' litros</strong></td></tr>' +
+		'<tr><td>Dosis aplicada</td><td><strong>' + dose + ' ' + unit + '</strong></td></tr>' +
+		'<tr><td>Producto a agregar</td><td><strong>' + fmt(totalProduct, 1) + ' ' + unitLabel + '</strong></td></tr>' +
+		'<tr><td>Cobertura estimada (campo)</td><td><strong>' + fmt(coverageHa, 2) + ' ha</strong> (' + fmt(coverageM2) + ' m²) a 200 L/ha</td></tr>' +
+		mixesNeeded +
+		'</tbody>';
+
+	var note = document.getElementById('dil-note');
+	note.innerHTML = '⚠️ Siempre use equipo de protección (guantes, mascarilla y gafas) al preparar agroquímicos. '
+		+ 'La cobertura estimada asume aplicación estándar de 200 L/ha. '
+		+ 'Ajuste según el equipo de aspersión y tipo de cultivo. '
+		+ '<a href="localizaciones.html" style="color:#2c6e3f;">Consulte con su asesor Pilvicsa.</a>';
+
+	document.getElementById('dil-result').classList.add('show');
+}
+
+function resetDil() {
+	document.getElementById('dil-type').selectedIndex = 0;
+	document.getElementById('dil-volume').value = '';
+	document.getElementById('dil-area').value = '';
+	document.getElementById('dil-custom-fields').style.display = 'none';
+	document.getElementById('dil-result').classList.remove('show');
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CALCULATOR 4 — UNIT CONVERSION
+   ══════════════════════════════════════════════════════════════ */
+
+var CONV_DATA = {
+	area: {
+		units: ['Hectárea (ha)', 'Metro cuadrado (m²)', 'Cuadra ecuatoriana', 'Acre', 'Kilómetro cuadrado (km²)'],
+		keys:  ['ha', 'm2', 'cuadra', 'acre', 'km2'],
+		toBase: { ha:1, m2:0.0001, cuadra:0.7, acre:0.404686, km2:100 }, // base = ha
+		fmt: ['4','0','2','4','4']
+	},
+	peso: {
+		units: ['Kilogramo (kg)', 'Gramo (g)', 'Quintal (qq)', 'Libra (lb)', 'Tonelada métrica (t)', 'Milligramo (mg)'],
+		keys:  ['kg','g','qq','lb','t','mg'],
+		toBase: { kg:1, g:0.001, qq:45.3592, lb:0.453592, t:1000, mg:0.000001 }, // base = kg
+		fmt: ['3','0','4','4','4','0']
+	},
+	volumen: {
+		units: ['Litro (L)', 'Mililitro (ml)', 'Galón (gal)', 'Metro cúbico (m³)', 'Centímetro cúbico (cc)'],
+		keys:  ['L','ml','gal','m3','cc'],
+		toBase: { L:1, ml:0.001, gal:3.78541, m3:1000, cc:0.001 }, // base = L
+		fmt: ['3','0','3','3','0']
+	},
+	longitud: {
+		units: ['Metro (m)', 'Centímetro (cm)', 'Kilómetro (km)', 'Vara (vara)', 'Pulgada (in)', 'Pie (ft)'],
+		keys:  ['m','cm','km','vara','in','ft'],
+		toBase: { m:1, cm:0.01, km:1000, vara:0.836, in:0.0254, ft:0.3048 }, // base = m
+		fmt: ['4','2','6','4','4','4']
+	}
+};
+
+function updateConvUnits() {
+	var cat  = document.getElementById('conv-cat').value;
+	var data = CONV_DATA[cat];
+	var selFrom = document.getElementById('conv-from');
+	var selTo   = document.getElementById('conv-to');
+	var opts = data.units.map(function(u, i) {
+		return '<option value="' + data.keys[i] + '">' + u + '</option>';
+	}).join('');
+	selFrom.innerHTML = opts;
+	selTo.innerHTML   = '<option value="">— Mostrar todas —</option>' + opts;
+	calcConversion();
+}
+
+function calcConversion() {
+	var cat   = document.getElementById('conv-cat').value;
+	var val   = parseFloat(document.getElementById('conv-value').value);
+	var from  = document.getElementById('conv-from').value;
+	var toSel = document.getElementById('conv-to');
+	var toKey = toSel ? toSel.value : '';
+	var data  = CONV_DATA[cat];
+	var grid  = document.getElementById('conv-result-grid');
+
+	if (!val && val !== 0) {
+		grid.innerHTML = '<p style="color:#999;font-size:0.85rem;">Ingresa un valor para ver las equivalencias.</p>';
+		return;
+	}
+	if (!from) { grid.innerHTML = '<p style="color:#999;font-size:0.85rem;">Selecciona la unidad de origen.</p>'; return; }
+
+	var inBase = val * data.toBase[from];
+
+	// If a specific "To" unit is selected, show only that result prominently
+	if (toKey && toKey !== from) {
+		var result = inBase / data.toBase[toKey];
+		var idx    = data.keys.indexOf(toKey);
+		var dp     = parseInt(data.fmt[idx]);
+		var disp   = result < 0.001 ? result.toExponential(2) : result.toLocaleString('es-EC', {minimumFractionDigits:0, maximumFractionDigits:dp});
+		var fromLabel = data.units[data.keys.indexOf(from)];
+		var toLabel   = data.units[idx];
+		grid.innerHTML =
+			'<div style="text-align:center;padding:20px 0;">' +
+			'<div style="font-size:0.75rem;color:#888;margin-bottom:6px;">' + val.toLocaleString('es-EC') + ' ' + fromLabel + ' equivale a</div>' +
+			'<div style="font-size:2.4rem;font-weight:800;color:#1a4a28;letter-spacing:-1px;">' + disp + '</div>' +
+			'<div style="font-size:1rem;color:#555;margin-top:4px;">' + toLabel + '</div>' +
+			'<div style="margin-top:16px;font-size:0.72rem;color:#aaa;">También: <a href="#" onclick="document.getElementById(\'conv-to\').value=\'\';calcConversion();return false;" style="color:#2c6e3f;">ver todas las equivalencias</a></div>' +
+			'</div>';
+		return;
+	}
+
+	// Show all equivalences
+	var html_out = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">';
+	data.keys.forEach(function(key, i) {
+		if (key === from) return;
+		var result = inBase / data.toBase[key];
+		var dp     = parseInt(data.fmt[i]);
+		var disp   = result < 0.001 ? result.toExponential(2) : result.toLocaleString('es-EC', {minimumFractionDigits:0, maximumFractionDigits:dp});
+		html_out += '<div class="pilv-result-item" style="cursor:pointer;" onclick="document.getElementById(\'conv-to\').value=\''+key+'\';calcConversion();">'
+			+ '<div class="val" style="font-size:1.2rem;">' + disp + '</div>'
+			+ '<div class="unit">' + data.units[i] + '</div>'
+			+ '</div>';
+	});
+	html_out += '</div><div style="font-size:0.72rem;color:#aaa;margin-top:8px;text-align:center;">Haz clic en un resultado para verlo en grande</div>';
+	grid.innerHTML = html_out;
+}
+
+function downloadConvImage() {
+	var cat  = document.getElementById('conv-cat').value;
+	var val  = parseFloat(document.getElementById('conv-value').value);
+	var from = document.getElementById('conv-from').value;
+	var data = CONV_DATA[cat];
+	if (!val && val !== 0) { alert('Ingresa un valor primero.'); return; }
+
+	var fromLabel = data.units[data.keys.indexOf(from)];
+	var inBase    = val * data.toBase[from];
+	var lines     = [];
+	data.keys.forEach(function(key, i) {
+		if (key === from) return;
+		var result = inBase / data.toBase[key];
+		var dp     = parseInt(data.fmt[i]);
+		var disp   = result < 0.001 ? result.toExponential(2) : result.toLocaleString('es-EC', {minimumFractionDigits:0, maximumFractionDigits:dp});
+		lines.push({ val: disp, unit: data.units[i] });
+	});
+
+	var W = 540, rowH = 52, padT = 130, padB = 60;
+	var H = padT + lines.length * rowH + padB;
+	var canvas = document.getElementById('conv-card-canvas');
+	canvas.width = W; canvas.height = H;
+	var ctx = canvas.getContext('2d');
+
+	// Background
+	ctx.fillStyle = '#f4f9f5';
+	ctx.fillRect(0, 0, W, H);
+	// Header bar
+	ctx.fillStyle = '#2c6e3f';
+	ctx.fillRect(0, 0, W, 100);
+	// Logo text
+	ctx.fillStyle = '#fff';
+	ctx.font = 'bold 22px sans-serif';
+	ctx.textAlign = 'center';
+	ctx.fillText('Pilvicsa — Conversión de Unidades', W/2, 38);
+	ctx.font = '15px sans-serif';
+	ctx.fillStyle = 'rgba(255,255,255,0.85)';
+	ctx.fillText(val.toLocaleString('es-EC') + ' ' + fromLabel + ' equivale a:', W/2, 68);
+	ctx.font = '12px sans-serif';
+	ctx.fillStyle = 'rgba(255,255,255,0.6)';
+	ctx.fillText('pilvicsa.com.ec/herramientas.html', W/2, 90);
+
+	// Rows
+	lines.forEach(function(line, i) {
+		var y = padT + i * rowH;
+		ctx.fillStyle = i % 2 === 0 ? '#fff' : '#f0f7f0';
+		ctx.fillRect(20, y, W - 40, rowH - 4);
+		ctx.fillStyle = '#1a4a28';
+		ctx.font = 'bold 18px sans-serif';
+		ctx.textAlign = 'left';
+		ctx.fillText(line.val, 36, y + 31);
+		ctx.fillStyle = '#666';
+		ctx.font = '13px sans-serif';
+		ctx.textAlign = 'right';
+		ctx.fillText(line.unit, W - 36, y + 31);
+	});
+
+	// Footer
+	ctx.fillStyle = '#aaa';
+	ctx.font = '11px sans-serif';
+	ctx.textAlign = 'center';
+	ctx.fillText('Generado por Pilvicsa Herramientas · ' + new Date().toLocaleDateString('es-EC'), W/2, H - 20);
+
+	var link = document.createElement('a');
+	link.download = 'conversion-pilvicsa.png';
+	link.href = canvas.toDataURL('image/png');
+	link.click();
+}
+
+// Initialize conversion on page load
+window.addEventListener('DOMContentLoaded', function() {
+	updateConvUnits();
+	calcConversion();
+});
+
+
+/* ══════════════════════════════════════════════════════════════
+   CALCULATOR 5 — CROP ROTATION
+   ══════════════════════════════════════════════════════════════ */
+
+var ROT_DB = {
+	tomate:   { fam:'Solanaceae', label:'Tomate', days:80, color:'#e74c3c',
+		avoid:['pimiento','papa'], next:['brocoli','lechuga','maiz','zanahoria','frejol'],
+		notes:'Evitar después de solanáceas. Rotar con crucíferas o leguminosas.' },
+	pimiento:  { fam:'Solanaceae', label:'Pimiento', days:90, color:'#e67e22',
+		avoid:['tomate','papa'], next:['lechuga','maiz','zanahoria','frejol','brocoli'],
+		notes:'Misma familia que el tomate. No repetir en el mismo lote por 2–3 ciclos.' },
+	brocoli:  { fam:'Brassicaceae', label:'Brócoli/Coliflor', days:75, color:'#27ae60',
+		avoid:['brocoli'], next:['tomate','pimiento','cebolla','zanahoria','papa'],
+		notes:'Crucífera — mejora la estructura del suelo. No repetir seguido.' },
+	lechuga:  { fam:'Asteraceae', label:'Lechuga/Espinaca', days:60, color:'#2ecc71',
+		avoid:[], next:['tomate','zanahoria','cebolla','brocoli'],
+		notes:'Cultivo liviano. Compatible con la mayoría de sucesores.' },
+	cebolla:  { fam:'Amaryllidaceae', label:'Cebolla/Ajo', days:90, color:'#9b59b6',
+		avoid:['cebolla'], next:['zanahoria','lechuga','pepino','tomate','brocoli'],
+		notes:'Allium — repele plagas. Excelente precedente para la mayoría de cultivos.' },
+	zanahoria:{ fam:'Apiaceae', label:'Zanahoria/Remolacha', days:90, color:'#e67e22',
+		avoid:[], next:['tomate','lechuga','brocoli','frejol','cebolla'],
+		notes:'Raíz profunda — mejora drenaje. Buena para seguir de hoja o solanáceas.' },
+	pepino:   { fam:'Cucurbitaceae', label:'Pepino/Melón/Sandía', days:80, color:'#1abc9c',
+		avoid:['pepino'], next:['lechuga','cebolla','brocoli','zanahoria','frejol'],
+		notes:'Cucurbitácea — rotar cada 2–3 ciclos. Evitar repetir con cucurbitáceas.' },
+	maiz:     { fam:'Poaceae', label:'Maíz', days:120, color:'#f1c40f',
+		avoid:[], next:['frejol','arveja','brocoli','tomate','lechuga'],
+		notes:'Gramínea. Excelente precursor — agota N pero deja buen rastrojo.' },
+	papa:     { fam:'Solanaceae', label:'Papa', days:90, color:'#95a5a6',
+		avoid:['tomate','pimiento'], next:['maiz','brocoli','lechuga','frejol','zanahoria'],
+		notes:'Solanácea. Muy exigente en suelo. Rotar obligatoriamente.' },
+	frejol:   { fam:'Fabaceae', label:'Fréjol/Chocho', days:70, color:'#e8a87c',
+		avoid:[], next:['tomate','maiz','brocoli','pimiento','zanahoria'],
+		notes:'Leguminosa — fija nitrógeno. Ideal como cultivo de transición.' },
+	arveja:   { fam:'Fabaceae', label:'Arveja/Habas', days:90, color:'#5dade2',
+		avoid:[], next:['tomate','brocoli','lechuga','zanahoria','maiz'],
+		notes:'Leguminosa — enriquece el suelo. Excelente para preceder solanáceas.' },
+	gerbera:  { fam:'Asteraceae', label:'Gerbera', days:110, color:'#e91e63',
+		avoid:['gerbera'], next:['lechuga','brocoli','frejol'],
+		notes:'Flor de corte. Rotar con cultivos de raíz o leguminosas.' },
+	clavel:   { fam:'Caryophyllaceae', label:'Clavel', days:90, color:'#f48fb1',
+		avoid:['clavel'], next:['lechuga','brocoli','zanahoria','frejol'],
+		notes:'Flor de corte. Rotar con cultivos anuales para romper ciclos de patógenos.' }
+};
+
+function calcRotation() {
+	var cropKey  = document.getElementById('rot-crop').value;
+	var startStr = document.getElementById('rot-start').value;
+	var nPlots   = parseInt(document.getElementById('rot-plots').value);
+	if (!cropKey)  { alert('Por favor selecciona un cultivo.'); return; }
+	if (!startStr) { alert('Por favor ingresa la fecha de inicio.'); return; }
+
+	var crop     = ROT_DB[cropKey];
+	var startDate = new Date(startStr + 'T12:00:00');
+	var result   = document.getElementById('rot-result');
+	var grid     = document.getElementById('rot-grid');
+	var warn     = document.getElementById('rot-warning');
+
+	// Build rotation sequence (current crop + nPlots-1 successors)
+	var sequence = [cropKey];
+	var avoidSet = [cropKey];
+	for (var i = 1; i < nPlots + 3; i++) {
+		var prev  = sequence[sequence.length - 1];
+		var prevC = ROT_DB[prev];
+		// Pick first suitable next crop
+		var next  = null;
+		for (var j = 0; j < prevC.next.length; j++) {
+			var candidate = prevC.next[j];
+			if (avoidSet.slice(-2).indexOf(candidate) === -1) { // avoid last 2
+				next = candidate;
+				break;
+			}
+		}
+		if (!next) next = prevC.next[0]; // fallback
+		sequence.push(next);
+		avoidSet.push(next);
+	}
+
+	// Assign each lote a staggered starting position in the sequence
+	var lotes = [];
+	for (var l = 0; l < nPlots; l++) {
+		var loteSeq = [];
+		var currentDate = new Date(startDate);
+		for (var s = 0; s < 4; s++) { // 4 cycles
+			var idx   = (l + s) % sequence.length;
+			var cKey  = sequence[idx];
+			var cData = ROT_DB[cKey];
+			var endDate = addDays(currentDate, cData.days);
+			loteSeq.push({ key:cKey, data:cData, start:new Date(currentDate), end:new Date(endDate) });
+			currentDate = addDays(endDate, 14); // 2 week break
+		}
+		lotes.push(loteSeq);
+	}
+
+	// Render grid
+	grid.innerHTML = '';
+	lotes.forEach(function(lote, li) {
+		var card = document.createElement('div');
+		card.style.cssText = 'background:#fff;border:1px solid #dde8dd;border-radius:8px;overflow:hidden;';
+		var header = '<div style="background:#1a4a28;padding:10px 14px;color:#fff;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Lote ' + (li+1) + '</div>';
+		var rows   = lote.map(function(cycle, ci) {
+			var c = cycle.data;
+			return '<div style="padding:10px 14px;border-bottom:1px solid #eef2ee;display:flex;align-items:center;gap:10px;">'
+				+ '<div style="width:10px;height:10px;border-radius:50%;background:' + c.color + ';flex-shrink:0;"></div>'
+				+ '<div><div style="font-weight:600;font-size:0.9rem;">' + c.label + '</div>'
+				+ '<div style="font-size:0.72rem;color:#888;">' + fmtDate(cycle.start) + ' → ' + fmtDate(cycle.end) + '</div></div></div>';
+		}).join('');
+		card.innerHTML = header + rows;
+		grid.appendChild(card);
+	});
+
+	// Warnings
+	var warnText = '';
+	crop.avoid.forEach(function(av) {
+		if (ROT_DB[av]) warnText += '⚠️ No plantar <strong>' + ROT_DB[av].label + '</strong> en los lotes anteriores de ' + crop.label + '. ';
+	});
+	if (warnText) { warn.innerHTML = warnText; warn.style.display = 'block'; }
+	else warn.style.display = 'none';
+
+	result.classList.add('show');
+
+	// Generate ICS
+	var icsEvents = [];
+	var ts = Date.now();
+	lotes.forEach(function(lote, li) {
+		lote.forEach(function(cycle, ci) {
+			icsEvents.push(makeICSEvent(
+				'rot-L' + li + 'C' + ci + '-' + ts,
+				'Lote ' + (li+1) + ': ' + cycle.data.label,
+				cycle.start,
+				'Cultivo: ' + cycle.data.label + '\nFamilia: ' + cycle.data.fam + '\n' + cycle.data.notes
+			));
+		});
+	});
+	var ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pilvicsa//Rotacion//ES',
+		'CALSCALE:GREGORIAN','X-WR-CALNAME:Pilvicsa — Rotación de Cultivos'].join('\r\n')
+		+ '\r\n' + icsEvents.join('\r\n') + '\r\nEND:VCALENDAR';
+	var blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+	document.getElementById('rot-ics-link').href = URL.createObjectURL(blob);
+
+	// Store lotes for image download
+	window._rotLotes = lotes;
+}
+
+function downloadRotImage() {
+	if (!window._rotLotes) { alert('Genera el plan primero.'); return; }
+	var lotes = window._rotLotes;
+	var cropKey = document.getElementById('rot-crop').value;
+	var crop    = ROT_DB[cropKey];
+	var W = 540, rowH = 44, headerH = 100, loteHeaderH = 36, padB = 50;
+	var totalRows = lotes.reduce(function(s, l) { return s + l.length; }, 0);
+	var H = headerH + lotes.length * loteHeaderH + totalRows * rowH + padB;
+
+	var canvas = document.getElementById('rot-canvas');
+	canvas.width = W; canvas.height = H;
+	var ctx = canvas.getContext('2d');
+
+	ctx.fillStyle = '#f4f9f5';
+	ctx.fillRect(0, 0, W, H);
+	ctx.fillStyle = '#1a4a28';
+	ctx.fillRect(0, 0, W, headerH);
+	ctx.fillStyle = '#fff';
+	ctx.font = 'bold 20px sans-serif';
+	ctx.textAlign = 'center';
+	ctx.fillText('Pilvicsa — Rotación de Cultivos', W/2, 36);
+	ctx.font = '14px sans-serif';
+	ctx.fillStyle = 'rgba(255,255,255,0.8)';
+	ctx.fillText('Cultivo inicial: ' + crop.label + ' · ' + lotes.length + ' lotes', W/2, 62);
+	ctx.font = '11px sans-serif';
+	ctx.fillStyle = 'rgba(255,255,255,0.55)';
+	ctx.fillText('pilvicsa.com.ec/herramientas.html', W/2, 88);
+
+	var y = headerH;
+	lotes.forEach(function(lote, li) {
+		ctx.fillStyle = '#2c6e3f';
+		ctx.fillRect(0, y, W, loteHeaderH);
+		ctx.fillStyle = '#fff';
+		ctx.font = 'bold 13px sans-serif';
+		ctx.textAlign = 'left';
+		ctx.fillText('  LOTE ' + (li+1), 20, y + 23);
+		y += loteHeaderH;
+		lote.forEach(function(cycle, ci) {
+			ctx.fillStyle = ci % 2 === 0 ? '#fff' : '#f4f9f5';
+			ctx.fillRect(0, y, W, rowH);
+			ctx.fillStyle = cycle.data.color;
+			ctx.beginPath(); ctx.arc(24, y + rowH/2, 7, 0, Math.PI*2); ctx.fill();
+			ctx.fillStyle = '#1a1a1a';
+			ctx.font = 'bold 14px sans-serif';
+			ctx.textAlign = 'left';
+			ctx.fillText(cycle.data.label, 40, y + 20);
+			ctx.font = '12px sans-serif';
+			ctx.fillStyle = '#888';
+			ctx.fillText(fmtDate(cycle.start) + ' → ' + fmtDate(cycle.end), 40, y + 36);
+			y += rowH;
+		});
+	});
+
+	ctx.fillStyle = '#bbb';
+	ctx.font = '11px sans-serif';
+	ctx.textAlign = 'center';
+	ctx.fillText('Generado por Pilvicsa · ' + new Date().toLocaleDateString('es-EC'), W/2, H - 16);
+
+	var link = document.createElement('a');
+	link.download = 'rotacion-pilvicsa.png';
+	link.href = canvas.toDataURL('image/png');
+	link.click();
+}
+
+function resetRot() {
+	document.getElementById('rot-crop').selectedIndex = 0;
+	document.getElementById('rot-start').value = '';
+	document.getElementById('rot-result').classList.remove('show');
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   CALCULATOR 6 — FERTILIZATION & FUMIGATION
+   ══════════════════════════════════════════════════════════════ */
+
+var FF_PROGRAMS = {
+	tomate: {
+		label: 'Tomate', totalDays: 80,
+		apps: [
+			{ day:0,  type:'fert',  icon:'🌱', label:'Enraizamiento', product:'Ácido húmico + Calcio foliar', dose:'2 cc/L', notes:'Aplicar al trasplante. Favorece el establecimiento de raíces.' },
+			{ day:7,  type:'fumig', icon:'🦟', label:'Control preventivo', product:'Imidacloprid', dose:'0.5 cc/L', notes:'Prevención de mosca blanca y trips en etapa vegetativa.' },
+			{ day:14, type:'fert',  icon:'💧', label:'Fertilización vegetativa', product:'N:P:K 20-20-20', dose:'3 g/L', notes:'Alto nitrógeno para crecimiento foliar activo.' },
+			{ day:21, type:'fumig', icon:'🍄', label:'Prevención fungal', product:'Cobre hidróxido', dose:'2 g/L', notes:'Aplicar preventivo contra tizón tardío y alternaria.' },
+			{ day:28, type:'fert',  icon:'💧', label:'Fertilización pre-floración', product:'Boro foliar + Cosmocel', dose:'2 cc/L + 3 cc/L', notes:'Boro mejora la cuaja floral. Aplicar cuando aparezcan los primeros botones.' },
+			{ day:35, type:'fumig', icon:'🦟', label:'Control de ácaros', product:'Abamectina', dose:'1.5 cc/L', notes:'Monitorear presencia de araña roja. Rotar modo de acción.' },
+			{ day:42, type:'fert',  icon:'💧', label:'Llenado de fruto', product:'N:P:K 10-10-30 + Calcio', dose:'3 g/L + 2 cc/L', notes:'Alto potasio para calidad y tamaño de fruto. Calcio previene pudrición apical.' },
+			{ day:56, type:'fumig', icon:'🍄', label:'Control de botritis', product:'Iprodione o Procimidone', dose:'2 cc/L', notes:'Aplicar si hay presencia de botritis en flores o frutos.' },
+			{ day:70, type:'fert',  icon:'✨', label:'Maduración', product:'K foliar + Aminoácidos', dose:'3 cc/L', notes:'Potasio foliar para color y brix. Suspender 10 días antes de cosecha.' }
+		]
+	},
+	pimiento: {
+		label: 'Pimiento', totalDays: 90,
+		apps: [
+			{ day:0,  type:'fert',  icon:'🌱', label:'Enraizamiento', product:'Ácido húmico + Zinc foliar', dose:'2 cc/L', notes:'Al trasplante. El zinc favorece el desarrollo inicial.' },
+			{ day:10, type:'fumig', icon:'🦟', label:'Control insectos', product:'Imidacloprid', dose:'0.5 cc/L', notes:'Trips y mosca blanca en etapa inicial son los principales problemas.' },
+			{ day:20, type:'fert',  icon:'💧', label:'Vegetativo', product:'N:P:K 20-20-20', dose:'3 g/L', notes:'Fase de crecimiento vegetativo activo.' },
+			{ day:30, type:'fumig', icon:'🍄', label:'Prevención fungal', product:'Propineb o Mancozeb', dose:'2 cc/L', notes:'Preventivo contra phytophthora y botrytis.' },
+			{ day:40, type:'fert',  icon:'💧', label:'Pre-floración', product:'Boro + N:P:K', dose:'2+3 cc/L', notes:'Boro crítico para la cuaja. Aplicar al inicio de botones.' },
+			{ day:55, type:'fert',  icon:'💧', label:'Llenado fruto', product:'N:P:K 10-10-30', dose:'3 g/L', notes:'Fase de engrose de fruto.' },
+			{ day:70, type:'fumig', icon:'🦟', label:'Control final', product:'Spinosad', dose:'1 cc/L', notes:'Control de gusanos si hay presencia. Período de carencia: 7 días.' },
+			{ day:80, type:'fert',  icon:'✨', label:'Maduración', product:'K foliar', dose:'3 cc/L', notes:'Potasio para color y calidad final del pimiento.' }
+		]
+	},
+	brocoli: {
+		label: 'Brócoli/Coliflor', totalDays: 75,
+		apps: [
+			{ day:0,  type:'fert',  icon:'🌱', label:'Trasplante', product:'Ácido húmico + N foliar', dose:'2 cc/L + 1 cc/L', notes:'Establecimiento. Aplicar al suelo y foliar.' },
+			{ day:10, type:'fumig', icon:'🦟', label:'Control gusanos', product:'Bacillus thuringiensis (Bt)', dose:'2 g/L', notes:'Control biológico de Plutella y gusano del brócoli. Seguro y efectivo.' },
+			{ day:20, type:'fert',  icon:'💧', label:'Vegetativo', product:'N:P:K 20-20-20 + Magnesio', dose:'3 g/L + 2 cc/L', notes:'Nitrógeno y magnesio para color verde intenso.' },
+			{ day:30, type:'fumig', icon:'🍄', label:'Control fungal', product:'Cobre + Dimetomorf', dose:'2 g/L + 1 cc/L', notes:'Prevención de mildiu y alternaria en el follaje.' },
+			{ day:40, type:'fert',  icon:'💧', label:'Formación pella', product:'Calcio + Boro + K', dose:'2+1+2 cc/L', notes:'Calcio y boro son críticos para la compactación y calidad de la pella.' },
+			{ day:60, type:'fert',  icon:'✨', label:'Pre-cosecha', product:'K foliar', dose:'3 cc/L', notes:'Potasio para firmeza. Suspender 7 días antes de cosecha.' }
+		]
+	},
+	lechuga: {
+		label: 'Lechuga', totalDays: 60,
+		apps: [
+			{ day:0,  type:'fert',  icon:'🌱', label:'Trasplante', product:'Ácido húmico', dose:'2 cc/L', notes:'Enraizamiento. Aplicar regado al suelo.' },
+			{ day:10, type:'fert',  icon:'💧', label:'Vegetativo', product:'N foliar (Urea foliar)', dose:'2 g/L', notes:'Nitrógeno para rápido crecimiento foliar.' },
+			{ day:20, type:'fumig', icon:'🦟', label:'Control de trips', product:'Spinosad', dose:'0.8 cc/L', notes:'Trips puede dañar seriamente la lechuga. Aplicar tarde.' },
+			{ day:35, type:'fert',  icon:'💧', label:'Engrose', product:'Calcio foliar + K', dose:'2+2 cc/L', notes:'Prevención de tip burn (bordes quemados) en etapa de cogollo.' },
+			{ day:50, type:'fert',  icon:'✨', label:'Pre-cosecha', product:'Sin aplicaciones', dose:'—', notes:'No aplicar agroquímicos 10 días antes de cosecha.' }
+		]
+	},
+	gerbera_ff: {
+		label: 'Gerbera', totalDays: 110,
+		apps: [
+			{ day:0,  type:'fert',  icon:'🌱', label:'Trasplante', product:'Enraizador + Ácido húmico', dose:'2 cc/L', notes:'Aplicar al hoyo de siembra.' },
+			{ day:14, type:'fert',  icon:'💧', label:'Vegetativo', product:'N:P:K 20-20-20', dose:'2 g/L', notes:'Etapa vegetativa de desarrollo foliar.' },
+			{ day:21, type:'fumig', icon:'🦟', label:'Control ácaros', product:'Abamectina', dose:'1.5 cc/L', notes:'Araña roja es el principal problema en gerbera. Monitorear.' },
+			{ day:35, type:'fert',  icon:'💧', label:'Pre-floración', product:'N:P:K 15-15-30 + Boro', dose:'2 g/L + 1 cc/L', notes:'Alto potasio y boro para botones florales.' },
+			{ day:50, type:'fumig', icon:'🍄', label:'Control Botrytis', product:'Iprodione', dose:'2 cc/L', notes:'Botrytis en pétalos y corona es frecuente en gerbera.' },
+			{ day:70, type:'fert',  icon:'💧', label:'Mantenimiento', product:'Calcio + K', dose:'2+3 cc/L', notes:'Para tallos firmes y flores de calidad exportable.' },
+			{ day:90, type:'fumig', icon:'🦟', label:'Control mosca blanca', product:'Imidacloprid', dose:'0.5 cc/L', notes:'Rotar modo de acción para evitar resistencia.' }
+		]
+	},
+	clavel_ff: {
+		label: 'Clavel', totalDays: 90,
+		apps: [
+			{ day:0,  type:'fert',  icon:'🌱', label:'Trasplante', product:'Ácido húmico + Fósforo', dose:'2+2 cc/L', notes:'Alto fósforo para desarrollo radicular inicial.' },
+			{ day:14, type:'fert',  icon:'💧', label:'Vegetativo', product:'N:P:K 20-20-20', dose:'2 g/L', notes:'Crecimiento vegetativo.' },
+			{ day:25, type:'fumig', icon:'🦟', label:'Control Fusarium', product:'Thiabendazole drench', dose:'2 cc/L', notes:'Aplicar al suelo. Fusarium es el principal problema del clavel.' },
+			{ day:40, type:'fert',  icon:'💧', label:'Pre-floración', product:'N:P:K 12-6-36 + Boro', dose:'2 g/L + 1 cc/L', notes:'Alto potasio para apertura y calidad floral.' },
+			{ day:60, type:'fumig', icon:'🍄', label:'Control fungal', product:'Procimidone', dose:'2 cc/L', notes:'Prevención Alternaria y Botrytis en pétalos.' },
+			{ day:75, type:'fert',  icon:'✨', label:'Cosecha', product:'K + Calcio', dose:'3+2 cc/L', notes:'Para tallos rígidos y mayor vida poscosecha.' }
+		]
+	},
+	cacao_ff: {
+		label: 'Cacao (primer año)', totalDays: 365,
+		apps: [
+			{ day:0,   type:'fert',  icon:'🌱', label:'Siembra/Trasplante', product:'15-15-15 suelo + Ácido húmico', dose:'50 g/planta + 2 cc/L', notes:'Aplicar en corona. Mezclar con suelo.' },
+			{ day:30,  type:'fumig', icon:'🦟', label:'Control de monalonion', product:'Cipermetrina', dose:'1 cc/L', notes:'Barrenador del tronco en plantines jóvenes.' },
+			{ day:60,  type:'fert',  icon:'💧', label:'Fertilización 1', product:'Urea + Sulfato de potasio', dose:'30 g/planta + 20 g/planta', notes:'En corona a 30 cm del tronco.' },
+			{ day:90,  type:'fumig', icon:'🍄', label:'Control Phytophthora', product:'Metalaxil + Cobre', dose:'2+2 g/L', notes:'Monilia y escoba de bruja son las principales enfermedades.' },
+			{ day:120, type:'fert',  icon:'💧', label:'Fertilización 2', product:'N:P:K 15-15-15', dose:'50 g/planta', notes:'Segunda aplicación al suelo.' },
+			{ day:180, type:'fumig', icon:'🍄', label:'Control fungal', product:'Cobre hidróxido', dose:'3 g/L', notes:'Aplicación preventiva inicio de lluvia.' },
+			{ day:240, type:'fert',  icon:'💧', label:'Fertilización 3', product:'Sulfato de potasio + Magnesio', dose:'30+15 g/planta', notes:'Potasio y magnesio para vigor foliar.' },
+			{ day:300, type:'fumig', icon:'🦟', label:'Control integral', product:'Insecticida sistémico', dose:'1 cc/L', notes:'Control preventivo final del año.' }
+		]
+	},
+	maracuya_ff: {
+		label: 'Maracuyá (primer año)', totalDays: 365,
+		apps: [
+			{ day:0,   type:'fert',  icon:'🌱', label:'Siembra', product:'Superfosfato triple + Ácido húmico', dose:'100 g/hoyo + 2 cc/L', notes:'Aplicar en el fondo del hoyo de siembra.' },
+			{ day:20,  type:'fert',  icon:'💧', label:'Vegetativo', product:'Urea foliar', dose:'2 g/L', notes:'Estimular crecimiento vegetativo inicial.' },
+			{ day:45,  type:'fumig', icon:'🦟', label:'Control trips', product:'Spinosad', dose:'1 cc/L', notes:'Trips transmite virosis. Control muy importante.' },
+			{ day:60,  type:'fert',  icon:'💧', label:'Fertilización suelo', product:'15-15-15', dose:'80 g/planta', notes:'En corona a 40 cm del tallo.' },
+			{ day:90,  type:'fumig', icon:'🍄', label:'Control fungal', product:'Cobre + Mancozeb', dose:'2+2 g/L', notes:'Antracnosis y fusarium en tallo y hojas.' },
+			{ day:120, type:'fert',  icon:'💧', label:'Pre-floración', product:'N:P:K 10-30-20 + Boro', dose:'2 g/L + 1 cc/L', notes:'Alto fósforo y boro para floración.' },
+			{ day:180, type:'fert',  icon:'💧', label:'Llenado fruto', product:'N:P:K 12-6-36 + Calcio', dose:'2 g/L + 2 cc/L', notes:'Potasio para calidad y brix.' },
+			{ day:240, type:'fumig', icon:'🦟', label:'Control mosca fruto', product:'Clorpirifos + Proteína hidrolizada', dose:'1 cc/L', notes:'Trampa + insecticida. La mosca de la fruta es crítica.' }
+		]
+	}
+};
+
+function calcFertFumig() {
+	var cropKey   = document.getElementById('ff-crop').value;
+	var transpStr = document.getElementById('ff-transplant').value;
+	if (!cropKey)   { alert('Por favor selecciona un cultivo.'); return; }
+	if (!transpStr) { alert('Por favor ingresa la fecha de trasplante.'); return; }
+
+	var prog       = FF_PROGRAMS[cropKey];
+	var transpDate = new Date(transpStr + 'T12:00:00');
+	var timeline   = document.getElementById('ff-timeline');
+	var title      = document.getElementById('ff-program-title');
+	title.textContent = 'Programa de aplicaciones — ' + prog.label;
+
+	var icsEvents  = [];
+	var ts         = Date.now();
+	var html_out   = '';
+
+	prog.apps.forEach(function(app, i) {
+		var appDate   = addDays(transpDate, app.day);
+		var isFert    = app.type === 'fert';
+		var borderCol = isFert ? '#2c6e3f' : '#e67e22';
+		var bgCol     = isFert ? '#f4f9f5' : '#fff8f0';
+		var typeLabel = isFert ? 'Fertilización' : 'Fumigación';
+
+		html_out += '<div style="background:' + bgCol + ';border-left:4px solid ' + borderCol + ';border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:12px;">'
+			+ '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">'
+			+ '<span style="font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:' + borderCol + ';">Día ' + app.day + ' — ' + typeLabel + '</span>'
+			+ '</div>'
+			+ '<div style="font-size:1rem;font-weight:700;color:#1a1a1a;margin-bottom:2px;">' + app.icon + ' ' + app.label + ' — ' + fmtDate(appDate) + '</div>'
+			+ '<div style="font-size:0.82rem;color:#555;margin-bottom:4px;"><strong>Producto:</strong> ' + app.product + ' <span style="color:#888;">(' + app.dose + ')</span></div>'
+			+ '<div style="font-size:0.78rem;color:#777;">' + app.notes + '</div>'
+			+ '</div>';
+
+		icsEvents.push(makeICSEvent(
+			'ff-' + i + '-' + ts,
+			app.icon + ' ' + prog.label + ': ' + app.label,
+			appDate,
+			'Producto: ' + app.product + '\nDosis: ' + app.dose + '\n' + app.notes + '\nPilvicsa — 032 235 011'
+		));
+	});
+
+	timeline.innerHTML = html_out;
+	document.getElementById('ff-result').classList.add('show');
+
+	// Generate ICS
+	var ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pilvicsa//FertFumig//ES',
+		'CALSCALE:GREGORIAN','X-WR-CALNAME:Pilvicsa — ' + prog.label + ' Fertilización/Fumigación'].join('\r\n')
+		+ '\r\n' + icsEvents.join('\r\n') + '\r\nEND:VCALENDAR';
+	var blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+	document.getElementById('ff-ics-link').href = URL.createObjectURL(blob);
+
+	window._ffProg = { prog: prog, transpDate: transpDate };
+}
+
+function downloadFFImage() {
+	if (!window._ffProg) { alert('Genera el programa primero.'); return; }
+	var prog       = window._ffProg.prog;
+	var transpDate = window._ffProg.transpDate;
+	var W  = 540, rowH = 68, headerH = 110, padB = 50;
+	var H  = headerH + prog.apps.length * rowH + padB;
+
+	var canvas = document.getElementById('ff-canvas');
+	canvas.width = W; canvas.height = H;
+	var ctx = canvas.getContext('2d');
+
+	ctx.fillStyle = '#fffdf8';
+	ctx.fillRect(0, 0, W, H);
+	ctx.fillStyle = '#1a4a28';
+	ctx.fillRect(0, 0, W, headerH);
+	ctx.fillStyle = '#fff';
+	ctx.font = 'bold 19px sans-serif';
+	ctx.textAlign = 'center';
+	ctx.fillText('Pilvicsa — Programa Fertilización/Fumigación', W/2, 36);
+	ctx.font = '14px sans-serif';
+	ctx.fillStyle = 'rgba(255,255,255,0.85)';
+	ctx.fillText(prog.label + ' · Trasplante: ' + fmtDate(transpDate), W/2, 62);
+	ctx.font = '11px sans-serif';
+	ctx.fillStyle = 'rgba(255,255,255,0.55)';
+	ctx.fillText('pilvicsa.com.ec/herramientas.html · Tel: 032 235 011', W/2, 98);
+
+	prog.apps.forEach(function(app, i) {
+		var y          = headerH + i * rowH;
+		var isFert     = app.type === 'fert';
+		var appDate    = addDays(transpDate, app.day);
+		var borderCol  = isFert ? '#2c6e3f' : '#e67e22';
+		ctx.fillStyle  = i % 2 === 0 ? '#fff' : '#fafafa';
+		ctx.fillRect(0, y, W, rowH);
+		ctx.fillStyle  = borderCol;
+		ctx.fillRect(0, y, 5, rowH);
+		ctx.fillStyle  = '#1a1a1a';
+		ctx.font       = 'bold 13px sans-serif';
+		ctx.textAlign  = 'left';
+		ctx.fillText(app.icon + ' Día ' + app.day + ' — ' + app.label, 16, y + 20);
+		ctx.font       = '12px sans-serif';
+		ctx.fillStyle  = '#555';
+		ctx.fillText(fmtDate(appDate), 16, y + 37);
+		ctx.fillStyle  = borderCol;
+		ctx.font       = 'bold 12px sans-serif';
+		ctx.fillText(app.product + ' · ' + app.dose, 16, y + 54);
+	});
+
+	ctx.fillStyle = '#bbb';
+	ctx.font = '11px sans-serif';
+	ctx.textAlign = 'center';
+	ctx.fillText('Generado por Pilvicsa · ' + new Date().toLocaleDateString('es-EC'), W/2, H - 16);
+
+	var link = document.createElement('a');
+	link.download = 'fertfumig-' + prog.label.toLowerCase().replace(/\s+/g, '-') + '.png';
+	link.href = canvas.toDataURL('image/png');
+	link.click();
+}
+
+function resetFF() {
+	document.getElementById('ff-crop').selectedIndex = 0;
+	document.getElementById('ff-transplant').value = '';
+	document.getElementById('ff-result').classList.remove('show');
+	window._ffProg = null;
+}
+
+
+
+/* ── Sticky bar ── */
+(function() {
+	var bar  = document.getElementById('pilv-sticky-bar');
+	var hero = document.querySelector('.pilv-tools-hero');
+	if (!bar || !hero) return;
+	window.addEventListener('scroll', function() {
+		var heroBottom = hero.getBoundingClientRect().bottom;
+		bar.classList.toggle('visible', heroBottom < 0);
+	}, { passive: true });
+})();
+
+/* ── Calendar image export ── */
+function downloadCalImage() {
+	var timeline = document.getElementById('cal-timeline');
+	if (!timeline || !timeline.innerHTML) { alert('Genera el calendario primero.'); return; }
+	var cropEl   = document.getElementById('cal-crop');
+	var cropName = cropEl.options[cropEl.selectedIndex].text.split('(')[0].trim();
+	var harvest  = document.getElementById('cal-harvest').value;
+
+	// Collect timeline items
+	var items = timeline.querySelectorAll('.pilv-timeline-item');
+	var W = 540, rowH = 68, headerH = 100, padB = 50;
+	var H = headerH + items.length * rowH + padB;
+	var canvas = document.getElementById('cal-img-canvas');
+	canvas.width = W; canvas.height = H;
+	var ctx = canvas.getContext('2d');
+
+	ctx.fillStyle = '#f4f9f5'; ctx.fillRect(0,0,W,H);
+	ctx.fillStyle = '#1a4a28'; ctx.fillRect(0,0,W,headerH);
+	ctx.fillStyle = '#fff';
+	ctx.font = 'bold 19px sans-serif'; ctx.textAlign = 'center';
+	ctx.fillText('Pilvicsa — Calendario de Trasplante', W/2, 36);
+	ctx.font = '13px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.85)';
+	ctx.fillText(cropName, W/2, 60);
+	ctx.font = '11px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.55)';
+	ctx.fillText('pilvicsa.com.ec · Tel: 032 235 011', W/2, 88);
+
+	items.forEach(function(item, i) {
+		var y = headerH + i * rowH;
+		var isHL = item.classList.contains('highlight');
+		ctx.fillStyle = isHL ? '#eaf4ec' : (i % 2 === 0 ? '#fff' : '#fafafa');
+		ctx.fillRect(0, y, W, rowH);
+		if (isHL) { ctx.fillStyle = '#2c6e3f'; ctx.fillRect(0,y,5,rowH); }
+		var label = item.querySelector('.tl-label');
+		var date  = item.querySelector('.tl-date');
+		var desc  = item.querySelector('.tl-desc');
+		ctx.fillStyle = isHL ? '#2c6e3f' : '#888';
+		ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'left';
+		if (label) ctx.fillText(label.textContent, 16, y+16);
+		ctx.fillStyle = '#1a1a1a';
+		ctx.font = 'bold 14px sans-serif';
+		if (date) ctx.fillText(date.textContent, 16, y+34);
+		ctx.fillStyle = '#888'; ctx.font = '11px sans-serif';
+		if (desc) ctx.fillText(desc.textContent.substring(0,70), 16, y+52);
+	});
+
+	ctx.fillStyle = '#bbb'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+	ctx.fillText('Generado por Pilvicsa · ' + new Date().toLocaleDateString('es-EC'), W/2, H-16);
+
+	var link = document.createElement('a');
+	link.download = 'calendario-trasplante-pilvicsa.png';
+	link.href = canvas.toDataURL('image/png');
+	link.click();
+}
+
+/* ── Density image export ── */
+function downloadDensImage() {
+	var grid = document.getElementById('dens-result-area-grid');
+	var note = document.getElementById('dens-result-area-note');
+	if (!grid || !grid.innerHTML) { alert('Calcula la densidad primero.'); return; }
+
+	var items = grid.querySelectorAll('.pilv-result-item');
+	var W = 540, colW = 130, headerH = 100, padB = 60;
+	var cols = Math.min(items.length, 4);
+	var rows = Math.ceil(items.length / cols);
+	var H    = headerH + rows * 90 + padB;
+	var canvas = document.getElementById('dens-img-canvas');
+	canvas.width = W; canvas.height = H;
+	var ctx = canvas.getContext('2d');
+
+	ctx.fillStyle = '#f4f9f5'; ctx.fillRect(0,0,W,H);
+	ctx.fillStyle = '#1a4a28'; ctx.fillRect(0,0,W,headerH);
+	ctx.fillStyle = '#fff';
+	ctx.font = 'bold 19px sans-serif'; ctx.textAlign = 'center';
+	ctx.fillText('Pilvicsa — Densidad de Siembra', W/2, 36);
+	var area  = document.getElementById('dens-area').value;
+	var hil   = document.getElementById('dens-hileras-a').value;
+	var pl    = document.getElementById('dens-plantas-a').value;
+	ctx.font = '13px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.85)';
+	ctx.fillText(area + ' ' + currentUnit + ' · Espaciamiento ' + hil + ' × ' + pl + ' m', W/2, 60);
+	ctx.font = '11px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.55)';
+	ctx.fillText('pilvicsa.com.ec · Tel: 032 235 011', W/2, 88);
+
+	var padX = (W - cols * colW) / 2;
+	items.forEach(function(item, i) {
+		var col = i % cols, row = Math.floor(i / cols);
+		var x = padX + col * colW, y = headerH + 10 + row * 90;
+		var val  = item.querySelector('.val');
+		var unit = item.querySelector('.unit');
+		ctx.fillStyle = '#fff'; ctx.strokeStyle = '#dde8dd'; ctx.lineWidth = 1;
+		ctx.beginPath(); ctx.roundRect(x+4, y, colW-8, 74, 8); ctx.fill(); ctx.stroke();
+		ctx.fillStyle = '#1a4a28'; ctx.font = 'bold 18px sans-serif'; ctx.textAlign = 'center';
+		if (val) ctx.fillText(val.textContent, x + colW/2, y+32);
+		ctx.fillStyle = '#888'; ctx.font = '11px sans-serif';
+		if (unit) ctx.fillText(unit.textContent, x + colW/2, y+52);
+	});
+
+	ctx.fillStyle = '#bbb'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+	ctx.fillText('Generado por Pilvicsa · ' + new Date().toLocaleDateString('es-EC'), W/2, H-20);
+	if (note) { ctx.fillStyle = '#999'; ctx.font = '10px sans-serif'; ctx.fillText(note.textContent.substring(0,80), W/2, H-6); }
+
+	var link = document.createElement('a');
+	link.download = 'densidad-siembra-pilvicsa.png';
+	link.href = canvas.toDataURL('image/png');
+	link.click();
+}
+
+/* ── Dilution image export ── */
+function downloadDilImage() {
+	var table = document.getElementById('dil-table');
+	if (!table || !table.innerHTML) { alert('Calcula la dilución primero.'); return; }
+
+	var rows_el = table.querySelectorAll('tbody tr');
+	var W = 540, rowH = 44, headerH = 100, tableHeaderH = 36, padB = 50;
+	var H = headerH + tableHeaderH + rows_el.length * rowH + padB;
+	var canvas = document.getElementById('dil-img-canvas');
+	canvas.width = W; canvas.height = H;
+	var ctx = canvas.getContext('2d');
+
+	ctx.fillStyle = '#fffdf8'; ctx.fillRect(0,0,W,H);
+	ctx.fillStyle = '#1a4a28'; ctx.fillRect(0,0,W,headerH);
+	ctx.fillStyle = '#fff';
+	ctx.font = 'bold 19px sans-serif'; ctx.textAlign = 'center';
+	ctx.fillText('Pilvicsa — Dilución de Agroquímico', W/2, 36);
+	var prod = document.getElementById('dil-type');
+	var vol  = document.getElementById('dil-volume').value;
+	var prodLabel = prod.options[prod.selectedIndex].text.split('(')[0].trim();
+	ctx.font = '13px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.85)';
+	ctx.fillText(prodLabel + ' · ' + vol + ' litros', W/2, 60);
+	ctx.font = '11px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.55)';
+	ctx.fillText('pilvicsa.com.ec · Tel: 032 235 011', W/2, 88);
+
+	// Table header
+	var y = headerH;
+	ctx.fillStyle = '#e67e22'; ctx.fillRect(0,y,W,tableHeaderH);
+	ctx.fillStyle = '#fff'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'left';
+	ctx.fillText('  Parámetro', 16, y+23);
+	ctx.textAlign = 'right';
+	ctx.fillText('Resultado  ', W-16, y+23);
+	y += tableHeaderH;
+
+	rows_el.forEach(function(row, i) {
+		ctx.fillStyle = i % 2 === 0 ? '#fff' : '#fafafa';
+		ctx.fillRect(0, y, W, rowH);
+		var cells = row.querySelectorAll('td');
+		ctx.fillStyle = '#555'; ctx.font = '13px sans-serif'; ctx.textAlign = 'left';
+		if (cells[0]) ctx.fillText(cells[0].textContent, 16, y+27);
+		ctx.fillStyle = '#1a4a28'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'right';
+		if (cells[1]) ctx.fillText(cells[1].textContent.replace(/\s+/g,' ').trim().substring(0,40), W-16, y+27);
+		y += rowH;
+	});
+
+	ctx.fillStyle = '#bbb'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+	ctx.fillText('⚠ Usar siempre equipo de protección · Generado por Pilvicsa · ' + new Date().toLocaleDateString('es-EC'), W/2, H-16);
+
+	var link = document.createElement('a');
+	link.download = 'dilusion-pilvicsa.png';
+	link.href = canvas.toDataURL('image/png');
+	link.click();
+}
+
+</script>
+
+</body>
+</html>
