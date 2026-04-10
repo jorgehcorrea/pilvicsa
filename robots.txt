@@ -1,21 +1,12 @@
 User-agent: *
 Allow: /
 
-<<<<<<< HEAD
-# Block access to server files
-Disallow: /css/
-Disallow: /js/
-Disallow: /sass/
-
-# Sitemap location
-Sitemap: https://pilvicsa.com.ec/sitemap.xml
-=======
-Sitemap: https://pilvicsa.com.ec/sitemap.xml
-
-# Block template files and assets that shouldn't be indexed
+# Block assets that shouldn't be indexed
 Disallow: /demos/
 Disallow: /js/
 Disallow: /css/
 Disallow: /sass/
 Disallow: /one-page/
->>>>>>> f2165eff98a4c0eed05ab145db774f1f4309233a
+
+# Sitemap location
+Sitemap: https://pilvicsa.com.ec/sitemap.xml
