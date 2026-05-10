@@ -3,5 +3,9 @@
     "allow": [
       "Bash(grep -rn \"hortalizas.html\" c:/xampp/htdocs/pilvicsa/*.html)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "claude-flow"
+  ],
+  "enableAllProjectMcpServers": true
 }
