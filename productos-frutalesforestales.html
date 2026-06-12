@@ -1,475 +1,535 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="es">
+﻿<!DOCTYPE html>
+<html lang="es-EC" dir="ltr">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<meta http-equiv="x-ua-compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="Pilvicsa">
-	<meta name="description" content="38 variedades de árboles frutales y forestales: aguacate, limón, naranja, ciprés, eucalipto y más. Propagación certificada para huertos y reforestación en Ecuador.">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"></noscript>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="css/canvas.css">
-	<link rel="stylesheet" href="css/font-icons.css">
-	<link rel="stylesheet" href="css/swiper.css">
-	<link rel="stylesheet" href="css/business.css">
-	<link rel="stylesheet" href="css/custom.css">
-	<title>Frutales y Forestales — Árboles Certificados | Pilvicsa</title>
-	<style>
-		.frutales-top-image .header-wrap-clone { display: none !important; }
-		.frutales-top-image #header { position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; }
-		.frutales-top-image .content-wrap { margin-top: 0 !important; padding-top: 0 !important; }
-		.frutales-top-image .portfolio-single-image { margin-top: 0 !important; }
-		.frutales-top-image .video-wrap,
-		.frutales-top-image .portfolio-single-image picture { height: 90vh; }
-		.frutales-top-image .portfolio-single-image picture img { width: 100%; height: 100%; object-fit: cover; display: block; }
-		.pilv-table { width: 100%; border-collapse: collapse; }
-		.pilv-table tbody tr { border-bottom: 1px solid #eef2ee; transition: background 0.15s; cursor: pointer; }
-		.pilv-table tbody tr:last-child { border-bottom: none; }
-		.pilv-table tbody tr:hover { background: #f4f9f5; }
-		.pilv-table tbody tr:hover .td-name { color: #2c6e3f; text-decoration: underline; }
-		.pilv-table td.td-img { width: 110px; padding: 0.5rem 0.75rem 0.5rem 1rem; vertical-align: middle; }
-		.pilv-table td.td-img img { width: 90px; height: 90px; object-fit: cover; object-position: center; border-radius: 6px; border: 1px solid #dde8dd; display: block; }
-		.pilv-table td.td-name { padding: 0.75rem 1rem 0.75rem 0.5rem; vertical-align: middle; font-size: 1rem; font-weight: 600; color: #1a1a1a; }
-		.pilv-table td.td-name .td-latin { display: block; font-size: 0.75rem; font-weight: 400; font-style: italic; color: #888; margin-top: 2px; }
-		@media (max-width: 480px) {
-			.pilv-table tbody tr { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.75rem; }
-			.pilv-table td.td-img { width: auto; padding: 0; flex-shrink: 0; }
-			.pilv-table td.td-img img { width: 60px; height: 60px; }
-			.pilv-table td.td-name { padding: 0; font-size: 0.88rem; }
-		}
-		.pilv-category { margin-bottom: 3rem; }
-		.pilv-category-header { display: flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1rem; background: #2c6e3f; border-radius: 6px 6px 0 0; color: #fff; font-size: 1.05rem; font-weight: 700; }
-		.pilv-category-header span.subtitle { font-weight: 400; font-size: 0.82rem; opacity: 0.75; margin-left: 0.25rem; }
-		.pilv-category-body { border: 1px solid #dde8dd; border-top: none; border-radius: 0 0 6px 6px; overflow: hidden; }
-		.pilv-category-footer { padding: 0.5rem 1rem; font-size: 0.72rem; color: #aaa; background: #fafafa; border-top: 1px solid #eee; }
-		#pilv-lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.72); align-items: center; justify-content: center; padding: 1rem; }
-		#pilv-lightbox.open { display: flex; }
-		#pilv-lightbox-inner { background: #fff; border-radius: 10px; max-width: 480px; width: 100%; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.35); position: relative; }
-		#pilv-lightbox-close { position: absolute; top: 0.6rem; right: 0.75rem; background: none; border: none; font-size: 1.6rem; line-height: 1; color: #fff; cursor: pointer; z-index: 2; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
-		#pilv-lightbox-img { width: 100%; aspect-ratio: 16/7; object-fit: cover; object-position: center; display: block; }
-		#pilv-lightbox-body { padding: 1rem 1.25rem 1.25rem; border-top: 3px solid #2c6e3f; }
-		#pilv-lightbox-title { font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin: 0 0 0.2rem; }
-		#pilv-lightbox-latin { font-size: 0.82rem; font-style: italic; color: #888; margin: 0 0 0.75rem; }
-		.pilv-spec-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
-		.pilv-spec-table tr { border-bottom: 1px solid #eef2ee; }
-		.pilv-spec-table tr:last-child { border-bottom: none; }
-		.pilv-spec-table td { padding: 0.4rem 0.5rem; vertical-align: top; line-height: 1.4; }
-		.pilv-spec-table td:first-child { font-weight: 700; color: #2c6e3f; width: 42%; white-space: nowrap; }
-		.pilv-spec-table td:last-child { color: #444; }
-		.pilv-lightbox-note { margin-top: 12px; font-size: 0.72rem; color: #bbb; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 10px; }
-	</style>
-
-	<!-- Open Graph / Social sharing -->
-	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="Pilvicsa">
-	<meta property="og:title" content="Frutales y Forestales | Pilvicsa">
-	<meta property="og:description" content="38 variedades de árboles frutales y forestales certificados. Desde aguacate y cítricos hasta especies nativas para reforestación.">
-	<meta property="og:image" content="https://pilvicsa.com.ec/images/pages/frutalesforestales.jpg">
-	<meta property="og:url" content="https://pilvicsa.com.ec/productos-frutalesforestales.html">
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Frutales y Forestales | Pilvicsa">
-	<meta name="twitter:description" content="38 variedades de árboles frutales y forestales certificados. Desde aguacate y cítricos hasta especies nativas para reforestación.">
-	<meta name="twitter:image" content="https://pilvicsa.com.ec/images/pages/frutalesforestales.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Frutales y Forestales | Pilvicsa — Vivero y Pilonera Ecuador</title>
+  <meta name="description" content="38 variedades de árboles frutales y forestales: aguacate, limón, naranja, ciprés, eucalipto y más. Propagación certificada para huertos y reforestación en Ecuador.">
+  <link rel="canonical" href="https://pilvicsa.com.ec/productos-frutalesforestales.html">
+  <link rel="icon" href="images/pilvicsa.ico" type="image/x-icon">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pilvicsa">
+  <meta property="og:title" content="Frutales y Forestales | Pilvicsa">
+  <meta property="og:description" content="Arándanos, mora de Castilla y frutales nativos para el Ecuador.">
+  <meta property="og:image" content="https://pilvicsa.com.ec/images/pages/frutalesforestales.jpg">
+  <meta property="og:url" content="https://pilvicsa.com.ec/productos-frutalesforestales.html">
+  <meta property="og:locale" content="es_EC">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Frutales y Forestales | Pilvicsa">
+  <meta name="twitter:description" content="Arándanos, mora de Castilla y frutales nativos para el Ecuador.">
+  <meta name="twitter:image" content="https://pilvicsa.com.ec/images/pages/frutalesforestales.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css">
+  <style>
+    #main-navbar { background-color: #1a4d2e; }
+    .product-card { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+    .product-card:hover { transform: translateY(-2px); }
+    #modal-backdrop { transition: opacity 0.2s ease; }
+    .modal-tab-btn.active { color: #1a4d2e; border-bottom-color: #1a4d2e; }
+    .modal-tab-panel { display: none; }
+    .modal-tab-panel.active { display: block; }
+    #product-modal { transition: opacity 0.2s ease; }
+  #pilv-lb-inner { display:flex; flex-direction:column; }
+  #pilv-lb-content { border-top:3px solid #2c6e3f; }
+  #pilv-lb-close { color:#666; text-shadow:none; }
+  @media (max-width: 767px) { .market-context-columns { column-count: 1 !important; column-rule: none !important; } }
+  
+    @media (max-width: 991px) {
+      .servicios-dropdown .sub-menu-container {
+        display: none !important;
+      }
+    }
+    .herramientas-nav-item {
+      display: none !important;
+    }
+  </style>
+  <style>
+    @media (max-width: 991px) {
+      .mobile-servicios-section { display: none !important; }
+      .mobile-explorar-btn { display: none !important; }
+      .mobile-buscar-link { color: #ffffff !important; font-weight: 700 !important; }
+      .mobile-contacto-link {
+        background-color: #2d8a4e !important;
+        color: #ffffff !important;
+        border-radius: 4px !important;
+        padding: 12px 16px !important;
+        font-weight: 700 !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 4px !important;
+        margin-bottom: 4px !important;
+      }
+      .productos-mobile-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
+        width: 100% !important;
+        padding: 8px 12px !important;
+      }
+      .productos-chevron {
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 4px 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: inherit !important;
+      }
+      .productos-chevron svg {
+        width: 16px !important;
+        height: 16px !important;
+        stroke: currentColor !important;
+        fill: none !important;
+        stroke-width: 2.5 !important;
+        stroke-linecap: round !important;
+        stroke-linejoin: round !important;
+        transition: transform 0.25s ease !important;
+        display: block !important;
+      }
+      .productos-chevron.open svg { transform: rotate(180deg) !important; }
+      .productos-mobile-dropdown {
+        display: none !important;
+        flex-direction: column !important;
+        background: #ffffff !important;
+        border: 0.5px solid #e0d8cc !important;
+        border-radius: 6px !important;
+        margin: 4px 8px 8px !important;
+        overflow: hidden !important;
+        list-style: none !important;
+        padding: 0 !important;
+      }
+      .productos-mobile-dropdown.open { display: flex !important; }
+      .productos-mobile-dropdown li a {
+        display: block !important;
+        padding: 12px 16px !important;
+        font-size: 0.93rem !important;
+        color: #1a1a1a !important;
+        text-decoration: none !important;
+        border-bottom: 0.5px solid #f0ece6 !important;
+      }
+      .productos-mobile-dropdown li:last-child a { border-bottom: none !important; }
+      #mobile-menu > div > a {
+        text-align: left !important;
+      }
+    }
+    @media (min-width: 992px) {
+      .productos-mobile-dropdown { display: none !important; }
+      .productos-chevron { display: none !important; }
+    }
+  </style>
 </head>
+<body class="font-sans text-gray-900 bg-gray-50">
 
-<body class="stretched frutales-top-image">
-<div id="wrapper">
+<!-- NAVBAR -->
+<nav id="main-navbar" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-3 flex-shrink-0"><img src="images/logo@2x.png" alt="Pilvicsa" class="h-11 w-auto"></a>
+      <div class="hidden lg:flex items-center gap-1">
+        <a href="index.html" class="px-3 py-2 text-sm font-semibold text-white hover:text-pilvicsa-accent transition">Inicio</a>
+        <div class="nav-dropdown-wrapper relative servicios-dropdown">
+          <button onclick="toggleNav('menu-servicios')" id="btn-servicios" class="flex items-center gap-1 text-sm font-semibold text-white hover:text-pilvicsa-accent transition px-3 py-2 rounded-lg">Servicios <svg class="w-3.5 h-3.5 transition-transform duration-200" id="chevron-servicios" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+          <div id="menu-servicios" class="nav-dropdown-menu sub-menu-container hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 origin-top-left">
+            <a href="index.html#servicio-semillas" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Semillas</a>
+            <a href="index.html#servicio-esquejes" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Esquejes</a>
+            <a href="index.html#servicio-injertos" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Injertos</a>
+            <a href="index.html#servicio-endurecimiento" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Endurecimiento</a>
+          </div>
+        </div>
+        <div class="nav-dropdown-wrapper relative">
+          <button onclick="toggleNav('menu-productos')" id="btn-productos" class="flex items-center gap-1 text-sm font-semibold text-white hover:text-pilvicsa-accent transition px-3 py-2 rounded-lg">Productos <svg class="w-3.5 h-3.5 transition-transform duration-200" id="chevron-productos" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+          <div id="menu-productos" class="nav-dropdown-menu hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 origin-top-left">
+            <a href="producto-hortalizas.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Hortalizas</a>
+            <a href="productos-florescorte.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Flores de Corte</a>
+            <a href="productos-cultivoscosta.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Cultivos de Costa</a>
+            <a href="productos-frutalesforestales.html" class="block px-4 py-2.5 text-sm font-semibold text-pilvicsa-primary bg-pilvicsa-surface transition">Frutales y Forestales</a>
+            <a href="productos-especies.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Especies y Aromáticas</a>
+            <a href="productos-otras.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Cultivos Especiales</a>
+            <hr class="my-1 border-gray-100">
+            <a href="glosario.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Glosario Técnico</a>
+          </div>
+        </div>
+        <a href="buscar.html" class="px-3 py-2 text-sm font-semibold text-white hover:text-pilvicsa-accent transition">Buscar</a>
+        <div class="nav-dropdown-wrapper relative herramientas-nav-item">
+          <button onclick="toggleNav('menu-herramientas')" id="btn-herramientas" class="flex items-center gap-1 text-sm font-semibold text-white hover:text-pilvicsa-accent transition px-3 py-2 rounded-lg">Herramientas <svg class="w-3.5 h-3.5 transition-transform duration-200" id="chevron-herramientas" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+          <div id="menu-herramientas" class="nav-dropdown-menu hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 origin-top-left">
+            <a href="herramientas-planificacion.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Planificación</a>
+            <a href="herramientas-cuidado.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Cuidado del Cultivo</a>
+            <a href="herramientas-conversion.html" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-pilvicsa-surface hover:text-pilvicsa-primary transition-colors">Conversión de Unidades</a>
+          </div>
+        </div>
+        <a href="localizaciones.html" class="px-3 py-2 text-sm font-semibold text-white hover:text-pilvicsa-accent transition">Contacto</a>
+      </div>
+      <a href="buscar.html" class="hidden lg:inline-flex items-center gap-2 bg-pilvicsa-accent text-pilvicsa-dark px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-pilvicsa-light hover:text-white transition">Explorar Variedades <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+      <button data-collapse-toggle="mobile-menu-cat" type="button" class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition" aria-controls="mobile-menu-cat" aria-expanded="false"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+  <div id="mobile-menu-cat" class="hidden lg:hidden bg-[#2c6e3f] border-t border-white/10">
+    <div class="px-4 py-3 space-y-1">
+      <a href="index.html" class="block px-3 py-2 text-sm font-semibold text-white text-center">Inicio</a>
+      <a href="buscar.html" class="mobile-buscar-link block px-3 py-2 text-sm font-semibold text-white text-center">Buscar</a>
+      <a href="productos-frutalesforestales.html" class="block px-3 py-2 text-sm font-semibold text-white text-center">Frutales y Forestales</a>
+      <a href="localizaciones.html" class="mobile-contacto-link block px-3 py-2 text-sm font-semibold text-white text-center">Contacto</a>
+    </div>
+  </div>
+</nav>
 
-	<header id="header" class="full-header transparent-header dark header-size-md" data-sticky-class="not-dark" data-responsive-class="not-dark" data-sticky-offset="full" data-sticky-offset-negative="auto">
-		<div id="header-wrap">
-			<div class="container">
-				<div class="header-row">
-					<div id="logo">
-						<a href="index.html">
-							<img class="logo-default" srcset="images/logo.png, images/logo@2x.png 2x" src="images/logo@2x.png" alt="Pilvicsa">
-							<img class="logo-dark" srcset="images/logo-dark.png, images/logo-dark@2x.png 2x" src="images/logo-dark@2x.png" alt="Pilvicsa">
-						</a>
-					</div>
-					<div class="primary-menu-trigger">
-						<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
-							<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
-						</button>
-					</div>
-					<nav class="primary-menu">
-						<ul class="menu-container">
-								<li class="menu-item"><a class="menu-link" href="index.html"><div>Inicio</div></a></li>
-								<li class="menu-item"><a class="menu-link" href="index.html#nuestraoferta"><div>Servicios</div></a>
-									<ul class="sub-menu-container" data-class="up-lg:not-dark">
-										<li class="menu-item"><a class="menu-link" href="index.html#servicio-semillas"><div>Semillas</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="index.html#servicio-esquejes"><div>Esquejes</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="index.html#servicio-injertos"><div>Injertos</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="index.html#servicio-endurecimiento"><div>Endurecimiento</div></a></li>
-									</ul>
-								</li>
-								<li class="menu-item"><a class="menu-link" href="#"><div>Productos</div></a>
-									<ul class="sub-menu-container" data-class="up-lg:not-dark">
-										<li class="menu-item"><a class="menu-link" href="producto-hortalizas.html"><div>Hortalizas</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="productos-florescorte.html"><div>Flores de Corte</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="productos-cultivoscosta.html"><div>Cultivos de Costa</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="productos-frutalesforestales.html"><div>Frutales y Forestales</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="productos-especies.html"><div>Especies y Aromáticas</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="productos-otras.html"><div>Cultivos Especiales</div></a></li>
-									</ul>
-								</li>
-								<li class="menu-item"><a class="menu-link" href="buscar.html"><div>Buscar</div></a></li>
-								<!-- HERRAMIENTAS — desactivado temporalmente. Reactivar la semana del 2026-04-20. Descomentar el bloque de abajo:
-								<li class="menu-item"><a class="menu-link" href="herramientas-planificacion.html"><div>Herramientas</div></a>
-									<ul class="sub-menu-container" data-class="up-lg:not-dark">
-										<li class="menu-item"><a class="menu-link" href="herramientas-planificacion.html"><div>📋 Planificación</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="herramientas-cuidado.html"><div>🌿 Cuidado del Cultivo</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="herramientas-conversion.html"><div>📐 Conversión de Unidades</div></a></li>
-									</ul>
-								</li>
-								-->
-								<li class="menu-item"><a class="menu-link" href="localizaciones.html"><div>Contactos y Preguntas</div></a>
-									<ul class="sub-menu-container" data-class="up-lg:not-dark">
-										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
-										<li class="menu-item" style="display:none"><a class="menu-link" href="#"><div>¿Preguntas Frecuentes?</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="localizaciones.html#latacunga"><div>Vivero Latacunga</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="localizaciones.html#santodomingo"><div>Vivero Santo Domingo</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="localizaciones.html#quito"><div>Despacho Quito</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="localizaciones.html#checa"><div>Despacho Checa</div></a></li>
-										<li class="menu-item"><a class="menu-link" href="localizaciones.html#otavalo"><div>Despacho Otavalo</div></a></li>
-									</ul>
-								</li>
-							</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-		<div class="header-wrap-clone"></div>
-	</header>
-
-	<section id="content">
-		<div class="content-wrap pb-0" style="z-index:1;">
-
-			<div class="portfolio-single-image portfolio-single-image-full">
-				<div class="video-wrap no-placeholder" style="height:90vh;">
-					<picture>
-						<source srcset="images/pages/frutalesforestales.jpg" type="image/jpg">
-						<img src="images/pages/frutalesforestales.jpg" alt="Árboles Frutales y Forestales" style="width:100%;height:100%;object-fit:cover;display:block;">
-					</picture>
-					<div class="video-overlay"></div>
-				</div>
-			</div>
-
-			<div class="container mt-5">
-				<div class="heading-block text-center border-0">
-					<h3>Árboles Frutales y Forestales</h3>
-				</div>
-				<div class="row">
-					<div class="text-center col-lg-8 offset-lg-2 mb-5">
-						<h3 class="font-secondary">Variedades certificadas propagadas con genética de centros de investigación.</h3>
-						<p class="mt-3" style="color:#555;font-size:0.97rem;line-height:1.9;">Trabajamos con centros de investigación y otros actores locales que nos proveen genética que Pilvicsa endurece y propaga. Ofertamos distintos formatos en base a cómo el agricultor quiera manejarse en campo.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="container mb-6">
-				<div class="row g-4">
-
-				<!-- ÁRBOLES FRUTALES -->
-				<div class="col-12 col-lg-6">
-					<div class="pilv-category">
-						<div class="pilv-category-header">🌳 Árboles Frutales <span class="subtitle">— Variedades de sierra ecuatoriana</span></div>
-						<div class="pilv-category-body">
-							<table class="pilv-table"><tbody>
-								<tr data-name="Granadilla" data-latin="Passiflora ligularis" data-specs="Nombre alternativo|Parchita||Familia|Passifloraceae||Tamaño / rendimiento|100–180 gr por fruto||Ciclo productivo|7 a 10 meses (215 a 300 días)||Densidad de siembra|244–400 plantas/ha (marco 4×4 a 8×8 m)||Altitud óptima (Ecuador)|1.800–2.800 m s.n.m.||Observaciones|Trepadora perenne. Requiere espaldera. Flor con polinización cruzada — importante presencia de polinizadores."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/granadilla.jpg" alt="Granadilla" loading="lazy"></td><td class="td-name">Granadilla <span class="td-latin">Passiflora ligularis</span></td></tr>
-								<tr data-name="Frambuesa" data-latin="Rubus idaeus" data-specs="Nombre alternativo|N/A||Familia|Rosaceae||Tamaño / rendimiento|170–830 gr por planta/corte||Ciclo productivo|±360 días para primer fruto||Densidad de siembra|13.000–40.000 plantas/ha||Altitud óptima (Ecuador)|2.000–3.200 m s.n.m.||Observaciones|Cultivo en expansión en la sierra ecuatoriana. Requiere suelo bien drenado y frío moderado."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/frambuesa.jpg" alt="Frambuesa" loading="lazy"></td><td class="td-name">Frambuesa <span class="td-latin">Rubus idaeus</span></td></tr>
-								<tr data-name="Mora sin Espina" data-latin="Rubus glaucus (var. sin espina)" data-specs="Nombre alternativo|Andimora INIAP, Mora de Castilla||Familia|Rosaceae||Tamaño / rendimiento|N/A||Ciclo productivo|1½ a 2 años||Densidad de siembra|5 plantas/m² (60.000 plantas/ha)||Altitud óptima (Ecuador)|1.800–3.000 m s.n.m.||Observaciones|Variedad mejorada sin espinas, facilita la cosecha. Una de las frutas más importantes del Ecuador."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/mora-sin-espina.jpg" alt="Mora sin Espina" loading="lazy"></td><td class="td-name">Mora sin Espina <span class="td-latin">Rubus glaucus</span></td></tr>
-								<tr data-name="Mora con Espina" data-latin="Rubus glaucus" data-specs="Nombre alternativo|Mora Andina||Familia|Rosaceae||Tamaño / rendimiento|N/A||Ciclo productivo|1½ a 2 años||Densidad de siembra|5 plantas/m² (60.000 plantas/ha)||Altitud óptima (Ecuador)|1.800–3.000 m s.n.m.||Observaciones|Variedad tradicional del callejón interandino. Alta resistencia a condiciones de campo."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/mora-con-espina.jpg" alt="Mora con Espina" loading="lazy"></td><td class="td-name">Mora con Espina <span class="td-latin">Rubus glaucus</span></td></tr>
-								<tr data-name="Taxo" data-latin="Passiflora mollissima" data-specs="Nombre alternativo|Tumbo, Curuba||Familia|Passifloraceae||Tamaño / rendimiento|N/A||Ciclo productivo|N/A||Densidad de siembra|N/A||Altitud óptima (Ecuador)|2.000–3.500 m s.n.m.||Observaciones|Fruta nativa andina ampliamente consumida en Ecuador. Trepadora que requiere espaldera. Tolerante a heladas leves."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/taxo.jpg" alt="Taxo" loading="lazy"></td><td class="td-name">Taxo <span class="td-latin">Passiflora mollissima</span></td></tr>
-								<tr data-name="Tomate de Árbol" data-latin="Solanum betaceum" data-specs="Nombre alternativo|N/A||Familia|Solanaceae||Tamaño / rendimiento|20–30 kg/año/planta||Ciclo productivo|1½ a 2 años||Densidad de siembra|600–800 plantas/ha||Altitud óptima (Ecuador)|1.800–2.800 m s.n.m.||Observaciones|Uno de los cultivos más representativos de la sierra ecuatoriana. Alta demanda en mercado interno y exportación."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/tomate-de-arbol.jpg" alt="Tomate de Árbol" loading="lazy"></td><td class="td-name">Tomate de Árbol <span class="td-latin">Solanum betaceum</span></td></tr>
-								<tr data-name="Uvilla" data-latin="Physalis peruviana" data-specs="Nombre alternativo|Goldenberry, Cape Gooseberry||Familia|Solanaceae||Tamaño / rendimiento|1–2 kg/ciclo/planta||Ciclo productivo|100–130 días||Densidad de siembra|10.000–13.000 plantas/ha||Altitud óptima (Ecuador)|2.000–3.000 m s.n.m.||Observaciones|Ecuador es uno de los principales exportadores de uvilla a nivel mundial. Alta demanda en Europa."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/uvilla.jpg" alt="Uvilla" loading="lazy"></td><td class="td-name">Uvilla <span class="td-latin">Physalis peruviana</span></td></tr>
-								<tr data-name="Arándanos" data-latin="Vaccinium corymbosum" data-specs="Variedades|Biloxi · Emerald · Legacy||Familia|Ericaceae||Tamaño / rendimiento|1–2 kg/ciclo/planta||Ciclo productivo|100–130 días||Densidad de siembra|10.000–13.000 plantas/ha||Altitud óptima (Ecuador)|1.500–2.800 m s.n.m. según variedad||Observaciones|Cultivo en expansión en Ecuador. Biloxi y Emerald son variedades de bajo requerimiento de frío, adaptadas a zonas templadas."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/arandanos.jpg" alt="Arándanos" loading="lazy"></td><td class="td-name">Arándanos <span class="td-latin">Vaccinium corymbosum</span></td></tr>
-								<tr data-name="Fresa" data-latin="Fragaria × ananassa" data-specs="Nombre alternativo|Strawberry||Familia|Rosaceae||Tamaño / rendimiento|N/A||Ciclo productivo|N/A||Densidad de siembra|N/A||Altitud óptima (Ecuador)|2.200–3.200 m s.n.m.||Observaciones|Propagación vegetativa por estolones. Muy sensible a enfermedades radiculares — requiere suelo bien drenado."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/fresa.jpg" alt="Fresa" loading="lazy"></td><td class="td-name">Fresa <span class="td-latin">Fragaria × ananassa</span></td></tr>
-								<tr data-name="Claudia (Ciruela Andina)" data-latin="Prunus salicina / P. domestica" data-specs="Nombre alternativo|Ciruela japonesa / Ciruela europea||Familia|Rosaceae||Tamaño / rendimiento|N/A||Ciclo productivo|N/A||Densidad de siembra|N/A||Altitud óptima (Ecuador)|2.200–3.000 m s.n.m.||Observaciones|Propagar por injerto sobre patrón ciruelo o durazno para precocidad. Requiere cierto frío acumulado."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/claudia-ciruela-andina.jpg" alt="Claudia" loading="lazy"></td><td class="td-name">Claudia (Ciruela Andina) <span class="td-latin">Prunus salicina</span></td></tr>
-								<tr data-name="Durazno Injerto" data-latin="Prunus persica" data-specs="Nombre alternativo|Melocotón||Familia|Rosaceae||Tamaño / rendimiento|N/A||Ciclo productivo|N/A||Densidad de siembra|N/A||Altitud óptima (Ecuador)|2.200–3.000 m s.n.m.||Observaciones|Requiere acumulación de horas frío. El injerto sobre patrón controlado mejora uniformidad y vigor."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/durazno-injerto.jpg" alt="Durazno Injerto" loading="lazy"></td><td class="td-name">Durazno Injerto <span class="td-latin">Prunus persica</span></td></tr>
-								<tr data-name="Pepino Dulce" data-latin="Solanum muricatum" data-specs="Nombre alternativo|N/A||Familia|Solanaceae||Tamaño / rendimiento|N/A||Ciclo productivo|N/A||Densidad de siembra|N/A||Altitud óptima (Ecuador)|1.000–2.800 m s.n.m.||Observaciones|Frutal andino nativo cultivado en Ecuador y Perú. Propagación principalmente vegetativa."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/pepino-dulce.jpg" alt="Pepino Dulce" loading="lazy"></td><td class="td-name">Pepino Dulce <span class="td-latin">Solanum muricatum</span></td></tr>
-								<tr data-name="Nuez Injerta" data-latin="Juglans neotropica" data-specs="Nombre alternativo|Nogal andino, Cedro negro||Familia|Juglandaceae||Tamaño / rendimiento|N/A||Ciclo productivo|N/A||Densidad de siembra|N/A||Altitud óptima (Ecuador)|2.000–3.000 m s.n.m.||Observaciones|Especie nativa andina en peligro por pérdida de hábitat. El injerto acelera significativamente la producción respecto a planta de semilla."><td class="td-img"><img src="images/productos/frutalesforestales/frutales/nuez-injerta.jpg" alt="Nuez Injerta" loading="lazy"></td><td class="td-name">Nuez Injerta <span class="td-latin">Juglans neotropica</span></td></tr>
-							</tbody></table>
-						</div>
-						<div class="pilv-category-footer">* Clic en cada variedad para ver especificaciones. Consulte disponibilidad con su asesor Pilvicsa.</div>
-					</div>
-				</div>
-
-				<!-- ÁRBOLES FORESTALES -->
-				<div class="col-12 col-lg-6">
-					<div class="pilv-category">
-						<div class="pilv-category-header">🌲 Árboles Forestales <span class="subtitle">— Reforestación y uso maderero</span></div>
-						<div class="pilv-category-body">
-							<table class="pilv-table"><tbody>
-								<tr data-name="Eucalipto Baby Blue" data-latin="Eucalyptus pulverulenta" data-specs="Familia|Myrtaceae||Origen|Australia (introducido en Ecuador)||Uso principal|Ornamental, flor de corte (follaje), reforestación||Crecimiento|Rápido||Observaciones|Muy apreciado en floricultura de exportación por su follaje plateado redondeado."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/eucalipto-baby-blue.jpg" alt="Eucalipto Baby Blue" loading="lazy"></td><td class="td-name">Eucalipto Baby Blue <span class="td-latin">Eucalyptus pulverulenta</span></td></tr>
-								<tr data-name="Eucalipto Silver Dollar" data-latin="Eucalyptus cinerea" data-specs="Familia|Myrtaceae||Origen|Australia (introducido en Ecuador)||Uso principal|Ornamental, flor de corte (follaje), reforestación||Crecimiento|Rápido||Observaciones|Follaje circular plateado muy demandado en exportación floral."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/eucalipto-silver-dollar.jpg" alt="Eucalipto Silver Dollar" loading="lazy"></td><td class="td-name">Eucalipto Silver Dollar <span class="td-latin">Eucalyptus cinerea</span></td></tr>
-								<tr data-name="Eucalipto Poliantemus" data-latin="Eucalyptus polyanthemos" data-specs="Familia|Myrtaceae||Origen|Australia (introducido en Ecuador)||Uso principal|Madera, reforestación, follaje ornamental||Crecimiento|Rápido||Observaciones|N/A"><td class="td-img"><img src="images/productos/frutalesforestales/forestales/eucalipto-poliantemus.jpg" alt="Eucalipto Poliantemus" loading="lazy"></td><td class="td-name">Eucalipto Poliantemus <span class="td-latin">Eucalyptus polyanthemos</span></td></tr>
-								<tr data-name="Guarango" data-latin="Caesalpinia spinosa" data-specs="Familia|Fabaceae||Origen|Nativo andino — ampliamente cultivado en Ecuador||Uso principal|Industria (taninos), agroforestería, restauración de suelos||Crecimiento|Moderado — hasta 10–12 m||Observaciones|Fija nitrógeno y mejora el suelo. Hasta 2 cosechas/año. Rentabilidad hasta $2.000/ha/año en vaina."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/guarango.jpg" alt="Guarango" loading="lazy"></td><td class="td-name">Guarango <span class="td-latin">Caesalpinia spinosa</span></td></tr>
-								<tr data-name="Acacia Melanoxylon" data-latin="Acacia melanoxylon" data-specs="Familia|Fabaceae||Origen|Australia suroriental (introducida)||Uso principal|Madera de alta calidad, mueblería, construcción||Crecimiento|Moderado-lento — madera premium||Observaciones|Conocida como 'Australian Blackwood'. Madera muy valorada para instrumentos y muebles."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/acacia-melanoxylon.jpg" alt="Acacia Melanoxylon" loading="lazy"></td><td class="td-name">Acacia Melanoxylon <span class="td-latin">Acacia melanoxylon</span></td></tr>
-								<tr data-name="Álamo Blanco" data-latin="Populus alba" data-specs="Familia|Salicaceae||Origen|Europa/Asia central (introducida)||Uso principal|Madera blanda, cortinas rompevientos, ornamental||Crecimiento|Muy rápido||Observaciones|Muy utilizado en rompevientos y linderos en la sierra ecuatoriana."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/alamo-blanco.jpg" alt="Álamo Blanco" loading="lazy"></td><td class="td-name">Álamo Blanco <span class="td-latin">Populus alba</span></td></tr>
-								<tr data-name="Aliso" data-latin="Alnus acuminata" data-specs="Familia|Betulaceae||Origen|Nativo andino||Uso principal|Agroforestería, restauración de riberas, madera liviana||Crecimiento|Rápido||Observaciones|Especie fijadora de nitrógeno. Ideal para protección de cuencas hidrográficas."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/aliso.jpg" alt="Aliso" loading="lazy"></td><td class="td-name">Aliso <span class="td-latin">Alnus acuminata</span></td></tr>
-								<tr data-name="Arrayán" data-latin="Myrcianthes hallii" data-specs="Familia|Myrtaceae||Origen|Nativo andino||Uso principal|Ornamental, cercas vivas, restauración ecológica||Crecimiento|Lento-moderado||Observaciones|Fruto comestible. Madera dura y aromática. Muy apreciado en proyectos de revegetación nativa."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/arrayan.jpg" alt="Arrayán" loading="lazy"></td><td class="td-name">Arrayán <span class="td-latin">Myrcianthes hallii</span></td></tr>
-								<tr data-name="Capulí" data-latin="Prunus serotina subsp. capuli" data-specs="Familia|Rosaceae||Origen|Nativo andino||Uso principal|Fruto comestible, madera, rompevientos, ornamental||Crecimiento|Moderado — hasta 15 m||Observaciones|Fruto de consumo tradicional en mercados andinos. Madera de alta calidad para muebles y utensilios."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/capuli.jpg" alt="Capulí" loading="lazy"></td><td class="td-name">Capulí <span class="td-latin">Prunus serotina subsp. capuli</span></td></tr>
-								<tr data-name="Cepillo Rojo" data-latin="Callistemon citrinus" data-specs="Familia|Myrtaceae||Origen|Australia (introducida)||Uso principal|Ornamental, cercas vivas, atracción de polinizadores||Crecimiento|Moderado||Observaciones|Ampliamente plantado en parques y jardines de Quito. Florece en espigas rojas muy llamativas."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/cepillo-rojo.jpg" alt="Cepillo Rojo" loading="lazy"></td><td class="td-name">Cepillo Rojo <span class="td-latin">Callistemon citrinus</span></td></tr>
-								<tr data-name="Cholán" data-latin="Tecoma stans" data-specs="Familia|Bignoniaceae||Origen|Nativo americano — naturalizado en Ecuador||Uso principal|Ornamental, cercas vivas, uso medicinal tradicional||Crecimiento|Rápido||Observaciones|Flores amarillas tubulares muy llamativas. Resistente a sequía moderada."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/cholan.jpg" alt="Cholán" loading="lazy"></td><td class="td-name">Cholán <span class="td-latin">Tecoma stans</span></td></tr>
-								<tr data-name="Ciprés" data-latin="Cupressus macrocarpa / C. lusitanica" data-specs="Familia|Cupressaceae||Origen|Introducida||Uso principal|Rompevientos, ornamental, madera||Crecimiento|Moderado||Observaciones|Muy frecuente en rompevientos y linderos de la sierra ecuatoriana."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/cipres.jpg" alt="Ciprés" loading="lazy"></td><td class="td-name">Ciprés <span class="td-latin">Cupressus macrocarpa</span></td></tr>
-								<tr data-name="Ciprés Brasilero" data-latin="Cupressus lusitanica var. benthamii" data-specs="Familia|Cupressaceae||Origen|Introducida||Uso principal|Reforestación, madera, rompevientos||Crecimiento|Rápido para su género||Observaciones|N/A"><td class="td-img"><img src="images/productos/frutalesforestales/forestales/cipres-brasilero.jpg" alt="Ciprés Brasilero" loading="lazy"></td><td class="td-name">Ciprés Brasilero <span class="td-latin">Cupressus lusitanica var. benthamii</span></td></tr>
-								<tr data-name="Eugenia Piramidal" data-latin="Eugenia myrtifolia" data-specs="Familia|Myrtaceae||Origen|Australia (introducida)||Uso principal|Ornamental, setos formales, cercas vivas||Crecimiento|Moderado||Observaciones|Muy usada en paisajismo urbano andino por su follaje denso y forma piramidal."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/eugenia-piramidal.jpg" alt="Eugenia Piramidal" loading="lazy"></td><td class="td-name">Eugenia Piramidal <span class="td-latin">Eugenia myrtifolia</span></td></tr>
-								<tr data-name="Eugenia Arbórea" data-latin="Eugenia spp." data-specs="Familia|Myrtaceae||Origen|N/A||Uso principal|Ornamental, setos, restauración||Crecimiento|N/A||Observaciones|N/A"><td class="td-img"><img src="images/productos/frutalesforestales/forestales/eugenia-arborea.jpg" alt="Eugenia Arbórea" loading="lazy"></td><td class="td-name">Eugenia Arbórea <span class="td-latin">Eugenia spp.</span></td></tr>
-								<tr data-name="Molle" data-latin="Schinus molle" data-specs="Familia|Anacardiaceae||Origen|Nativo andino — ampliamente naturalizado||Uso principal|Ornamental, sombra, uso medicinal, rompevientos||Crecimiento|Rápido||Observaciones|La pimienta rosada proviene de sus frutos. Tolerante a sequía y suelos pobres."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/molle.jpg" alt="Molle" loading="lazy"></td><td class="td-name">Molle <span class="td-latin">Schinus molle</span></td></tr>
-								<tr data-name="Pino" data-latin="Pinus radiata / Pinus patula" data-specs="Familia|Pinaceae||Origen|Introducida||Uso principal|Madera, reforestación comercial, pulpa de papel||Crecimiento|Rápido||Observaciones|Especie de reforestación comercial muy plantada en Ecuador desde los años 1960–70. Ciclo maderero 15–25 años."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/pino.jpg" alt="Pino" loading="lazy"></td><td class="td-name">Pino <span class="td-latin">Pinus radiata / P. patula</span></td></tr>
-								<tr data-name="Pumamaqui" data-latin="Oreopanax ecuadorensis" data-specs="Familia|Araliaceae||Origen|Endémica del Ecuador||Uso principal|Restauración ecológica, cercas vivas, uso medicinal tradicional||Crecimiento|Lento||Observaciones|Endémica andina entre 2.200 y 3.800 m s.n.m. En peligro por deforestación. Ideal para reforestación de cuencas."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/pumamaqui.jpg" alt="Pumamaqui" loading="lazy"></td><td class="td-name">Pumamaqui <span class="td-latin">Oreopanax ecuadorensis</span></td></tr>
-								<tr data-name="Sauce" data-latin="Salix humboldtiana / Salix babylonica" data-specs="Familia|Salicaceae||Origen|S. humboldtiana: nativo andino; S. babylonica: introducida||Uso principal|Protección de riberas, ornamental, madera blanda||Crecimiento|Muy rápido||Observaciones|Ampliamente usado en riberas de ríos de la sierra ecuatoriana. Raíces invasivas — no plantar cerca de infraestructura."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/sauce.jpg" alt="Sauce" loading="lazy"></td><td class="td-name">Sauce <span class="td-latin">Salix humboldtiana</span></td></tr>
-								<tr data-name="Yagual" data-latin="Polylepis lanuginosa" data-specs="Familia|Rosaceae||Origen|Nativo andino — Ecuador||Uso principal|Restauración ecológica de páramo, protección de cuencas||Crecimiento|Muy lento||Observaciones|Árbol emblemático del páramo andino ecuatoriano. Crece a 3.000–4.500 m s.n.m. Especie clave en restauración de ecosistemas de altura."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/yagual.jpg" alt="Yagual" loading="lazy"></td><td class="td-name">Yagual <span class="td-latin">Polylepis lanuginosa</span></td></tr>
-								<tr data-name="Arupo" data-latin="Chionanthus pubescens" data-specs="Familia|Oleaceae||Origen|Endémico del sur del Ecuador||Uso principal|Ornamental, árbol urbano||Crecimiento|Moderado||Observaciones|Inflorescencias rosadas muy vistosas. Símbolo vegetal de Quito en temporada de floración."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/arupo.jpg" alt="Arupo" loading="lazy"></td><td class="td-name">Arupo <span class="td-latin">Chionanthus pubescens</span></td></tr>
-								<tr data-name="Sacha Capulí" data-latin="Vallea stipularis" data-specs="Familia|Elaeocarpaceae||Origen|Nativo andino||Uso principal|Ornamental, restauración ecológica, cercas vivas||Crecimiento|Moderado||Observaciones|Flores rosadas vistosas. Crece entre 1.600 y 4.000 m s.n.m. Usado en revegetación de áreas andinas degradadas."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/sacha-capuli.jpg" alt="Sacha Capulí" loading="lazy"></td><td class="td-name">Sacha Capulí <span class="td-latin">Vallea stipularis</span></td></tr>
-								<tr data-name="Quishuar" data-latin="Buddleja incana" data-specs="Familia|Scrophulariaceae||Origen|Nativo andino||Uso principal|Rompevientos, restauración ecológica, cercas vivas||Crecimiento|Moderado||Observaciones|Tolera bien heladas y suelos pobres. Flores pequeñas atractoras de polinizadores."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/quishuar.jpg" alt="Quishuar" loading="lazy"></td><td class="td-name">Quishuar <span class="td-latin">Buddleja incana</span></td></tr>
-								<tr data-name="Romerillo" data-latin="Prumnopitys montana" data-specs="Familia|Podocarpaceae||Origen|Nativo andino||Uso principal|Madera, restauración de bosque nativo andino||Crecimiento|Lento||Observaciones|Conífera nativa andina presente en bosques montanos de Ecuador entre 1.800 y 3.200 m s.n.m."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/romerillo.jpg" alt="Romerillo" loading="lazy"></td><td class="td-name">Romerillo <span class="td-latin">Prumnopitys montana</span></td></tr>
-								<tr data-name="Nogal" data-latin="Juglans neotropica" data-specs="Familia|Juglandaceae||Origen|Nativo andino — Colombia, Ecuador, Perú||Uso principal|Madera de alta calidad, fruto, agroforestería||Crecimiento|Moderado-lento||Observaciones|Especie en peligro de extinción por sobreexplotación maderera. Ideal para sistemas agroforestales de largo plazo."><td class="td-img"><img src="images/productos/frutalesforestales/forestales/nogal.jpg" alt="Nogal" loading="lazy"></td><td class="td-name">Nogal <span class="td-latin">Juglans neotropica</span></td></tr>
-							</tbody></table>
-						</div>
-						<div class="pilv-category-footer">* Clic en cada especie para ver especificaciones. Consulte disponibilidad con su asesor Pilvicsa.</div>
-					</div>
-				</div>
-
-				</div><!-- .row end -->
-
-				<div class="row mt-2 mb-6">
-					<div class="col-lg-8 offset-lg-2 text-center">
-						<div style="width:36px;height:1px;background:#ccc;margin:0 auto 24px;"></div>
-						<p style="color:#777;font-style:italic;font-size:0.92rem;line-height:1.8;">Si lo que buscas no está en la lista, conversemos para desarrollar un programa de propagación juntos.</p>
-					</div>
-				</div>
-
-			
-				<div class="row mt-4 mb-5">
-					<div class="col-12 text-center">
-						<div style="width:36px;height:1px;background:#ccc;margin:0 auto 20px;"></div>
-						<p style="color:#777;font-style:italic;font-size:0.92rem;">Si lo que buscas no está en la lista, conversemos.</p>
-						<a href="localizaciones.html" class="button button-border" style="border-color:#2c6e3f;color:#2c6e3f;">Contactar a Pilvicsa</a>
-					</div>
-				</div>
-			</div><!-- .container end -->
-
-			<div class="section bg-transparent mt-0">
-				<div class="container">
-					<div class="row mt-6">
-						<div class="col-lg-6" style="padding-left:60px;">
-							<div class="heading-block mt-4 mb-4 border-0">
-								<h3 class="text-transform-none" style="font-size:46px;font-weight:700;letter-spacing:-2px;line-height:58px">Nuestro Video Corporativo.</h3>
-							</div>
-							<p class="fw-normal">Nuestra experiencia, procesos y tecnologia.<br>Estamos constantemente compartiendo nuevas tecnologias, cultivos y aliados.</p>
-							<a href="https://www.youtube.com/@pilvicsa" class="button-link mb-5">Nuestra libreria de videos</a>
-						</div>
-						<div class="col-lg-6 p-0">
-							<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px;box-shadow:0 0 25px rgba(0,0,0,0.15);">
-								<iframe src="https://www.youtube.com/embed/MScYlxfqeac" title="Pilvicsa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-							</div>
-						
-					<div class="row mt-4 mb-2">
-						<div class="col-12 text-center">
-							<p style="font-size:0.95rem;color:#555;margin-bottom:14px;">¡Sigue viendo nuestro contenido y síguenos en redes!</p>
-							<div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
-								<a href="https://www.facebook.com/piloneslavictoria/" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
-								<a href="https://www.instagram.com/pilvicsa/" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-instagram"><i class="bi-instagram"></i><i class="bi-instagram"></i></a>
-								<a href="https://www.linkedin.com/company/pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-linkedin"><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-linkedin-in"></i></a>
-								<a href="https://www.tiktok.com/@pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-tiktok"><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-tiktok"></i></a>
-								<a href="https://www.youtube.com/@pilvicsa" target="_blank" class="social-icon si-small rounded-circle border-0 text-light bg-youtube"><i class="fa-brands fa-youtube"></i><i class="fa-brands fa-youtube"></i></a>
-							</div>
-						</div>
-					</div>
-		</div>
-	</section>
-
-	<footer id="footer" class="border-0" style="padding:30px 0;background-color:#FFF">
-		<div class="container">
-			<div class="footer-widgets-wrap">
-				<div class="row col-mb-50">
-					<div class="col-md-3">
-						<a href="index.html"><img src="images/logo@2x.png" alt="Pilvicsa" height="100" style="margin-top:-30px"></a>
-					</div>
-					<div class="col-md-9">
-						<div class="row col-mb-30">
-							<div class="col-sm-6 col-lg-3">
-								<div class="widget widget_links widget-li-noicon">
-									<h4>Servicios</h4>
-									<ul>
-										<li><a href="#">Semillas</a></li>
-										<li><a href="#">Esquejes</a></li>
-										<li><a href="#">Injertos</a></li>
-										<li><a href="#">Endurecimiento Meristematico</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-3">
-								<div class="widget widget_links widget-li-noicon">
-									<h4>Productos</h4>
-									<ul>
-										<li><a href="producto-hortalizas.html">Hortalizas</a></li>
-										<li><a href="productos-florescorte.html">Flores de Corte</a></li>
-										<li><a href="productos-cultivoscosta.html">Cultivos de Costa</a></li>
-										<li><a href="productos-frutalesforestales.html">Frutales y Forestales</a></li>
-										<li><a href="productos-especies.html">Especies y Aromáticas</a></li>
-										<li><a href="productos-otras.html">Cultivos Especiales</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-3">
-								<div class="widget widget_links widget-li-noicon">
-									<h4>Contactos y Preguntas</h4>
-									<ul>
-										<!-- TODO: Preguntas Frecuentes — activar cuando la página esté lista -->
-										<li style="display:none"><a href="#">¿Preguntas Frecuentes?</a></li>
-										<li><a href="localizaciones.html#latacunga">Vivero Latacunga</a></li>
-										<li><a href="localizaciones.html#santodomingo">Vivero Santo Domingo</a></li>
-										<li><a href="localizaciones.html#quito">Despacho Quito</a></li>
-										<li><a href="localizaciones.html#checa">Despacho Checa</a></li>
-										<li><a href="localizaciones.html#otavalo">Despacho Otavalo</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="line line-sm"></div>
-						<div class="row justify-content-between col-mb-30">
-							<div class="col-12 col-md-auto text-center text-md-start">
-								<small class="fw-light" style="color:#AAA">&copy; 2025 Todos Los derechos pertenecen a Pilvicsa</small>
-							</div>
-							<div class="col-12 col-md-auto text-center text-md-end">
-								<a href="https://www.facebook.com/piloneslavictoria/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
-								<a href="https://www.instagram.com/pilvicsa/" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-instagram"><i class="bi-instagram"></i><i class="bi-instagram"></i></a>
-								<a href="https://www.linkedin.com/company/pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-linkedin"><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-linkedin-in"></i></a>
-								<a href="https://www.tiktok.com/@pilvicsa" target="_blank" class="social-icon si-mini rounded-circle border-0 text-light bg-tiktok"><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-tiktok"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-</div><!-- #wrapper end -->
-
-<div id="gotoTop" class="uil uil-angle-up"></div>
-<script src="js/plugins.min.js"></script>
-<script src="js/functions.bundle.js"></script>
-
-<div id="pilv-lightbox" role="dialog" aria-modal="true" aria-labelledby="pilv-lightbox-title">
-	<div id="pilv-lightbox-inner">
-		<button id="pilv-lightbox-close" aria-label="Cerrar">&times;</button>
-		<img id="pilv-lightbox-img" src="" alt="" loading="lazy">
-		<div id="pilv-lightbox-body">
-			<h4 id="pilv-lightbox-title"></h4>
-			<p id="pilv-lightbox-latin"></p>
-			<div id="pilv-lightbox-desc"></div>
-			<div class="pilv-lightbox-note">Producción bajo pedido · Pilvicsa trabaja con genética certificada respetando la propiedad intelectual.</div>
-		</div>
-	</div>
+<!-- PAGE HERO -->
+<div class="relative pt-16 h-64 sm:h-80 overflow-hidden bg-pilvicsa-dark">
+  <img src="images/pages/frutalesforestales.jpg" alt="Frutales y Forestales" class="absolute inset-0 w-full h-full object-cover opacity-40" loading="eager">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-end pb-10">
+    <nav class="text-xs text-white/40 mb-3" aria-label="Breadcrumb">
+      <a href="index.html" class="hover:text-white/70 transition">Inicio</a><span class="mx-2">/</span>
+      <a href="buscar.html" class="hover:text-white/70 transition">Productos</a><span class="mx-2">/</span>
+      <span class="text-white/70">Frutales y Forestales</span>
+    </nav>
+    <h1 class="font-display font-black text-4xl lg:text-5xl text-white mb-1">Frutales y Forestales</h1>
+    <p class="text-white/50 text-sm" id="page-count">Cargando...</p>
+  </div>
 </div>
 
+<!-- INTRO -->
+<div class="bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <p class="text-gray-600 text-base max-w-3xl leading-relaxed">Arándanos, mora de Castilla y frutales nativos — desde producción comercial intensiva hasta reforestación y agricultura familiar en altitudes medias y altas del Ecuador.</p>
+  </div>
+</div>
+
+<!-- MARKET CONTEXT -->
+<section style="padding: 18px 0 10px; border-bottom: 1px solid #f0ece6;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p style="font-size: 1rem; line-height: 1.7; color: #5a5a5a; margin: 0; font-style: italic;">
+      El arándano es el cultivo de mayor proyección en la fruticultura andina ecuatoriana.
+    </p>
+  </div>
+</section>
+
+<!-- PRODUCT GRID -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div class="col-span-full text-center py-16 text-gray-400 text-sm">Cargando variedades...</div>
+  </div>
+  <div id="no-results" class="hidden text-center py-16">
+    <p class="text-gray-400 text-sm mb-4">No hay variedades disponibles en esta categoría.</p>
+    <a href="buscar.html" class="inline-flex items-center gap-1 text-sm font-semibold text-pilvicsa-mid hover:text-pilvicsa-primary transition">← Ver todas las variedades</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="bg-pilvicsa-surface border-t border-gray-200 py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-gray-600 text-sm">¿Buscas algo específico? Usa el buscador para encontrar cualquier variedad.</p>
+    <a href="buscar.html?cat=frutalesforestales" class="inline-flex items-center gap-2 bg-pilvicsa-primary text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-pilvicsa-mid transition">Buscar en Frutales <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
+  </div>
+</div>
+
+<!-- MARKET CONTEXT BOTTOM -->
+<section style="padding: 48px 0 56px; background: #faf8f5; border-top: 1px solid #ede8e0; margin-top: 40px;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <p style="font-size: 0.78rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #c8a96e; margin-bottom: 8px;">
+      Contexto de Mercado
+    </p>
+
+    <h3 style="font-size: 1.2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 20px; line-height: 1.4;">
+      Arándano, uvilla y forestales andinos — la fruticultura del nuevo ciclo
+    </h3>
+
+    <div class="market-context-columns" style="column-count: 2; column-gap: 40px; column-rule: 1px solid #e8e2d8;">
+      <p style="font-size: 0.93rem; line-height: 1.85; color: #3a3a3a; margin-top: 0; margin-bottom: 1rem;">
+        El arándano es el cultivo de mayor proyección en la fruticultura andina ecuatoriana. A diferencia de Chile, Ecuador puede producir casi todo el año gracias a su posición ecuatorial, llenando ventanas de oferta que el hemisferio sur no puede cubrir. Las variedades Biloxi, Emerald y Legacy se adaptaron bien a altitudes entre <strong>1.500</strong> y <strong>2.500 m.s.n.m.</strong>, y las primeras plantaciones comerciales en Pichincha y Tungurahua demostraron viabilidad exportadora hacia mercados de alto valor en Europa y Asia.
+      </p>
+      <p style="font-size: 0.93rem; line-height: 1.85; color: #3a3a3a; margin-bottom: 0;">
+        La uvilla o goldenberry vivió un auge exportador notable entre <strong>2008</strong> y <strong>2016</strong>, cuando Europa y América del Norte descubrieron sus propiedades antioxidantes como superfruta andina. El tomate de árbol mantiene un mercado interno masivo y exportación creciente en formato de pulpa congelada. En árboles forestales, la creciente demanda corporativa de compensación de huella de carbono está revalorizando las especies nativas — especialmente el yagual, el aliso y las familias del bosque montano andino — como activos productivos de largo plazo.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-pilvicsa-dark text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+      <div><a href="index.html" class="flex items-center gap-3 mb-4"><img src="images/logo@2x.png" alt="Pilvicsa" class="h-10 w-auto"></a><p class="text-white/40 text-sm leading-relaxed">Germinando desde 1999.<br>Vivero y pilonera líder del Ecuador.</p></div>
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-pilvicsa-accent mb-4">Productos</h4>
+        <ul class="space-y-2 text-sm text-white/55">
+          <li><a href="producto-hortalizas.html" class="hover:text-white transition">Hortalizas</a></li>
+          <li><a href="productos-florescorte.html" class="hover:text-white transition">Flores de Corte</a></li>
+          <li><a href="productos-cultivoscosta.html" class="hover:text-white transition">Cultivos de Costa</a></li>
+          <li><a href="productos-frutalesforestales.html" class="text-white hover:text-pilvicsa-accent transition">Frutales y Forestales</a></li>
+          <li><a href="productos-especies.html" class="hover:text-white transition">Especies y Aromáticas</a></li>
+          <li><a href="buscar.html" class="text-pilvicsa-accent/70 hover:text-pilvicsa-accent transition">Ver todas →</a></li>
+        </ul>
+      </div>
+      <div><h4 class="text-xs font-bold uppercase tracking-widest text-pilvicsa-accent mb-4">Servicios</h4><ul class="space-y-2 text-sm text-white/55"><li><a href="index.html#servicios" class="hover:text-white transition">Semillas</a></li><li><a href="index.html#servicios" class="hover:text-white transition">Esquejes</a></li><li><a href="index.html#servicios" class="hover:text-white transition">Injertos</a></li><li><a href="herramientas-planificacion.html" class="hover:text-white transition">Planificación</a></li></ul></div>
+      <div><h4 class="text-xs font-bold uppercase tracking-widest text-pilvicsa-accent mb-4">Contacto</h4><ul class="space-y-2.5 text-sm text-white/55 mb-5"><li><a href="tel:+593322235011" class="hover:text-white transition">032 235 011</a></li><li><a href="tel:+593997609747" class="hover:text-white transition">0997 609 747</a></li><li><a href="mailto:pilvicsaec@gmail.com" class="hover:text-white transition">pilvicsaec@gmail.com</a></li></ul><a href="https://wa.me/593997609747" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg text-xs font-semibold transition"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a></div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-white/35 text-sm">© 2025 Pilvicsa · <a href="https://pilvicsa.com.ec" class="hover:text-white/55 transition">pilvicsa.com.ec</a> &nbsp;·&nbsp; <a href="aviso-legal.html" style="color:#aaa; text-decoration:underline;">Aviso Legal</a></p>
+      <p style="font-size:0.72rem; color:#888; line-height:1.5; margin-top:4px;">La información agronómica publicada es de carácter referencial. Los resultados en campo varían según suelo, altitud y clima. <a href="aviso-legal.html" style="color:#aaa; text-decoration:underline;">Leer descargo completo</a></p>
+      <div class="flex gap-6 text-sm text-white/35"><a href="localizaciones.html" class="hover:text-white/55 transition">Contacto</a></div>
+    </div>
+  </div>
+</footer>
+
+<div id="modal-backdrop" class="fixed inset-0 bg-black/50 z-50 hidden opacity-0" onclick="closeModal()"></div>
+<div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none opacity-0">
+  <div id="pilv-lb-inner" class="bg-white rounded-2xl shadow-2xl w-full overflow-hidden" style="max-width:640px" onclick="event.stopPropagation()">
+    <img id="pilv-lb-img" src="" alt=""
+         style="max-height:320px;width:100%;object-fit:contain;background:#ffffff;display:none"
+         onerror="this.style.display='none';document.getElementById('pilv-lb-img-placeholder').style.display='flex'">
+    <div id="pilv-lb-img-placeholder"
+         style="display:none;height:180px;background:#f4f8f5;align-items:center;justify-content:center">
+      <svg width="48" height="48" fill="none" stroke="rgba(44,110,63,0.3)" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+      </svg>
+    </div>
+    <div id="pilv-lb-content">
+      <div class="flex items-start justify-between p-6 border-b border-gray-100">
+        <div class="pr-4">
+          <div class="flex items-center gap-2 mb-1" id="modal-badges"></div>
+          <h2 id="modal-nombre" class="font-display font-black text-2xl text-gray-900 leading-tight"></h2>
+          <p id="modal-latin" class="text-sm text-gray-400 italic mt-0.5"></p>
+        </div>
+        <button id="pilv-lb-close" onclick="closeModal()" class="p-2 rounded-xl text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition flex-shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="border-b border-gray-100 px-6"><div class="flex gap-0" id="modal-tabs"></div></div>
+      <div id="pilv-lb-body" class="overflow-y-auto flex-1 p-6"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script>
-(function () {
-	var lb      = document.getElementById('pilv-lightbox');
-	var lbImg   = document.getElementById('pilv-lightbox-img');
-	var lbTitle = document.getElementById('pilv-lightbox-title');
-	var lbLatin = document.getElementById('pilv-lightbox-latin');
-	var lbDesc  = document.getElementById('pilv-lightbox-desc');
-	var lbClose = document.getElementById('pilv-lightbox-close');
+const PILV_WHATSAPP = '593986818675';
+// To change number: edit only this line
+const PAGE_CAT = 'frutales';
+const CAT_META = { hortalizas:{label:'Hortalizas',cls:'bg-green-100 text-green-800'}, florescorte:{label:'Flores de Corte',cls:'bg-rose-100 text-rose-800'}, cultivoscosta:{label:'Cultivos de Costa',cls:'bg-amber-100 text-amber-800'}, frutalesforestales:{label:'Frutales y Forestales',cls:'bg-orange-100 text-orange-800'}, especies:{label:'Especies',cls:'bg-teal-100 text-teal-800'}, otras:{label:'Cultivos Especiales',cls:'bg-purple-100 text-purple-800'} };
+const SPEC_FIELDS = [{key:'ciclo',label:'Ciclo'},{key:'sistema',label:'Sistema'},{key:'color',label:'Color'},{key:'forma',label:'Forma'},{key:'tamano',label:'Tamaño'},{key:'densidad',label:'Densidad'},{key:'resistencias',label:'Resistencias'}];
+const PLACEHOLDER_SVG = `<div class="w-full h-full bg-pilvicsa-surface flex items-center justify-center"><svg class="w-10 h-10 text-pilvicsa-light opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>`;
+function pilvImgErr(el){el.parentElement.innerHTML=PLACEHOLDER_SVG;}
 
-	function buildSpecTable(specsStr) {
-		if (!specsStr) return '';
-		var rows = specsStr.split('||').map(function(pair) {
-			var p = pair.split('|');
-			return '<tr><td>' + p[0] + '</td><td>' + (p[1] || '') + '</td></tr>';
-		}).join('');
-		return '<table class="pilv-spec-table"><tbody>' + rows + '</tbody></table>';
-	}
-
-	function open(img, name, latin, specs) {
-		lbImg.src = img;
-		lbImg.alt = name;
-		lbTitle.textContent = name;
-		lbLatin.textContent = latin || '';
-		lbDesc.innerHTML = buildSpecTable(specs);
-		lb.classList.add('open');
-		document.body.style.overflow = 'hidden';
-		lbClose.focus();
-	}
-
-	function close() {
-		lb.classList.remove('open');
-		document.body.style.overflow = '';
-	}
-
-	document.querySelectorAll('.pilv-table tbody tr').forEach(function (tr) {
-		tr.addEventListener('click', function () {
-			var img   = tr.querySelector('td.td-img img');
-			var name  = tr.dataset.name  || '';
-			var latin = tr.dataset.latin || '';
-			open(img ? img.src : '', name, latin, tr.dataset.specs || '');
-		});
-	});
-
-	lbClose.addEventListener('click', close);
-	lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
-	document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-})();
-</script>
-
-
-<script>
-/* Pilvicsa search deep-link — opens lightbox when arriving via ?v=ProductName */
-(function() {
-  function decodeParam(s) { try { return decodeURIComponent(s); } catch(e) { return s; } }
-  var params = new URLSearchParams(window.location.search);
-  var target = params.get('v');
-  if (!target) return;
-  target = decodeParam(target).toLowerCase().trim();
-  function tryOpen() {
-    var rows = document.querySelectorAll('.pilv-table tbody tr[data-name]');
-    for (var i = 0; i < rows.length; i++) {
-      var name = (rows[i].dataset.name || '').toLowerCase().trim();
-      if (name === target) {
-        rows[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(function(r){ r.click(); }, 400, rows[i]);
-        return true;
-      }
-    }
-    return false;
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(tryOpen, 300);
+let PILV_DB = [];
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function cardHTML(p){const meta=CAT_META[p.pagina]||{label:p.pageLabel||p.pagina,cls:'bg-gray-100 text-gray-700'};const imgSrc=p.imagen?(p.imagen.startsWith('http')||p.imagen.startsWith('images/')?p.imagen:'images/productos/'+p.imagen):'';const imgHtml=imgSrc?`<img src="${esc(imgSrc)}" alt="${esc(p.nombre)}" loading="lazy" class="w-full h-full object-cover" onerror="pilvImgErr(this)">`:PLACEHOLDER_SVG;const specs=SPEC_FIELDS.filter(f=>p[f.key]).slice(0,3).map(f=>`<span class="text-xs text-gray-500"><span class="font-medium text-gray-700">${f.label}:</span> ${esc(p[f.key])}</span>`).join(' · ');const cb='';return `<div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md overflow-hidden cursor-pointer" onclick="openModal('${esc(p.id)}')"><div class="h-44 overflow-hidden bg-pilvicsa-surface relative">${imgHtml}</div><div class="p-4"><div class="flex flex-wrap items-center gap-1.5 mb-2"><span class="text-xs font-semibold px-2 py-0.5 rounded-full ${meta.cls}">${meta.label}</span>${cb}</div><h3 class="font-semibold text-gray-900 leading-snug mb-0.5">${esc(p.nombre)}</h3>${p.latin?`<p class="text-xs text-gray-400 italic mb-2">${esc(p.latin)}</p>`:'<div class="mb-2"></div>'}${specs?`<p class="text-xs leading-relaxed text-gray-500 mb-3">${specs}</p>`:'<div class="mb-3"></div>'}<button class="w-full text-center text-xs font-semibold text-pilvicsa-mid hover:text-white hover:bg-pilvicsa-mid border border-pilvicsa-light rounded-lg py-2 transition">Ver ficha completa</button></div></div>`;}
+fetch('data/products.json')
+  .then(r => {
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' — ' + r.url);
+    return r.json();
+  })
+  .then(data => {
+    console.log('[Pilvicsa] Loaded', data.length, 'products from local JSON');
+    PILV_DB = data;
+    const f = PILV_DB.filter(p => p.pagina === PAGE_CAT);
+    window._pilvCurrentList = f;
+    document.getElementById("page-count").textContent = f.length + " variedad" + (f.length !== 1 ? "es" : "");
+    const g = document.getElementById("product-grid");
+    if (f.length === 0) { g.innerHTML = ""; document.getElementById("no-results").classList.remove("hidden"); }
+    else { g.innerHTML = f.map(cardHTML).join(""); }
+  })
+  .catch(err => {
+    console.error("[Pilvicsa]", err.message);
+    document.getElementById("product-grid").innerHTML =
+      "<div class='col-span-full text-center py-16 text-red-400 text-sm font-mono px-4'>" + err.message + "<br><br>Abre el sitio via XAMPP: <strong>http://localhost/pilvicsa.v2/</strong></div>";
+  });
+const SPEC_LABELS = {
+  'ciclo':              'Ciclo de cultivo',
+  'tamano':             'Tamaño promedio',
+  'resistencias':       'Resistencias',
+  'color':              'Color',
+  'forma':              'Forma',
+  'sistema':            'Sistema de cultivo',
+  'densidad':           'Densidad',
+  'colores_disponibles':'Colores disponibles',
+  'recomendaciones':    'Recomendaciones',
+  'familia':            'Familia botánica',
+  'uso':                'Uso principal',
+  'descripcion':        'Descripción',
+  'disponibilidad':     'Disponibilidad',
+};
+function specs2table(p) {
+  const KEYS = ['ciclo','sistema','color','forma','tamano','densidad','resistencias',
+                'colores_disponibles','recomendaciones','familia','uso','descripcion','disponibilidad'];
+  const rows = KEYS.filter(k => p[k]).map(k =>
+    `<tr class="border-b border-gray-50"><td class="py-2.5 pr-4 text-xs font-semibold text-gray-500 uppercase tracking-wider w-36 align-top">${SPEC_LABELS[k] || k}</td><td class="py-2.5 text-sm text-gray-900">${esc(p[k])}</td></tr>`
+  ).join('');
+  return rows ? `<table class="w-full">${rows}</table>` : '<p class="text-sm text-gray-400">Sin especificaciones disponibles.</p>';
+}
+var currentProductIndex = -1;
+var currentFilteredList = [];
+var currentProductName = '';
+function navigateModal(dir) {
+  if (document.getElementById('modal-backdrop').classList.contains('hidden')) return;
+  var newIdx = currentProductIndex + dir;
+  if (newIdx < 0 || newIdx >= currentFilteredList.length) return;
+  openModal(currentFilteredList[newIdx].id);
+}
+function copyProductLink() {
+  var url = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(currentProductName);
+  var label = document.getElementById('pilv-share-label');
+  function showCopied() { if (label) { label.textContent = '¡Enlace copiado!'; setTimeout(function() { label.textContent = 'Copiar enlace'; }, 2000); } }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(showCopied).catch(function() {
+      var ta = document.createElement('textarea'); ta.value = url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showCopied();
     });
   } else {
-    setTimeout(tryOpen, 300);
+    var ta = document.createElement('textarea'); ta.value = url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showCopied();
   }
-})();
-</script>
+}
+function openModal(id) {
+  const p = PILV_DB.find(x => x.id === id); if (!p) return;
+  currentProductName = p.nombre;
+  currentFilteredList = window._pilvCurrentList || [];
+  currentProductIndex = currentFilteredList.findIndex(function(x) { return x.id === p.id; });
+  var prevBtn = document.getElementById('pilv-lb-prev');
+  var nextBtn = document.getElementById('pilv-lb-next');
+  if (prevBtn) prevBtn.style.display = currentProductIndex > 0 ? 'flex' : 'none';
+  if (nextBtn) nextBtn.style.display = currentProductIndex < currentFilteredList.length - 1 ? 'flex' : 'none';
+  const meta = CAT_META[p.pagina] || { label: p.pageLabel || p.pagina, cls: 'bg-gray-100 text-gray-700', page: '#' };
+  const imgEl = document.getElementById('pilv-lb-img');
+  const phEl  = document.getElementById('pilv-lb-img-placeholder');
+  const imgSrc = p.imagen ? (p.imagen.startsWith('http') || p.imagen.startsWith('images/') ? p.imagen : 'images/productos/' + p.imagen) : '';
+  if (imgSrc) { imgEl.src = imgSrc; imgEl.alt = p.nombre; imgEl.style.display = 'block'; phEl.style.display = 'none'; }
+  else        { imgEl.style.display = 'none'; phEl.style.display = 'flex'; }
+  document.getElementById('modal-badges').innerHTML = `<span class="text-xs font-semibold px-2 py-0.5 rounded-full ${meta.cls}">${meta.label}</span>`;
+  document.getElementById('modal-nombre').textContent = p.nombre;
+  const latinEl = document.getElementById('modal-latin'); latinEl.textContent = p.latin || ''; latinEl.style.display = p.latin ? '' : 'none';
+  document.getElementById('modal-tabs').innerHTML = '';
+  const notaBlock = p.nota ? `<div class="mt-4 p-4 bg-pilvicsa-surface rounded-xl border-l-4 border-pilvicsa-mid"><p class="text-xs font-bold text-pilvicsa-primary uppercase tracking-wider mb-1">Nota</p><p class="text-sm text-gray-700">${esc(p.nota)}</p></div>` : '';
+  const waText = encodeURIComponent('Hola Pilvicsa, me interesa consultar disponibilidad de ' + p.nombre + '. Pueden ayudarme?');
+  const waUrl  = 'https://wa.me/' + PILV_WHATSAPP + '?text=' + waText;
+  const PAGE_MAP = { hortalizas:'producto-hortalizas.html', florescorte:'productos-florescorte.html', cultivoscosta:'productos-cultivoscosta.html', frutales:'productos-frutalesforestales.html', frutalesforestales:'productos-frutalesforestales.html', especies:'productos-especies.html', otras:'productos-otras.html' };
+  const pageHref = meta.page || PAGE_MAP[p.pagina] || '#';
+  const waBtn = `<a href="${waUrl}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:white;padding:10px 20px;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;margin-top:14px;transition:background 0.15s;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L0 24l6.336-1.501A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.785 9.785 0 01-5.012-1.378l-.36-.214-3.732.884.916-3.618-.235-.374A9.76 9.76 0 012.18 12C2.18 6.59 6.59 2.18 12 2.18c5.41 0 9.818 4.41 9.818 9.82 0 5.41-4.408 9.818-9.818 9.818z"/></svg>Consultar disponibilidad</a>`;
+  const pageLink = `<a href="${pageHref}" style="display:block;text-align:center;margin-top:10px;font-size:0.8rem;color:#2c6e3f;font-weight:600;text-decoration:none;">Ver página de ${esc(p.pageLabel || meta.label)} →</a>`;
+  const shareBtn = '<button id="pilv-lb-share" onclick="copyProductLink()" style="display:flex;align-items:center;gap:6px;background:none;border:none;color:#aaa;font-size:0.72rem;cursor:pointer;padding:0;margin-top:8px;transition:color 0.15s;" title="Copiar enlace a este producto"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg><span id="pilv-share-label">Copiar enlace</span></button>';
+  var mediaHtml = '';
+  var hasMedia = !!(p.youtube_id || p.fb_video_id || p.ig_post_id);
+  if (p.youtube_id)  mediaHtml += '<div style="margin-bottom:12px;"><iframe width="100%" height="200" src="https://www.youtube.com/embed/' + esc(p.youtube_id) + '" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe></div>';
+  if (p.fb_video_id) mediaHtml += '<div style="margin-bottom:12px;"><iframe width="100%" height="200" src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/piloneslavictoria/videos/' + esc(p.fb_video_id) + '/&width=500&show_text=false" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe></div>';
+  if (p.ig_post_id)  mediaHtml += '<div style="margin-bottom:12px;"><iframe width="100%" height="400" src="https://www.instagram.com/p/' + esc(p.ig_post_id) + '/embed/" frameborder="0" style="border-radius:8px;"></iframe></div>';
+  const tabBtnMedia = hasMedia ? '<button id="tab-btn-media" onclick="switchModalTab(\'media\')" style="padding:8px 16px;font-size:11px;font-weight:600;color:#aaa;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;">Videos y Redes</button>' : '';
+  document.getElementById('pilv-lb-body').innerHTML =
+    '<div id="pilv-lb-tabs" style="display:flex;border-bottom:1px solid #eef2ee;margin-bottom:12px;gap:0;">' +
+      '<button id="tab-btn-specs" onclick="switchModalTab(\'specs\')" style="padding:8px 16px;font-size:11px;font-weight:600;color:#2c6e3f;border:none;border-bottom:2px solid #2c6e3f;background:none;cursor:pointer;">Especificaciones</button>' +
+      tabBtnMedia +
+    '</div>' +
+    '<div id="pilv-tab-specs">' + specs2table(p) + notaBlock + waBtn + pageLink + shareBtn + '</div>' +
+    (hasMedia ? '<div id="pilv-tab-media" style="display:none;padding:8px 0;">' + mediaHtml + '</div>' : '');
+  document.getElementById('modal-backdrop').classList.remove('hidden');
+  setTimeout(() => { document.getElementById('modal-backdrop').style.opacity = '1'; document.getElementById('product-modal').style.opacity = '1'; document.getElementById('product-modal').style.pointerEvents = 'auto'; }, 10);
+  document.body.style.overflow = 'hidden';
+}
 
+function closeModal() {
+  document.getElementById('modal-backdrop').style.opacity = '0';
+  document.getElementById('product-modal').style.opacity = '0';
+  document.getElementById('product-modal').style.pointerEvents = 'none';
+  setTimeout(() => document.getElementById('modal-backdrop').classList.add('hidden'), 200);
+  document.body.style.overflow = '';
+  var prevBtn = document.getElementById('pilv-lb-prev');
+  var nextBtn = document.getElementById('pilv-lb-next');
+  if (prevBtn) prevBtn.style.display = 'none';
+  if (nextBtn) nextBtn.style.display = 'none';
+}
 
-<script>
-/* Pilvicsa deep-link: opens lightbox when arriving via ?v=ProductName */
-(function(){
-  var v = new URLSearchParams(window.location.search).get('v');
-  if (!v) return;
-  var target = decodeURIComponent(v).toLowerCase().trim();
-  function tryOpen() {
-    var rows = document.querySelectorAll('.pilv-table tbody tr[data-name]');
-    for (var i=0; i<rows.length; i++) {
-      if ((rows[i].dataset.name||'').toLowerCase().trim()===target) {
-        rows[i].scrollIntoView({behavior:'smooth',block:'center'});
-        setTimeout(function(r){r.click();},450,rows[i]);
-        return;
-      }
-    }
-  }
-  if (document.readyState==='loading') {
-    document.addEventListener('DOMContentLoaded',function(){ setTimeout(tryOpen,300); });
+function switchModalTab(tab) {
+  var specs = document.getElementById('pilv-tab-specs');
+  var media = document.getElementById('pilv-tab-media');
+  var btnS  = document.getElementById('tab-btn-specs');
+  var btnM  = document.getElementById('tab-btn-media');
+  if (!specs) return;
+  if (tab === 'specs') {
+    specs.style.display = 'block';
+    if (media) media.style.display = 'none';
+    if (btnS) { btnS.style.color = '#2c6e3f'; btnS.style.borderBottomColor = '#2c6e3f'; }
+    if (btnM) { btnM.style.color = '#aaa'; btnM.style.borderBottomColor = 'transparent'; }
   } else {
-    setTimeout(tryOpen,300);
+    specs.style.display = 'none';
+    if (media) media.style.display = 'block';
+    if (btnS) { btnS.style.color = '#aaa'; btnS.style.borderBottomColor = 'transparent'; }
+    if (btnM) { btnM.style.color = '#2c6e3f'; btnM.style.borderBottomColor = '#2c6e3f'; }
   }
-})();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft') navigateModal(-1);
+  if (e.key === 'ArrowRight') navigateModal(1);
+});
+</script>
+<script>
+function toggleNav(menuId) {
+  var menus = document.querySelectorAll('.nav-dropdown-menu');
+  menus.forEach(function(m) {
+    if (m.id !== menuId) {
+      m.classList.add('hidden');
+      var key = m.id.replace('menu-', '');
+      var ch = document.getElementById('chevron-' + key);
+      if (ch) ch.style.transform = '';
+    }
+  });
+  var menu = document.getElementById(menuId);
+  var key = menuId.replace('menu-', '');
+  var chevron = document.getElementById('chevron-' + key);
+  var isOpen = !menu.classList.contains('hidden');
+  if (isOpen) {
+    menu.classList.add('hidden');
+    if (chevron) chevron.style.transform = '';
+  } else {
+    menu.classList.remove('hidden');
+    if (chevron) chevron.style.transform = 'rotate(180deg)';
+  }
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dropdown-wrapper')) {
+    document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {
+      m.classList.add('hidden');
+    });
+    document.querySelectorAll('[id^="chevron-"]').forEach(function(ch) {
+      ch.style.transform = '';
+    });
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {
+      m.classList.add('hidden');
+    });
+    document.querySelectorAll('[id^="chevron-"]').forEach(function(ch) {
+      ch.style.transform = '';
+    });
+  }
+});
+</script>
+<button id="pilv-lb-prev" aria-label="Anterior" onclick="navigateModal(-1)" style="position:fixed;left:12px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:40px;height:40px;color:white;font-size:1.4rem;cursor:pointer;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:background 0.15s;z-index:60;">&#8249;</button>
+<button id="pilv-lb-next" aria-label="Siguiente" onclick="navigateModal(1)" style="position:fixed;right:12px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:40px;height:40px;color:white;font-size:1.4rem;cursor:pointer;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:background 0.15s;z-index:60;">&#8250;</button>
+<script>
+if (typeof toggleProductosMobile === 'undefined') {
+  function toggleProductosMobile(btn) {
+    var list = document.getElementById('productos-mobile-list');
+    if (!list) return;
+    var isOpen = list.classList.contains('open');
+    list.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  }
+}
 </script>
 </body>
 </html>

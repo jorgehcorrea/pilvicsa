@@ -1,12 +1,8 @@
 User-agent: *
 Allow: /
 
-# Block assets that shouldn't be indexed
-Disallow: /demos/
-Disallow: /js/
-Disallow: /css/
-Disallow: /sass/
-Disallow: /one-page/
+Disallow: /node_modules/
+Disallow: /scripts/
+Disallow: /audit/
 
-# Sitemap location
 Sitemap: https://pilvicsa.com.ec/sitemap.xml

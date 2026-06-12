@@ -1,0 +1,13 @@
+node_modules/
+images/raw/
+*.log
+.DS_Store
+.claude/
+__pycache__/
+.playwright-mcp/
+aviso-legal-full.png
+aviso-legal-top.png
+aviso-legal-v2-full.png
+aviso-legal-v2-top.png
+buscar-footer-bottom.png
+buscar-footer-check.png
