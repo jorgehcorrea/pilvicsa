@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep -rn \"hortalizas.html\" c:/xampp/htdocs/pilvicsa/*.html)"
+      "Bash(grep -rn \"hortalizas.html\" c:/xampp/htdocs/pilvicsa/*.html)",
+      "Bash(git -C \"C:/xampp83/htdocs/pilvicsa\" ls-files)",
+      "Bash(git -C \"C:/xampp83/htdocs/pilvicsa\" show HEAD:dist/css/style.css)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "claude-flow"
+  ]
 }
