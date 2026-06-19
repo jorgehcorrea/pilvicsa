@@ -592,30 +592,45 @@ function showLoadError(msg) {
     `<div class="col-span-full text-center py-16 text-red-400 text-sm font-mono px-4">${msg}<br><br>Abre el sitio via XAMPP: <strong>http://localhost/pilvicsa.v2/buscar.html</strong></div>`;
 }
 
-// Try Google Sheet first; fall back to local products.json
-fetch(SHEET_URL)
+// Fetch Sheet + products.json in parallel; imagen always from products.json
+const sheetPromise = fetch(SHEET_URL)
   .then(r => { if (!r.ok) throw new Error('Sheet HTTP ' + r.status); return r.text(); })
   .then(text => {
     const data = csvToProducts(text);
-    console.log('[Pilvicsa] Loaded', data.length, 'products from Google Sheet');
     if (!data.length) throw new Error('Sheet returned 0 products');
-    initWithData(data);
-  })
-  .catch(sheetErr => {
-    console.warn('[Pilvicsa] Sheet fetch failed:', sheetErr.message, '— trying local JSON');
-    fetch('data/products.json')
-      .then(r => {
-        if (!r.ok) throw new Error('JSON HTTP ' + r.status);
-        return r.json();
-      })
-      .then(data => {
-        console.log('[Pilvicsa] Loaded', data.length, 'products from local JSON');
-        initWithData(data);
-      })
-      .catch(jsonErr => {
-        showLoadError('Error: ' + sheetErr.message + ' | ' + jsonErr.message);
-      });
+    return data;
   });
+
+const jsonPromise = fetch('data/products.json')
+  .then(r => { if (!r.ok) throw new Error('JSON HTTP ' + r.status); return r.json(); })
+  .catch(err => { console.warn('[Pilvicsa] products.json fetch failed:', err.message); return null; });
+
+Promise.allSettled([sheetPromise, jsonPromise]).then(([sheetResult, jsonResult]) => {
+  const jsonData = jsonResult.status === 'fulfilled' ? jsonResult.value : null;
+  const imagenMap = {};
+  if (jsonData && Array.isArray(jsonData)) {
+    jsonData.forEach(p => { if (p.id && p.imagen) imagenMap[p.id] = p.imagen; });
+  }
+
+  if (sheetResult.status === 'fulfilled') {
+    const data = sheetResult.value;
+    let overrideCount = 0;
+    data.forEach(p => {
+      if (p.id && imagenMap[p.id]) { p.imagen = imagenMap[p.id]; overrideCount++; }
+    });
+    console.log('[Pilvicsa] Loaded', data.length, 'products from Google Sheet');
+    console.log(`Imagen override: ${overrideCount} of ${data.length} records updated from products.json`);
+    initWithData(data);
+  } else if (jsonData && Array.isArray(jsonData) && jsonData.length) {
+    console.warn('[Pilvicsa] Sheet fetch failed:', sheetResult.reason.message, '— using local JSON');
+    console.log('[Pilvicsa] Loaded', jsonData.length, 'products from local JSON');
+    initWithData(jsonData);
+  } else {
+    const sheetMsg = sheetResult.reason ? sheetResult.reason.message : 'unknown';
+    const jsonMsg = jsonResult.status === 'rejected' ? jsonResult.reason.message : 'empty data';
+    showLoadError('Error: ' + sheetMsg + ' | ' + jsonMsg);
+  }
+});
 
 // ── Render ───────────────────────────────────────────────────────────────────
 function getResults() {
