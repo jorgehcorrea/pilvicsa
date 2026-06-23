@@ -91,6 +91,27 @@
         color: inherit !important;
       }
     }
+    @media (min-width: 992px) {
+      #hero-search {
+        transition: box-shadow 0.4s ease;
+      }
+      #hero-search:hover,
+      #hero-search:focus {
+        animation: searchGlowPulse 2.8s ease-in-out infinite;
+      }
+      @keyframes searchGlowPulse {
+ 0%, 100% {
+    box-shadow: 0 0 20px rgba(45, 138, 78, 0.45),
+                0 0 40px rgba(45, 138, 78, 0.30),
+                0 0 60px rgba(45, 138, 78, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(45, 138, 78, 0.70),
+                0 0 65px rgba(45, 138, 78, 0.45),
+                0 0 95px rgba(45, 138, 78, 0.25);
+  }
+      }
+    }
   </style>
   <style>
     @media (max-width: 991px) {
@@ -369,22 +390,14 @@
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2 class="font-display font-black text-4xl lg:text-5xl text-pilvicsa-primary mb-3">Busca tu variedad</h2>
     <p class="text-gray-500 text-lg mb-10">221 variedades en 6 categorías — busca por nombre, especie o cultivo</p>
-    <form class="flex gap-3 max-w-xl mx-auto mb-8" onsubmit="doSearch(event)">
+    <form class="flex gap-3 mx-auto" onsubmit="doSearch(event)">
       <input id="hero-search" type="text" placeholder="Ej: tomate, lechuga, arándano..."
-        class="flex-1 px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 text-base focus:outline-none focus:ring-2 focus:ring-pilvicsa-mid shadow-sm">
+        class="flex-1 min-w-0 px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 text-base focus:outline-none focus:ring-2 focus:ring-pilvicsa-mid shadow-sm">
       <button type="submit" class="bg-pilvicsa-mid text-white px-6 py-4 rounded-xl font-semibold hover:bg-pilvicsa-primary transition flex items-center gap-2">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         Buscar
       </button>
     </form>
-    <div class="flex flex-wrap justify-center gap-2">
-      <a href="buscar.html?cat=hortalizas" class="px-4 py-2 bg-white border border-pilvicsa-light text-pilvicsa-primary rounded-full text-sm font-medium hover:bg-pilvicsa-primary hover:text-white hover:border-pilvicsa-primary transition">Hortalizas</a>
-      <a href="buscar.html?cat=florescorte" class="px-4 py-2 bg-white border border-pilvicsa-light text-pilvicsa-primary rounded-full text-sm font-medium hover:bg-pilvicsa-primary hover:text-white hover:border-pilvicsa-primary transition">Flores de Corte</a>
-      <a href="buscar.html?cat=cultivoscosta" class="px-4 py-2 bg-white border border-pilvicsa-light text-pilvicsa-primary rounded-full text-sm font-medium hover:bg-pilvicsa-primary hover:text-white hover:border-pilvicsa-primary transition">Cultivos de Costa</a>
-      <a href="buscar.html?cat=frutales" class="px-4 py-2 bg-white border border-pilvicsa-light text-pilvicsa-primary rounded-full text-sm font-medium hover:bg-pilvicsa-primary hover:text-white hover:border-pilvicsa-primary transition">Frutales</a>
-      <a href="buscar.html?cat=especies" class="px-4 py-2 bg-white border border-pilvicsa-light text-pilvicsa-primary rounded-full text-sm font-medium hover:bg-pilvicsa-primary hover:text-white hover:border-pilvicsa-primary transition">Especies</a>
-      <a href="buscar.html?cat=otras" class="px-4 py-2 bg-white border border-pilvicsa-light text-pilvicsa-primary rounded-full text-sm font-medium hover:bg-pilvicsa-primary hover:text-white hover:border-pilvicsa-primary transition">Otras</a>
-    </div>
   </div>
 </section>
 
