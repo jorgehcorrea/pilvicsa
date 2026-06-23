@@ -393,9 +393,8 @@
     <form class="flex gap-3 mx-auto" onsubmit="doSearch(event)">
       <input id="hero-search" type="text" placeholder="Ej: tomate, lechuga, arándano..."
         class="flex-1 min-w-0 px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 text-base focus:outline-none focus:ring-2 focus:ring-pilvicsa-mid shadow-sm">
-      <button type="submit" class="bg-pilvicsa-mid text-white px-6 py-4 rounded-xl font-semibold hover:bg-pilvicsa-primary transition flex items-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        Buscar
+      <button type="submit" aria-label="Buscar" class="p-4 rounded-xl transition flex items-center justify-center hover:bg-gray-100">
+        <svg class="w-6 h-6" fill="none" stroke="#2d8a4e" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
       </button>
     </form>
   </div>
