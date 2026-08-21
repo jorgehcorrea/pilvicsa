@@ -34,7 +34,9 @@
   <style>
     #main-navbar { background-color: #1a4d2e; }
     .loc-card { scroll-margin-top: 80px; }
-  
+    /* Long unbreakable word ("Localizaciones") overflows the viewport at mobile widths */
+    h1 { overflow-wrap: break-word; }
+
     @media (max-width: 991px) {
       .servicios-dropdown .sub-menu-container {
         display: none !important;
