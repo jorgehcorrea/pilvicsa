@@ -683,7 +683,7 @@ function cardHTML(p) {
     ? (p.imagen.startsWith('http') || p.imagen.startsWith('images/') ? p.imagen : 'images/productos/' + p.imagen)
     : '';
   const imgHtml = imgSrc
-    ? `<img src="${esc(imgSrc)}" alt="${esc(p.nombre)}" loading="lazy"
+    ? `<img src="${esc(imgSrc)}" alt="${esc(p.nombre)}" loading="lazy" decoding="async"
          class="w-full h-full object-cover" onerror="pilvImgErr(this)">`
     : PLACEHOLDER_SVG;
   const specs = SPEC_FIELDS.filter(f => p[f.key]).slice(0, 3)
