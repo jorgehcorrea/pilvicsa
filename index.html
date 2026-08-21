@@ -50,7 +50,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap"></noscript>
   <link rel="stylesheet" href="dist/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css">
   <style>
@@ -229,6 +230,12 @@
         color: #2d8a4e !important;
       }
     }
+    /* Speed pass — YouTube facade (corporate video) */
+    #yt-facade { all: unset; cursor: pointer; position: absolute; inset: 0; display: block; }
+    #yt-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.25); transition: background 0.2s ease; }
+    #yt-facade:hover #yt-overlay { background: rgba(0,0,0,0.1); }
+    #yt-play-btn { width: 76px; height: 76px; transition: transform 0.2s ease; }
+    #yt-facade:hover #yt-play-btn { transform: scale(1.08); }
   </style>
 </head>
 <body class="font-sans text-gray-900 bg-white">
@@ -341,9 +348,8 @@
 ════════════════════════════════════════════════════ -->
 <section id="hero" class="relative h-screen min-h-[600px] overflow-hidden">
   <!-- Video -->
-  <video id="hero-video" autoplay muted loop playsinline poster="images/slider/1.jpg"
+  <video id="hero-video" muted loop playsinline preload="none" poster="images/slider/1.jpg"
     class="absolute inset-0 w-full h-full object-cover z-0">
-    <source src="images/videos/hero.mp4" type="video/mp4">
   </video>
 
   <!-- Gradient overlay: transparent top → dark bottom -->
@@ -665,9 +671,16 @@
     <h2 class="font-display font-black text-4xl lg:text-5xl text-white mb-3">Nuestro Video Corporativo</h2>
     <p class="text-white/50 text-lg mb-12">Nuestra experiencia, procesos y tecnología</p>
     <div class="relative rounded-2xl overflow-hidden aspect-video bg-black shadow-2xl">
-      <iframe src="https://www.youtube.com/embed/MScYlxfqeac" title="Pilvicsa — Video Corporativo"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy" class="absolute inset-0 w-full h-full"></iframe>
+      <button type="button" id="yt-facade" aria-label="Reproducir video corporativo de Pilvicsa">
+        <img src="https://img.youtube.com/vi/MScYlxfqeac/hqdefault.jpg" alt="Pilvicsa — Video Corporativo" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
+        <span id="yt-overlay"></span>
+        <span class="absolute inset-0 flex items-center justify-center">
+          <span id="yt-play-btn" class="rounded-full bg-pilvicsa-accent flex items-center justify-center shadow-xl">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" style="margin-left:3px"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </span>
+      </button>
+      <div id="yt-player-container" class="hidden absolute inset-0 w-full h-full"></div>
     </div>
     <p class="mt-8">
       <a href="https://www.youtube.com/@pilvicsa" target="_blank" rel="noopener noreferrer" class="text-pilvicsa-accent hover:text-pilvicsa-light transition font-medium text-sm">Ver nuestra librería de videos →</a>
@@ -757,11 +770,44 @@
 <!-- ═══════════════════════════════════════════════════
      SCRIPTS
 ════════════════════════════════════════════════════ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
 <script>
+  // Hero video — only fetch/play on tablet+ widths; phones stay on the poster image
+  (function () {
+    var heroVideo = document.getElementById('hero-video');
+    if (heroVideo && window.matchMedia('(min-width: 768px)').matches) {
+      var source = document.createElement('source');
+      source.src = 'images/videos/hero.mp4';
+      source.type = 'video/mp4';
+      heroVideo.appendChild(source);
+      heroVideo.load();
+      var playPromise = heroVideo.play();
+      if (playPromise) playPromise.catch(function () {});
+    }
+  })();
+
+  // YouTube facade — swap in the real iframe only when the user clicks play
+  (function () {
+    var facade = document.getElementById('yt-facade');
+    if (!facade) return;
+    facade.addEventListener('click', function () {
+      var container = document.getElementById('yt-player-container');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/MScYlxfqeac?autoplay=1';
+      iframe.title = 'Pilvicsa — Video Corporativo';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.className = 'absolute inset-0 w-full h-full';
+      iframe.style.border = '0';
+      container.appendChild(iframe);
+      container.classList.remove('hidden');
+      facade.remove();
+    });
+  })();
+
   gsap.registerPlugin(ScrollTrigger);
 
   // Hero — cinematic entrance: start centered, drift to bottom
