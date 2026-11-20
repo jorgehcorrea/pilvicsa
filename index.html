@@ -775,17 +775,70 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
 <script>
-  // Hero video — only fetch/play on tablet+ widths; phones stay on the poster image
+  // Hero video — loads and plays on all widths; skipped (poster only) on
+  // Save-Data, slow connections (slow-2g/2g/3g) or prefers-reduced-motion
   (function () {
     var heroVideo = document.getElementById('hero-video');
-    if (heroVideo && window.matchMedia('(min-width: 768px)').matches) {
+    var conn = navigator.connection;
+    var skipVideo =
+      (conn && conn.saveData) ||
+      (conn && ['slow-2g', '2g', '3g'].indexOf(conn.effectiveType) > -1) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // TEMP DIAGNOSTICS — active only with ?vdebug=1 (remove after testing)
+    var vdbg = null;
+    if (/[?&]vdebug=1(&|$)/.test(location.search)) {
+      var vdbgBox = document.createElement('div');
+      vdbgBox.style.cssText = 'position:fixed;left:0;bottom:0;z-index:9999;' +
+        'font:11px/1.35 monospace;background:#000;color:#fff;padding:6px 8px;' +
+        'pointer-events:none;max-width:100vw;max-height:60vh;overflow:hidden;' +
+        'white-space:pre-wrap;word-break:break-all;';
+      document.body.appendChild(vdbgBox);
+      vdbg = function (msg) { vdbgBox.textContent += msg + '\n'; };
+      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var guard = 'none';
+      if (!heroVideo) guard = 'no #hero-video element';
+      else if (conn && conn.saveData) guard = 'saveData';
+      else if (conn && ['slow-2g', '2g', '3g'].indexOf(conn.effectiveType) > -1) guard = 'effectiveType=' + conn.effectiveType;
+      else if (rm) guard = 'prefers-reduced-motion';
+      vdbg('innerWidth=' + window.innerWidth + ' dpr=' + window.devicePixelRatio);
+      vdbg('mq(max-width:767px)=' + window.matchMedia('(max-width: 767px)').matches);
+      vdbg('file=' + (skipVideo ? '(none)' : 'images/videos/Plv_Clip%20web%201.mp4'));
+      vdbg('conn.effectiveType=' + (conn && conn.effectiveType ? conn.effectiveType : 'n/a') +
+        ' saveData=' + (conn && typeof conn.saveData !== 'undefined' ? conn.saveData : 'n/a'));
+      vdbg('reducedMotion=' + rm);
+      vdbg('skipGuard=' + guard);
+      if (heroVideo) {
+        ['loadstart', 'loadedmetadata', 'canplay', 'playing', 'stalled', 'error'].forEach(function (ev) {
+          heroVideo.addEventListener(ev, function () {
+            var line = 'ev:' + ev + ' net=' + heroVideo.networkState + ' ready=' + heroVideo.readyState;
+            if (ev === 'error' && heroVideo.error) {
+              line += ' code=' + heroVideo.error.code + ' msg=' + (heroVideo.error.message || '');
+            }
+            vdbg(line);
+          });
+        });
+      }
+    }
+
+    if (heroVideo && !skipVideo) {
       var source = document.createElement('source');
       source.src = 'images/videos/Plv_Clip%20web%201.mp4';
       source.type = 'video/mp4';
+      if (vdbg) {
+        source.addEventListener('error', function () {
+          vdbg('ev:error(source) net=' + heroVideo.networkState + ' ready=' + heroVideo.readyState);
+        });
+      }
       heroVideo.appendChild(source);
       heroVideo.load();
+      heroVideo.muted = true;
       var playPromise = heroVideo.play();
-      if (playPromise) playPromise.catch(function () {});
+      if (playPromise) playPromise.then(function () {
+        if (vdbg) vdbg('play()=playing');
+      }, function (err) {
+        if (vdbg) vdbg('play()=rejected ' + (err && err.name) + ': ' + (err && err.message));
+      });
     }
   })();
 
